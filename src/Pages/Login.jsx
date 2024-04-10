@@ -25,19 +25,14 @@ export default function Login() {
             setAccessToken(resData.data.token)
             navigate("/home")
 
-
         }
         catch (err) {
             console.log(err);
             toast.error("There is an error")
-
-
         }
         finally {
             setIsLoading(false)
         }
-
-
     }
     function onError() {
 

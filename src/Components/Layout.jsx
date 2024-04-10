@@ -7,13 +7,7 @@ import { AuthContext } from './../Context/AuthContext';
 
 export default function Layout() {
 
-    const { accessToken, setAccessToken } = useContext(AuthContext)
-    useEffect(() => {
-        if (localStorage.getItem("accessToken") !== null) {
-            setAccessToken(localStorage.getItem("accessToken"))
-        }
 
-    }, [accessToken, setAccessToken])
     return (
         <>
             <Topheader />

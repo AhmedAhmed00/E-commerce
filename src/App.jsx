@@ -17,6 +17,7 @@ function App() {
 
 
 
+
   return (
     <>
 
@@ -24,11 +25,14 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route element=<Layout /> >
-              <Route path='/' element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
+
+
+            <Route element=<Layout />  >
+              <Route index element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
+              <Route path='/home' element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
               <Route index path='signup' element={<Signup />} />
               <Route path='login' element={<Login />} />
-              <Route path='home' element={<ProtectedRoute><Homepage /></ProtectedRoute>} />
+
 
 
 
