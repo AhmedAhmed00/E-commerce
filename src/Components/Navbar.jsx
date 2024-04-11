@@ -1,17 +1,14 @@
 import React, { useContext } from 'react'
 import Searchbar from './Searchbar';
-import { AuthContext } from '../Context/AuthContext';
+import { useAuth } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
 
 
 export default function Navbar() {
-  const { accessToken, logout } = useContext(AuthContext)
-
-
-
+  const { accessToken, logout } = useAuth()
   return (
     <nav className='border-b py-3 mb-5'>
-      <div className="container  m-auto flex justify-between items-center">
+      <div className="container flex justify-between items-center">
         <div>
           <h2 className='text-2xl font-bold'>
             Logo

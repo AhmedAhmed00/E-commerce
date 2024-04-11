@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../Context/AuthContext'
+import React from 'react'
+import { useAuth } from '../Context/AuthContext'
 import { Navigate } from 'react-router-dom';
 
 
 export default function ProtectedRoute({ children }) {
 
-    const { accessToken } = useContext(AuthContext)
+    const { accessToken } = useAuth()
 
     if (!accessToken && !localStorage.getItem("accessToken")) {
 

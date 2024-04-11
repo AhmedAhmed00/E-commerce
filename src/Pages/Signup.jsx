@@ -10,11 +10,11 @@ import axios from 'axios';
 
 export default function Signup() {
 
+  const { register, formState: { errors }, handleSubmit, getValues } = useForm()
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
 
-  const { register, formState: { errors }, handleSubmit, getValues } = useForm()
 
 
   function onError(errors) {

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import '../src/index.css'
 import { Toaster } from 'react-hot-toast';
 
@@ -14,28 +14,16 @@ function App() {
 
 
 
-
-
-
-
   return (
     <>
-
-
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-
-
             <Route element=<Layout />  >
-              <Route index element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
-              <Route path='/home' element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
+              <Route index element={<Navigate to={'home'} />} />
+              <Route path='home' element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
               <Route index path='signup' element={<Signup />} />
               <Route path='login' element={<Login />} />
-
-
-
-
             </Route>
             <Route />
 
