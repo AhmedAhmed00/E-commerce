@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   const { accessToken, logout } = useAuth()
   return (
-    <nav className='border-b py-3 mb-5'>
+    <nav className='border-b py-3 mb-5 shadow-sm'>
       <div className="container flex justify-between items-center">
         <div>
           <h2 className='text-2xl font-bold'>
