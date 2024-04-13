@@ -1,14 +1,21 @@
 import React from 'react'
-import SimpleSlider from '../Components/Slider'
 import SectionHeader from '../Components/SectionHeader'
 import Produtcs from '../Components/Products'
+import Header from './../Components/Header';
+
+import ProductDetails from '../Components/ProductDetails';
 
 export default function Homepage() {
     return (
         <div>
-            <SimpleSlider />
+            <header className='header '>
+                <Header />
+            </header>
             <SectionHeader />
+
+
             <Produtcs />
+
         </div>
     )
 }

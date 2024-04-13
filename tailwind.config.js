@@ -6,6 +6,14 @@ export default {
   ],
   theme: {
 
+    fontFamily: {
+      oswald: ['oswald', 'sans-serif'],
+      lato: ["Lato", "sans-serif"]
+      , Merriweather: ["Merriweather", "serif"],
+      Alegreya: ["Alegreya", "serif"]
+
+    },
+  
 
     container: {
       center: true,
