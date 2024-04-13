@@ -1,10 +1,4 @@
-import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-
-
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -13,6 +7,7 @@ function SampleNextArrow(props) {
             className={className}
             style={{
                 ...style,
+
                 right: "20px", zIndex: "1", borderRadius: "50%",
                 backgroundColor: "tomato",
                 height: "30px",
@@ -20,6 +15,9 @@ function SampleNextArrow(props) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"
+
+
+
             }
             }
             onClick={onClick}
@@ -47,41 +45,21 @@ function SamplePrevArrow(props) {
 }
 
 
-export default function CustomArrows({ slidesToShow }) {
+export default function SliderContainer({ children, slidesToShow, slidesToScroll, draggable }) {
     const settings = {
-
         infinite: true,
         slidesToShow,
-        slidesToScroll: 1,
-        swipeToSlide: false,
+        slidesToScroll,
+        draggable,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
-
-
     };
     return (
-        <div>
-            <Slider {...settings} className="pt-10  " >
-                <div>
-                    <img src="../../public/assets/iphone.png" alt="" />
-                </div>
-                <div>
-                    <img src="../../public/assets/slider-2.jpeg" alt="" />
-                </div>
-                <div>
-                    <img src="../../public/assets/slider-2.jpeg" alt="" />
-                </div>
-                <div>
-                    <img src="../../public/assets/slider-2.jpeg" alt="" />
-                </div>
-                <div>
-                    <img src="../../public/assets/slider-2.jpeg" alt="" />
-                </div>
-                <div>
-                    <img src="../../public/assets/slider-2.jpeg" alt="" />
-                </div>
+        <div className="slider-container">
+            <Slider {...settings}>
+                {children}
             </Slider>
         </div>
-
     );
 }
+

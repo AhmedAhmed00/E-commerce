@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
-import { getSpecificProduct } from '../Services/ProductsApi';
+import { getProducts, getSpecificProduct } from '../Services/ProductsApi';
 import Rating from './Rating';
 import { formatPrice } from '../utilities/helpres';
 import { Link, useParams } from 'react-router-dom';
@@ -9,6 +9,8 @@ import { toast } from 'react-hot-toast';
 import { MdFavoriteBorder } from "react-icons/md";
 import { GrDeliver } from "react-icons/gr";
 import { TbRestore } from "react-icons/tb";
+import Row from './Row';
+import LoaderSpinner from './LoaderSpinner';
 
 
 
@@ -22,18 +24,31 @@ export default function ProductDetails() {
     const [orderQuantity, setOrderQuantity] = useState(1)
 
     const mainImage = useRef()
-    console.log(mainImage.current);
+
 
 
     const { productId } = useParams()
-    console.log(productId);
 
+    const [isOpenImage, setIsOpenImage] = useState("")
 
-    const { isError, data: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category, brand, ratingsAverage } = {}, isLoading
+    const { isError, data: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
     } = useQuery({
-        queryKey: ['product'],
+        queryKey: ['product', productId],
         queryFn: () => getSpecificProduct(productId)
     })
+
+    const { data: related } = useQuery({
+        queryKey: ["related", categoryId],
+        queryFn: () => getProducts({ "category": categoryId }),
+        enabled: !!categoryId
+    })
+
+
+
+    function handleMainImageClick(img) {
+        setIsOpenImage(img)
+        console.log(isOpenImage);
+    }
 
 
     function changeMainImage(src) {
@@ -41,7 +56,6 @@ export default function ProductDetails() {
     }
     function changeProductColor(color) {
         setFakeColor(color)
-
     }
 
     function handleDecreaseQuantity() {
@@ -71,11 +85,11 @@ export default function ProductDetails() {
 
 
 
-            {isLoading ? <div>ahmed</div> : isError ? <div>Eroor</div> :
+            {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
+                <>
 
-                <div>
-                    < div className='flex columns-3 gap-5  items-center mt-8 ' >
 
+                    < div className='flex columns-3 gap-5  items-center my-8' >
 
                         <div className="  w-1/12 sticky top-0 ">
                             <div className='flex flex-col gap-5'>
@@ -88,11 +102,17 @@ export default function ProductDetails() {
                         </div>
 
 
-                        <img src={imageCover} ref={mainImage} alt="ImageCover" className=' border shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px] sticky top-0 flex-1 ' />
+                        <img onClick={(e) => {
+                            handleMainImageClick(e.target.src)
+                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  flex-1 ' />
 
-                        <div className='ps-8 self-start  '>
+
+
+
+
+                        <div className='ps-8 self-start   '>
                             <h2 className='mb-1 text-4xl font-semibold text-red-700'>{title}</h2>
-                            <Link href='/' className='font-semiboldtext-red-700  underline'>{category.name}</Link>
+                            <Link href='/' className='font-semiboldtext-red-700  underline'>{name}</Link>
                             <p className='my-1'>Avalibale Quantity - <span className='text-green-500'>{quantity}</span> </p>
 
                             <div className='flex items-center'>
@@ -168,17 +188,26 @@ export default function ProductDetails() {
 
 
 
-
-
-
-
-
                         </div>
 
 
                     </div>
 
-                </div >}
+
+                    <h2 className='mb-2'>Related Items</h2>
+                    <Row items={related} role='slider' />
+
+                </>
+
+
+
+
+
+
+
+
+
+            }
 
 
 

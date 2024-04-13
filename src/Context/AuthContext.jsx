@@ -1,7 +1,7 @@
 
 import { createContext, useContext, useState } from "react";
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
             console.log(resData);
             localStorage.setItem('accessToken', resData.data.token)
             setAccessToken(resData.data.token)
-         
+
 
         }
         catch (err) {
@@ -41,6 +41,8 @@ export function AuthProvider({ children }) {
     function logout() {
         localStorage.removeItem("accessToken")
         setAccessToken(null)
+      
+
     }
     useEffect(() => {
         if (localStorage.getItem("accessToken")) {
@@ -51,7 +53,7 @@ export function AuthProvider({ children }) {
 
 
 
-    return <AuthContext.Provider value={{ accessToken, setAccessToken, logout ,login , isLoading }} >
+    return <AuthContext.Provider value={{ accessToken, setAccessToken, logout, login, isLoading }} >
         {children}
     </AuthContext.Provider>
 }

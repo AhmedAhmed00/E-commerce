@@ -41,10 +41,11 @@ function App() {
                 <Route path='home' element={<ProtectedRoute ><Homepage /></ProtectedRoute>} />
                 <Route index path='signup' element={<Signup />} />
                 <Route path='login' element={<Login />} />
-                <Route path='products/productInfo/:productId' element={<ProductDetails />} />
+                <Route path='products/productInfo/:productId' element={<ProtectedRoute>
+                  <ProductDetails />
+                </ProtectedRoute>} />
               </Route>
               <Route />
-
             </Routes>
             <Toaster />
           </BrowserRouter>

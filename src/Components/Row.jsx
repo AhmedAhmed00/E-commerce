@@ -1,4 +1,71 @@
+import ProductItem from "./ProductItem";
+
+
+
+import React from "react";
+import SliderContainer from "./SliderContainer";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default function Row({ items, role = "row" }) {
+
+    return (
+
+
+        <>
+
+            {role === "row" && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                {items?.map((product) => <ProductItem product={product} key={product._id} />)}
+            </div>}
+            {role === "slider" &&
+
+
+                <SliderContainer draggable={false} slidesToShow={5} slidesToScroll={2} >
+                    {items?.map((product) => <ProductItem product={product} key={product._id} className={'mx-2'} />)}
+                </SliderContainer>
+
+
+
+            }
+
+        </>
+
+
+
+
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React from 'react'
+
+
 
 // export default function Row() {
 

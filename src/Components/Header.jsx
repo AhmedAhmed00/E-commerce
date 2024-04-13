@@ -7,11 +7,11 @@ export default function Header() {
 
 
 
-        <header className="header   ">
+        <header className="header">
             <div className="content flex flex-nowrap justify-between gap-8 container">
                 <CategoriesHeader />
                 <div className='w-9/12'>
-                    <CustomArrows />
+                    <CustomArrows slidesToShow={1} />
                 </div>
             </div>
 
