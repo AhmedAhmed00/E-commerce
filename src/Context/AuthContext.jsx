@@ -1,7 +1,6 @@
 
 import { createContext, useContext, useState } from "react";
 import { useEffect } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
@@ -15,17 +14,12 @@ export function AuthProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false)
 
 
-
-
     async function login(data) {
         try {
             setIsLoading(true)
             const resData = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin", data)
-            console.log(resData);
             localStorage.setItem('accessToken', resData.data.token)
             setAccessToken(resData.data.token)
-
-
         }
         catch (err) {
             console.log(err);
@@ -34,14 +28,12 @@ export function AuthProvider({ children }) {
         finally {
             setIsLoading(false)
         }
-
     }
-
 
     function logout() {
         localStorage.removeItem("accessToken")
         setAccessToken(null)
-      
+
 
     }
     useEffect(() => {

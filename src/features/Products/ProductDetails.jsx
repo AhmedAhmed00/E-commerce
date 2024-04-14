@@ -1,17 +1,16 @@
-import React, { useRef, useState } from 'react'
-import { useQuery } from '@tanstack/react-query';
-import { getProducts, getSpecificProduct } from '../Services/ProductsApi';
-import Rating from './Rating';
-import { formatPrice } from '../utilities/helpres';
-import { Link, useParams } from 'react-router-dom';
-import ColorInput from './ColorInput';
-import { toast } from 'react-hot-toast';
-import { MdFavoriteBorder } from "react-icons/md";
-import { GrDeliver } from "react-icons/gr";
-import { TbRestore } from "react-icons/tb";
-import Row from './Row';
-import LoaderSpinner from './LoaderSpinner';
-
+import { useQuery } from "@tanstack/react-query"
+import { useRef, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import { getProducts, getSpecificProduct } from "../../Services/ProductsApi"
+import toast from "react-hot-toast"
+import LoaderSpinner from './../../Components/LoaderSpinner';
+import Rating from './../../Components/Rating';
+import ColorInput from './../../Components/ColorInput';
+import { MdFavoriteBorder } from "react-icons/md"
+import { GrDeliver } from "react-icons/gr"
+import { TbRestore } from "react-icons/tb"
+import Row from "../../Components/Row"
+import { formatPrice } from "../../utilities/helpres"
 
 
 

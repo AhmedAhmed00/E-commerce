@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from 'react'
 import CustomArrows from '../Components/Slider';
 import CategoriesHeader from './CategoriesHeader';
-import { Slider } from 'react-slick';
 import SliderContainer from './SliderContainer';
-import BASE_URL from '../Services/BaseUrl';
-import { useQuery } from '@tanstack/react-query';
-
-
-function Brand() {
+import useBrands from '../features/Brands/useBrands';
+import BrandItem from '../features/Brands/BrandItem';
 
 
 
-
-}
 
 export default function Header() {
 
-
-
-
-    async function getBrands() {
-        const res = await fetch(`${BASE_URL}/brands`)
-        const data = await res.json()
-        return data.data
-    }
-
-    const { data: brands } = useQuery({
-        queryKey: ['brand'],
-        queryFn: getBrands
-    })
+    const { brands } = useBrands()
 
 
     return (
@@ -63,16 +44,10 @@ export default function Header() {
                     </div>
                 </div>
 
-                <SliderContainer slidesToShow={9} slidesToScroll={2} draggable={false} isResponsive={true} className='rounded-full py-4 px-14  w-full containe '   >
+                <SliderContainer slidesToShow={9} slidesToScroll={2} draggable={false} isResponsive={true} className='rounded-full py-4 px-14 w-full'>
                     {brands?.map(brand =>
-                        <div className='slider-item  px-2 py-2' key={brand._id}>
-                            <img src={brand.image} alt="" className=' w-full h-full rounded-2xl shadow-md' />
-                        </div>
-
+                        <BrandItem brand={brand} />
                     )}
-
-
-
                 </SliderContainer>
 
 

@@ -1,8 +1,9 @@
-import React from 'react'
-import { FaShoppingCart } from "react-icons/fa";
-import Rating from './Rating';
-import { formatPrice, trimTitle } from '../utilities/helpres';
+
+import Rating from './../../Components/Rating';
 import { Link } from 'react-router-dom';
+import { formatPrice } from '../../utilities/helpres'
+import { trimTitle } from '../../utilities/helpres'
+import { FaShoppingCart } from 'react-icons/fa';
 
 export default function ProductItem({ product, className = '' }) {
 
@@ -29,7 +30,6 @@ export default function ProductItem({ product, className = '' }) {
         </div>
         <button className='py-1 px-8  rounded-lg w-full bg-[#EBAA84] text-white my-2 text-sm '>Add To Cart</button>
       </div>
-
 
     </div >
 

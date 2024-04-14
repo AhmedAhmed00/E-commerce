@@ -1,7 +1,7 @@
 import React from 'react'
 import SectionHeader from '../Components/SectionHeader'
-import Produtcs from '../Components/Products'
 import Header from './../Components/Header';
+import Produtcs from './../features/Products/Products';
 
 
 export default function Homepage() {

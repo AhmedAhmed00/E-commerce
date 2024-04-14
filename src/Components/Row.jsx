@@ -1,19 +1,7 @@
-import ProductItem from "./ProductItem";
-
-
 
 import React from "react";
 import SliderContainer from "./SliderContainer";
-
-
-
-
-
-
-
-
-
-
+import ProductItem from '../features/Products/ProductItem';
 
 
 
@@ -64,6 +52,7 @@ export default function Row({ items, role = "row" }) {
 
 
 // import React from 'react'
+// import ProductItem from './../features/Products/ProductItem';
 
 
 
