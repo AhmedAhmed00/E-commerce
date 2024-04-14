@@ -7,9 +7,10 @@ import Header from './../Components/Header';
 export default function Homepage() {
     return (
         <div>
-            <header className='header '>
-                <Header />
-            </header>
+
+            <Header />
+
+
             <SectionHeader />
 
 

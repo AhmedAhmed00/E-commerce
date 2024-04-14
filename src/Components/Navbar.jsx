@@ -8,7 +8,7 @@ export default function Navbar() {
 
 
   return (
-    <nav className='border-b shadow-sm py-3 text-primary bg-[#e76f51] text-white'>
+    <nav className='border-b shadow-sm py-3 text-primary bg-[#EBAA84] text-white font-bold'>
       <div className="container flex justify-between items-center">
         <div>
           <h2 className='text-2xl font-bold'>

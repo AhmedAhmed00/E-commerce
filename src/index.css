@@ -26,4 +26,22 @@
 
 .header {
   height: calc(100vh - 100px);
+  /* background-color: red; */
+}
+@media (min-width: 100px) {
+  .header {
+    /* width: 600px !important; */
+  }
+}
+
+.slider-item {
+  margin-right: 10px;
+}
+
+.slider-item:first-child {
+  margin-right: 0;
+}
+
+.slider-item:last-child {
+  margin-right: 0;
 }

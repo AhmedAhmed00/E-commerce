@@ -21,7 +21,7 @@ export default function ProductItem({ product, className = '' }) {
       </Link>
 
       <div className='p-4 pb-2 '>
-        <h3 className=''>{trimTitle(title)}</h3>
+        <h3 className='text-red-900'>{trimTitle(title)}</h3>
 
         <div className='flex justify-between items-center  '>
           <p className='text-sm text-red-400'>{formatPrice(price)}</p>

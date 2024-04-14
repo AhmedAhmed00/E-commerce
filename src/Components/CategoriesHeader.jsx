@@ -14,8 +14,8 @@ export default function CategoriesHeader() {
 
 
     return (
-        <div className='flex-1  border-e  pt-10 list-none flex flex-col justify-between font-semibold '>
-            {categories?.map(categoryItem => <li key={categoryItem._id} className='list mb-2 '>
+        <div className=' hidden lg:flex-1 border-e  list-none lg:flex lg:flex-col  text-[#] lg:justify-between font-semibold p-5 rounded-md shadow-md'>
+            {categories?.map(categoryItem => <li key={categoryItem._id} className='list'>
                 <Link>{categoryItem.name}</Link>
             </li>)}
         </div>

@@ -104,7 +104,7 @@ export default function ProductDetails() {
 
                         <img onClick={(e) => {
                             handleMainImageClick(e.target.src)
-                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  flex-1 ' />
+                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  w-4/12 flex-1' />
 
 
 

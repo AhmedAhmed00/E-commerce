@@ -58,10 +58,11 @@ export default function CustomArrows({ slidesToShow }) {
         prevArrow: <SamplePrevArrow />,
 
 
+
     };
     return (
-        <div>
-            <Slider {...settings} className="pt-10  " >
+        <div className="w-10/12">
+            <Slider {...settings}  >
                 <div>
                     <img src="../../public/assets/iphone.png" alt="" />
                 </div>
