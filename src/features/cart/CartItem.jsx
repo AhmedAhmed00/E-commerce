@@ -39,11 +39,6 @@ export default function CartItem({ product }) {
     }
 
 
-    // function handleClear() {
-    //     clearCartItems()
-    //     setConfirmClearShow(show => !show)
-
-    // }
 
 
 

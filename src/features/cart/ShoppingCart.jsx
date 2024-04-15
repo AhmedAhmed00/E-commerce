@@ -7,12 +7,13 @@ import Button from './../../Components/Button';
 import ConfirmDelettion from '../../Components/ConfirmDelettion';
 import { AiOutlinePercentage } from 'react-icons/ai';
 import { formatPrice } from '../../utilities/helpres';
+import LoaderSpinner from '../../Components/LoaderSpinner';
 
 export default function Cart() {
 
 
 
-    const { cart, cart: { numOfCartItems, data: { _id, cartOwner, products } = {} } = {} } = useCart()
+    const { cart, cart: { numOfCartItems, data: { _id, cartOwner, products } = {} } = {}, isLoading } = useCart()
 
     const price = products?.reduce((acc, cur) => { return acc + (cur.price * cur.count) }, 0)
     const priceAfterTax = price + (price * 0.12)
@@ -26,9 +27,7 @@ export default function Cart() {
 
     return (
         <>
-
-
-            <div className='mt-4 relative'>
+            {isLoading ? <LoaderSpinner /> : <div className='mt-4 relative'>
 
                 <h3 className='text-2xl mb-1' >Shopping Bag</h3>
                 <p><span className='font-bold text-primary'>{numOfCartItems} items</span>  In Your Cart</p>
@@ -70,7 +69,10 @@ export default function Cart() {
 
                     </div>
                 </div>
-            </div>
+            </div>}
+
+
+
         </>
 
 

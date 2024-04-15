@@ -7,12 +7,10 @@ import Signup from './Pages/Signup'
 import Homepage from './Pages/Homepage'
 import Login from './Pages/Login';
 import { AuthProvider } from './Context/AuthContext';
-import ProtectedRoute from './Components/ProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import ProductDetails from './features/Products/ProductDetails';
-import Cart from './features/cart/Cart';
-
+import ShoppingCart from './features/cart/ShoppingCart'
 
 
 
@@ -40,7 +38,7 @@ function App() {
             <Routes>
               <Route element=<Layout />  >
                 <Route index element={<Navigate to={'home'} />} />
-                <Route path='cart' element=<Cart /> />
+                <Route path='cart' element=<ShoppingCart /> />
                 <Route path='home' element={<Homepage />} />
                 <Route path='signup' element={<Signup />} />
                 <Route path='login' element={<Login />} />
