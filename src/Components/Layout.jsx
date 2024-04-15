@@ -12,9 +12,7 @@ export default function Layout() {
     return (
         <>
             <Topheader />
-
             <Navbar />
-            {/* <Header /> */}
             <div className='container m-auto'>
                 <Outlet />
             </div>

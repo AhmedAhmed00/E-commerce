@@ -1,7 +1,10 @@
+import axios from "axios";
 import BASE_URL from "./BaseUrl";
+import { json } from "react-router-dom";
 
 
 export async function getProducts(urlParams = {}) {
+
 
 
 
@@ -62,3 +65,16 @@ export async function getSpecificCategory(id) {
     return categories.data
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,7 @@ import { GrDeliver } from "react-icons/gr"
 import { TbRestore } from "react-icons/tb"
 import Row from "../../Components/Row"
 import { formatPrice } from "../../utilities/helpres"
+import CounterBtn from "../../Components/CounterBtn"
 
 
 
@@ -66,24 +67,14 @@ export default function ProductDetails() {
         }
 
     }
-
     function handleIncreaseQuantity() {
         setOrderQuantity(counter => counter + 1)
     }
 
 
-
-
-
-
-
-
     return (
 
         <>
-
-
-
             {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
                 <>
 
@@ -135,20 +126,9 @@ export default function ProductDetails() {
 
                             <div className='flex gap-3  my-6 items-center '>
 
-                                <div className='border-2 flex columns-3   justify-between rounded-md font-semibold'>
+                                <CounterBtn decrease={handleDecreaseQuantity} increase={handleIncreaseQuantity} quantiny={orderQuantity} />
 
-                                    <button className='px-2'
-                                        onClick={() => handleDecreaseQuantity()}
-                                    >-</button>
-
-                                    <p className='px-6 py-1 border-e border-s' >{orderQuantity}</p>
-
-                                    <button className='px-2 bg-red-600 rounded-e-md text-white'
-                                        onClick={() => handleIncreaseQuantity()}
-                                    >+</button>
-                                </div>
-
-                                <button className='px-8 py-1 shadow-lg flex-1  border bg-red-600 rounded-md text-white'>Buy Now</button>
+                                <button className='px-8 py-1 shadow-lg flex-1  border bg-[#f68b1e] rounded-lg text-c'>Buy Now</button>
 
                                 <i className='border shadow-sm p-2 rounded-lg '><MdFavoriteBorder /></i>
 
@@ -173,10 +153,6 @@ export default function ProductDetails() {
                                         <p>Free 30 Days Delivery Returns. Details</p>
                                     </span>
                                 </div>
-
-
-
-
 
                                 <div>
 

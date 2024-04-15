@@ -6,14 +6,13 @@ export default {
   ],
   theme: {
 
+
     fontFamily: {
       oswald: ['oswald', 'sans-serif'],
       lato: ["Lato", "sans-serif"]
       , Merriweather: ["Merriweather", "serif"],
       Alegreya: ["Alegreya", "serif"]
-
     },
-  
 
     container: {
       center: true,
@@ -28,7 +27,15 @@ export default {
       "2xl": "1400px"
     },
 
-    extend: {},
+    extend: {
+      colors: {
+        "primary": "#f68b1e",
+        "white": "white",
+        "black": "black"
+      },
+
+    },
   },
   plugins: [],
 }
+

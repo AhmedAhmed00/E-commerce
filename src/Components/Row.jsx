@@ -16,7 +16,7 @@ export default function Row({ items, role = "row" }) {
 
         <>
 
-            {role === "row" && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+            {role === "row" && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
                 {items?.map((product) => <ProductItem product={product} key={product._id} />)}
             </div>}
             {role === "slider" &&

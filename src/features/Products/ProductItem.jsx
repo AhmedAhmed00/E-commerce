@@ -4,10 +4,19 @@ import { Link } from 'react-router-dom';
 import { formatPrice } from '../../utilities/helpres'
 import { trimTitle } from '../../utilities/helpres'
 import { FaShoppingCart } from 'react-icons/fa';
+import { addProductToCart } from '../../Services/cartApi';
+import useAddProduct from '../cart/useAddProduct';
+import Button from '../../Components/Button';
+// import useAddProduct from './../cart/useAddProduct';
 
 export default function ProductItem({ product, className = '' }) {
 
   const { title, description, quantity, price, imageCover, category: { name }, ratingsAverage, _id } = product
+  const { data, addProduct, status } = useAddProduct()
+
+  const isLoading = status === "pending"
+  console.log(status);
+
 
 
 
@@ -28,7 +37,8 @@ export default function ProductItem({ product, className = '' }) {
           <p className='text-sm text-red-400'>{formatPrice(price)}</p>
           <Rating rating={ratingsAverage} />
         </div>
-        <button className='py-1 px-8  rounded-lg w-full bg-[#EBAA84] text-white my-2 text-sm '>Add To Cart</button>
+
+        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full py-1 my-2'} />
       </div>
 
     </div >
