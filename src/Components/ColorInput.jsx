@@ -4,7 +4,6 @@ export default function ColorInput({ fakeColor, changeProductColor, color }) {
     return (
         <span
 
-
             onClick={(e) => {
                 changeProductColor(color)
             }}

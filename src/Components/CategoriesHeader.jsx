@@ -3,11 +3,24 @@ import { useQuery } from '@tanstack/react-query';
 import { getCategories } from '../Services/ProductsApi';
 import { Link } from 'react-router-dom';
 
-export default function CategoriesHeader() {
-    const { data: categories, isError } = useQuery({
+
+
+export function useCategoties() {
+    const { data: categories, isError, isLoading } = useQuery({
         queryKey: ["categories"],
         queryFn: getCategories
     })
+    return { categories, isError, isLoading }
+}
+
+
+export default function CategoriesHeader() {
+
+
+
+    const { categories, isError, isLoading } = useCategoties()
+
+
 
 
 

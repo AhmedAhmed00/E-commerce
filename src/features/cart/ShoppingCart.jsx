@@ -31,7 +31,7 @@ export default function Cart() {
 
                 <h3 className='text-2xl mb-1' >Shopping Bag</h3>
                 <p><span className='font-bold text-primary'>{numOfCartItems} items</span>  In Your Cart</p>
-                <div className='flex columns-2 justify-between  py-5 gap-12' >
+                <div className='flex columns-2 justify-between items-start py-5 gap-12' >
                     <div className='w-9/12 border  shadow-md bg-white rounded-lg'>
                         <table >
                             <tr className='border-b '>

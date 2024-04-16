@@ -18,16 +18,32 @@ export default function Navbar() {
             Logo
           </h2>
         </div>
+
         <ul className='flex gap-5 text-white'>
           {accessToken ? <>
+
             <NavLink className='' to={'/home'}>Home</NavLink>
             <NavLink className='' to='' onClick={() => { logout() }} >Logout</NavLink >
-            <NavLink to='/signup' >Login</NavLink >
-          </> : <li>Sign Up</li>}
-          <NavLink to={'/cart'} className='relative '>Cart <span class="bg-red-100 absolute   left-[100%] -top-[10px] text-primary text-xs font-medium me-2 px-1 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">{cart?.numOfCartItems}</span>
-          </NavLink>
+            <NavLink to={'/cart'} className='relative '>Cart <span class="bg-red-100 absolute left-[100%] -top-[10px] text-primary text-xs font-medium me-2 px-1 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">{cart?.numOfCartItems || "0"}</span>
+            </NavLink>
+          </> :
+            <>
+
+              <NavLink className='' to={'/home'}>Home</NavLink>
+              <NavLink className='' to={'/login'}>Login</NavLink>
+              <NavLink className='' to={'/signup'}>Sign Up</NavLink>
+
+            </>
+
+
+          }
+
         </ul>
+
         <Searchbar />
+
+
+
       </div>
 
 

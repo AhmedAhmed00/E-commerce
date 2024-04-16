@@ -18,12 +18,12 @@
   }
 }
 @layer components {
-  /* .color-styling {
+  .color-styling {
     @apply w-4 h-4 inline-block ms-1 rounded-full cursor-pointer border-black hover:w-7 hover:transition-[width] hover:duration-200;
   }
   .activeColor {
     @apply border-2 w-7;
-  } */
+  }
 }
 
 .active {

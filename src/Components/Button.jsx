@@ -9,18 +9,23 @@ export default function Button({ isLoading, textContent, onclick, styles }) {
 
 
     return (
-        <button onClick={onclick} className={`bg-primary text-white text-center mx-auto text-sm rounded-md ` + styles}>{isLoading ? <ThreeDots
-            visible={true}
-            height="24"
-            width="24"
-            color="#ffff"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{
-                "text-align": "center"
-            }}
-            wrapperClass=""
-        /> : textContent}</button>)
+        <button onClick={onclick} className={`bg-primary text-white text-center mx-auto text-sm rounded-md my-2 py-1 ` + styles}>{isLoading ?
+
+            <i className='w-10 inline-block '>
+                <ThreeDots
+                    visible={true}
+                    height="auto"
+                    width="auto"
+                    color="#ffff"
+                    radius="9"
+                    ariaLabel="three-dots-loading"
+                />
+            </i>
+
+
+
+
+            : textContent}</button>)
 }
 
 

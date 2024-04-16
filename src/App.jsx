@@ -11,6 +11,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import ProductDetails from './features/Products/ProductDetails';
 import ShoppingCart from './features/cart/ShoppingCart'
+import ProtectedRoute from './Components/ProtectedRoute';
 
 
 
@@ -38,7 +39,7 @@ function App() {
             <Routes>
               <Route element=<Layout />  >
                 <Route index element={<Navigate to={'home'} />} />
-                <Route path='cart' element=<ShoppingCart /> />
+                <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
                 <Route path='home' element={<Homepage />} />
                 <Route path='signup' element={<Signup />} />
                 <Route path='login' element={<Login />} />

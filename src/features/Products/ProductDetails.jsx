@@ -124,7 +124,7 @@ export default function ProductDetails() {
                             </div>
 
 
-                            <div className='flex gap-3  my-6 items-center '>
+                            <div className='flex gap-3 my-6 items-center '>
 
                                 <CounterBtn decrease={handleDecreaseQuantity} increase={handleIncreaseQuantity} quantiny={orderQuantity} />
 

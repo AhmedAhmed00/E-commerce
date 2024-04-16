@@ -38,7 +38,7 @@ export default function ProductItem({ product, className = '' }) {
           <Rating rating={ratingsAverage} />
         </div>
 
-        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full py-1 my-2'} />
+        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full  '} />
       </div>
 
     </div >
