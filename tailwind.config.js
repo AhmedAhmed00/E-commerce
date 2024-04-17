@@ -16,7 +16,8 @@ export default {
 
     container: {
       center: true,
-      padding: "20px"
+
+
 
     },
     screens: {
@@ -29,9 +30,10 @@ export default {
 
     extend: {
       colors: {
-        "primary": "#f68b1e",
-        "white": "white",
-        "black": "black"
+        "primary": "#002d58",
+        "primary-2": "#e6f1fc",
+        "primary-3": "#f6f3f0"
+
       },
 
     },

@@ -22,7 +22,6 @@ export function AuthProvider({ children }) {
             setAccessToken(resData.data.token)
         }
         catch (err) {
-            console.log(err);
             toast.error("There is an error")
         }
         finally {
@@ -39,7 +38,6 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             setAccessToken(localStorage.getItem("accessToken"))
-            console.log("welcome", accessToken);
         }
     }, [accessToken, setAccessToken])
 

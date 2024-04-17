@@ -12,6 +12,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import ProductDetails from './features/Products/ProductDetails';
 import ShoppingCart from './features/cart/ShoppingCart'
 import ProtectedRoute from './Components/ProtectedRoute';
+import Payment from './features/Payment/Payment';
+import CreatedOrder from './features/Payment/CreatedOrder';
+import { jwtDecode } from 'jwt-decode';
+import Order from './features/Payment/Order';
+import CreatedOrderProvider from './Context/CreatedOrderContext';
 
 
 
@@ -27,6 +32,12 @@ function App() {
 
   })
 
+  const encodedToken = localStorage.getItem("accessToken")
+  console.log(encodedToken);
+  const decodedToken = jwtDecode(encodedToken)
+  console.log(decodedToken);
+
+
 
 
   return (
@@ -35,20 +46,30 @@ function App() {
 
         <ReactQueryDevtools />
         <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element=<Layout />  >
-                <Route index element={<Navigate to={'home'} />} />
-                <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
-                <Route path='home' element={<Homepage />} />
-                <Route path='signup' element={<Signup />} />
-                <Route path='login' element={<Login />} />
-                <Route path='products/productInfo/:productId' element={<ProductDetails />} />
-              </Route>
-              <Route />
-            </Routes>
-            <Toaster position='bottom-right' />
-          </BrowserRouter>
+          <CreatedOrderProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element=<Layout />  >
+                  <Route index element={<Navigate to={'home'} />} />
+                  <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
+                  <Route path='home' element={<Homepage />} />
+                  <Route path='signup' element={<Signup />} />
+                  <Route path='login' element={<Login />} />
+
+
+
+                  <Route path='order' element={<Order />} >
+                    <Route path='payment' element={<Payment />} />
+                    <Route path='payment/createdOrder/:orderId' element={<CreatedOrder />} />
+                  </Route>
+
+                  <Route path='products/productInfo/:productId' element={<ProductDetails />} />
+                </Route>
+                <Route />
+              </Routes>
+              <Toaster position='bottom-right' />
+            </BrowserRouter>
+          </CreatedOrderProvider>
         </AuthProvider>
       </QueryClientProvider >
 

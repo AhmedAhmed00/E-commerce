@@ -1,24 +1,20 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query';
-import { getCategories } from '../Services/ProductsApi';
+import { getCategories } from '../Services/CategoriesApi';
 import { Link } from 'react-router-dom';
+import useCategories from '../features/categories/useCategories';
 
 
 
-export function useCategoties() {
-    const { data: categories, isError, isLoading } = useQuery({
-        queryKey: ["categories"],
-        queryFn: getCategories
-    })
-    return { categories, isError, isLoading }
-}
+
+
 
 
 export default function CategoriesHeader() {
 
 
 
-    const { categories, isError, isLoading } = useCategoties()
+    const { categories, isError, isLoading } = useCategories()
 
 
 
@@ -27,8 +23,8 @@ export default function CategoriesHeader() {
 
 
     return (
-        <div className=' hidden lg:flex-1 border border-black list-none lg:flex lg:flex-col lg:justify-between font-semibold px-5 py-2 rounded-sm shadow-md'>
-            {categories?.map(categoryItem => <li key={categoryItem._id} className='list underline hover:text-primary hover:transition duration-150 '>
+        <div className=' hidden  bg-primary-2 text-white lg:flex-1  list-none lg:flex lg:flex-col lg:justify-between font-semibold px-4 py-4 rounded-lg shadow-md'>
+            {categories?.map(categoryItem => <li key={categoryItem._id} className='list underline hover:text-primary text-primary hover:transition  duration-150 '>
                 <Link>{categoryItem.name}</Link>
             </li>)}
         </div>

@@ -12,6 +12,7 @@ import { TbRestore } from "react-icons/tb"
 import Row from "../../Components/Row"
 import { formatPrice } from "../../utilities/helpres"
 import CounterBtn from "../../Components/CounterBtn"
+import useProduct from "./useProduct"
 
 
 
@@ -31,11 +32,8 @@ export default function ProductDetails() {
 
     const [isOpenImage, setIsOpenImage] = useState("")
 
-    const { isError, data: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
-    } = useQuery({
-        queryKey: ['product', productId],
-        queryFn: () => getSpecificProduct(productId)
-    })
+    const { isError, product: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
+    } = useProduct(productId)
 
     const { data: related } = useQuery({
         queryKey: ["related", categoryId],

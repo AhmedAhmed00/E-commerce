@@ -2,14 +2,14 @@
 import React from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 
-export default function Button({ isLoading, textContent, onclick, styles }) {
+export default function Button({ isLoading, textContent, onclick, styles, type, formId }) {
 
 
 
 
 
     return (
-        <button onClick={onclick} className={`bg-primary text-white text-center mx-auto text-sm rounded-md my-2 py-1 ` + styles}>{isLoading ?
+        <button type={type} form={formId} onClick={onclick} className={`bg-primary text-white text-center mx-auto text-sm rounded-md my-2 py-1 ` + styles}>{isLoading ?
 
             <i className='w-10 inline-block '>
                 <ThreeDots

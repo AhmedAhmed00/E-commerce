@@ -15,7 +15,6 @@ export async function getProducts(urlParams = {}) {
 
 
 
-    // console.log(headers);/
 
     const res = await fetch(url)
 
@@ -23,6 +22,7 @@ export async function getProducts(urlParams = {}) {
         throw new Error("Failed to fetch data")
     }
     const products = await res.json()
+    console.log(products);
     return products.data
 
 }
@@ -44,27 +44,29 @@ export async function getSpecificProduct(id) {
 
 
 
-export async function getCategories() {
-    const res = await fetch(`${BASE_URL}/categories`)
-    if (!res.ok) {
-        throw new Error("Failed to fetch data")
-    }
-    const categories = await res.json()
+// export async function getCategories() {
+//     const res = await fetch(`${BASE_URL}/categories`)
 
-    return categories.data
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data")
+//     }
+//     const categories = await res.json()
+//     console.log(categories);
+//     return categories.data
 
-}
+// }
 
-export async function getSpecificCategory(id) {
-    const res = await fetch(`${BASE_URL}/categories/${id}`)
-    if (!res.ok) {
-        throw new Error("Failed to fetch data")
-    }
-    const categories = await res.json()
+// export async function getSpecificCategory(id) {
+//     const res = await fetch(`${BASE_URL}/categories/${id}`)
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data")
+//     }
+//     const categories = await res.json()
+//     console.log(categories);
 
-    return categories.data
+//     return categories.data
 
-}
+// }
 
 
 

@@ -32,7 +32,7 @@ export default function CounterBtn({ decrease, increase, quantiny, status }) {
                     />
                 </i>
                 : quantiny}  </p>
-            <button className='px-3 bg-[#f68b1e] rounded-e-md text-white'
+            <button className='px-3 bg-green-600 rounded-e-md text-white'
                 onClick={increase}
             >+</button>
         </div>

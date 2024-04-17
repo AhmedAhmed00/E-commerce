@@ -62,7 +62,7 @@ export default function Login() {
                     }
 
 
-                    <Button isLoading={isLoading} textContent={"Login"} />
+                    <Button isLoading={isLoading} textContent={"Login"} styles={'px-5 py-2'} />
                 </form>
 
 

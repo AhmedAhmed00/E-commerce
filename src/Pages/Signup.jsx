@@ -67,6 +67,8 @@ export default function Signup() {
           })} type="text" placeholder='Name' className='px-3 py-2 border-b-2  w-full mb-3' />
           {errors.name ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.name.message}</small> : ""
           }
+
+
           <input name='email' {...register("email", {
             required: "Required input", pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -103,7 +105,7 @@ export default function Signup() {
           {errors.rePassword ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.rePassword.message}</small> : ""
           }
 
-          <Button isLoading={isLoading} textContent={"Create Account"} />
+          <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 py-2'} />
         </form>
 
 

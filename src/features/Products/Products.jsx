@@ -2,6 +2,7 @@
 import Row from './../../Components/Row';
 import Error from './../../Components/Error';
 import useProducts from './useProducts';
+import { useEffect, useState } from 'react';
 
 
 
@@ -10,8 +11,9 @@ import useProducts from './useProducts';
 
 export default function Produtcs() {
 
-    const { products, isLoading, isError } = useProducts()
 
+
+    const { products, isLoading, isError } = useProducts()
 
 
     return (

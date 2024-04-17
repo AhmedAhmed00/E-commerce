@@ -3,7 +3,7 @@ import BASE_URL from "./BaseUrl";
 
 
 
-export async function addProductToCart(id) {
+export async function addProductToCart(id, accessToken) {
     console.log(id);
 
     const body = {
@@ -11,7 +11,7 @@ export async function addProductToCart(id) {
     }
     const res = await axios.post(`${BASE_URL}/cart/`, body, {
         headers: {
-            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTUyMGVmYmU4YjUyMzIzNWMwNDU5NCIsIm5hbWUiOiJhaG1lZCBoYW1keSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzEzMDA4OTE4LCJleHAiOjE3MjA3ODQ5MTh9.sTpuybXt-_5EipzPDSU203wg4dgNcmrvyJJYj6zwyIo"
+            token: accessToken
         }
 
     })
@@ -102,10 +102,6 @@ export async function deleteCartItem(id) {
 
 
 // }
-
-
-
-
 
 
 
