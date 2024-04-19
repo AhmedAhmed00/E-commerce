@@ -14,9 +14,11 @@ import ShoppingCart from './features/cart/ShoppingCart'
 import ProtectedRoute from './Components/ProtectedRoute';
 import Payment from './features/Payment/Payment';
 import CreatedOrder from './features/Payment/CreatedOrder';
-import { jwtDecode } from 'jwt-decode';
 import Order from './features/Payment/Order';
 import CreatedOrderProvider from './Context/CreatedOrderContext';
+import Orders from './features/Orders/Orders';
+import SelectedOrder from './features/Orders/SelectedOrder';
+import NotSelectedOrder from './features/Orders/NotSelectedOrder';
 
 
 
@@ -32,10 +34,6 @@ function App() {
 
   })
 
-  const encodedToken = localStorage.getItem("accessToken")
-  console.log(encodedToken);
-  const decodedToken = jwtDecode(encodedToken)
-  console.log(decodedToken);
 
 
 
@@ -55,6 +53,10 @@ function App() {
                   <Route path='home' element={<Homepage />} />
                   <Route path='signup' element={<Signup />} />
                   <Route path='login' element={<Login />} />
+                  <Route path='orders' element={<Orders />} >
+                    <Route index element={<NotSelectedOrder />} />
+                    <Route path=':orderId' element={<SelectedOrder />} />
+                  </Route>
 
 
 

@@ -1,6 +1,6 @@
 import Searchbar from './Searchbar';
 import { useAuth } from '../Context/AuthContext';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useCart from '../features/cart/useCart';
 
 
@@ -25,6 +25,7 @@ export default function Navbar() {
 
             <NavLink className='' to={'/home'}>Home</NavLink>
             <NavLink className='' to={'/order/payment'}>Payment</NavLink>
+            <NavLink className='' to={'/orders/'}>Orders</NavLink>
             <NavLink className='' to='' onClick={() => { logout() }} >Logout</NavLink >
             <NavLink to={'/cart'} className='relative '>
               Cart

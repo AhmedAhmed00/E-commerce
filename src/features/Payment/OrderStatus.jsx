@@ -3,6 +3,22 @@ import { formatPrice } from "../../utilities/helpres"
 import { useContext } from 'react';
 import { CreatedOrderContext } from '../../Context/CreatedOrderContext';
 
+
+
+export function formatDate(timeStamp, format) {
+    const date = new Date(timeStamp)
+    const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    return new Intl.DateTimeFormat('en-US', options).format(date)
+}
+
 export default function OrderStatus() {
 
 
@@ -18,19 +34,7 @@ export default function OrderStatus() {
 
     const decodedToken = jwtDecode(localStorage.getItem("accessToken"))
 
-    function formatDate(timeStamp, format) {
-        const date = new Date(timeStamp)
-        const options = {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false
-        };
-        return new Intl.DateTimeFormat('en-US', options).format(date)
-    }
+
 
 
 

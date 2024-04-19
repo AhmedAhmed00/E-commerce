@@ -10,7 +10,6 @@ export default function Login() {
 
     const { isLoading, login, accessToken } = useAuth()
     const navigate = useNavigate()
-
     const { register, formState: { errors }, handleSubmit } = useForm()
 
     useEffect(() => {
