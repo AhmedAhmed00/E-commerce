@@ -19,24 +19,44 @@ export default function ProductItem({ product, className = '' }) {
 
 
   return (
-    <div className={`rounded-lg shadow-md border 
-    hover:skew-x-2
-    hover:-translate-y-2
+    <div className={`
+    rounded-lg shadow-md border border-primary 
+    hover:-translate-y-3
     transition-transform
     hover:transition-transform hover:duration-300
      " + ${className}`} >
       <Link to={`/products/productinfo/${_id}`}>
+
+
+
         <div className="image-container relative group cursor-pointer">
-          <p className='absolute bottom-0 text-center w-full bg-black  rounded-md h-0 opacity-0 text-white z-10 group-hover:opacity-100 group-hover:h-8 flex items-center justify-center transition-all duration-300'>Show Details</p>
+          <p className='absolute bottom-0
+           text-center w-full bg-black  
+          rounded-md h-0 opacity-0
+           text-white z-10 group-hover:opacity-100 
+          group-hover:h-8
+           flex items-center
+            justify-center
+             transition-all 
+          duration-300'>Show Details</p>
           <img src={imageCover} className='  
           
           
-           w-full rounded-md object-cover object-center  group-has-[img]:hover:blur-sm  transition-all duration-150' alt="" />
-          <i className='absolute -bottom-4 right-3 text-xl bg-white p-2 rounded-2xl z-10'><FaShoppingCart /></i>
+           w-full rounded-md 
+           object-cover object-center
+             group-has-[img]:hover:backdrop-filter
+               transition-all
+              duration-150' alt="" />
+          <i className='absolute -bottom-4 right-3 text-xl bg-primary-2  -black p-2 rounded-2xl z-10'><FaShoppingCart className='text-2xl text-primary ' /></i>
         </div>
+
+
+
       </Link>
 
-      <div className='p-4 pb-2  rounded-lg '>
+
+
+      <div className='p-4 pb-2 bg-primary-2 rounded-lg '>
         <h3 className='text-pimary text-[#aa813f]'>{trimTitle(title)}</h3>
 
         <div className='flex justify-between items-center  '>
@@ -47,7 +67,14 @@ export default function ProductItem({ product, className = '' }) {
         <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full   '} />
       </div>
 
-    </div >
+
+
+
+
+
+
+    </div>
+
 
 
   )

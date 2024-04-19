@@ -10,21 +10,22 @@ import ProductItem from '../features/Products/ProductItem';
 
 
 export default function Row({ items, role = "row" }) {
-    const productsToShow = items?.slice(0, 10)
+
+    const productsToShow = items?.slice(3, 13)
 
     return (
 
 
         <>
 
-            {role === "row" && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6'>
+            {role === "row" && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 '>
                 {productsToShow?.map((product) => <ProductItem product={product} key={product._id} />)}
             </div>}
             {role === "slider" &&
 
 
                 <SliderContainer draggable={false} slidesToShow={5} slidesToScroll={2} >
-                    {productsToShow?.map((product) => <ProductItem product={product} key={product._id} className={'mx-2'} />)}
+                    {productsToShow?.map((product) => <ProductItem product={product} key={product._id} className={'las'} />)}
                 </SliderContainer>
 
 

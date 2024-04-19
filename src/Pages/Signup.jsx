@@ -42,7 +42,7 @@ export default function Signup() {
   }
   return (
 
-    <div className='flex justify-between items-center text-c'>
+    <div className='flex container mb-8 justify-between items-center text-c'>
       <div className='w-5/12'>
 
         <img src={sideImage} alt='products

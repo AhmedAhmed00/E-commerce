@@ -89,7 +89,7 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
     };
     return (
         <div className="slider-container">
-            <Slider {...settings}>
+            <Slider className="p-4" {...settings}>
                 {children}
             </Slider>
         </div>

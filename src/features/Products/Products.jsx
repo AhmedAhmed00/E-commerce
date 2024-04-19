@@ -18,9 +18,9 @@ export default function Produtcs() {
 
     return (
 
-        <>
+        <div className='container' >
             {isError ? <Error message={"Error while fetching"} /> : <Row items={products} />}
-        </>
+        </div>
     )
 }
 

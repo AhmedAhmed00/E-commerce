@@ -2,6 +2,7 @@
 import Topheader from './Topheader'
 import Navbar from './Navbar'
 import { Outlet } from "react-router-dom";
+import Footer from './Footer';
 
 
 export default function Layout() {
@@ -15,16 +16,14 @@ export default function Layout() {
     return (
         <>
 
+
+
             <Topheader />
             <Navbar />
 
+            <Outlet />
 
-
-
-            <div className='container m-auto'>
-                <Outlet />
-            </div>
-
+            <Footer />
 
         </>
 

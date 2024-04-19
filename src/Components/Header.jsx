@@ -10,7 +10,6 @@ import useCart from '../features/cart/useCart';
 
 export default function Header() {
 
-    // const { data, isError, isLoading } = useCart()
 
 
 
@@ -19,10 +18,9 @@ export default function Header() {
 
     return (
 
+        <header className='container' >
 
-        <header className='mb-3' >
-
-            <div className="flex flex-nowrap justify-between gap-6 ">
+            <div className="flex   flex-nowrap justify-between gap-6 ">
                 <CategoriesHeader />
                 <div className='md:w-full lg:w-10/12'>
 
@@ -54,11 +52,15 @@ export default function Header() {
                 </div>
             </div>
 
+
+
+
             <SliderContainer slidesToShow={9} slidesToScroll={2} draggable={false} isResponsive={true} className='mt-6 py-4 px-14 w-full bg-primary-2   rounded-lg shadow-sm divide-transparent'>
                 {brands?.map(brand =>
                     <BrandItem brand={brand} key={brand._id} />
                 )}
             </SliderContainer>
+
 
 
 
