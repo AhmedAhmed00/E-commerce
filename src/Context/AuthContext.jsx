@@ -21,7 +21,8 @@ export function AuthProvider({ children }) {
             const resData = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin", data)
             localStorage.setItem('accessToken', resData.data.token)
             setAccessToken(resData.data.token)
-            // console.log("user Data ====> ", jwtDecode(resData.data.token))
+            console.log("user Data ====> ", jwtDecode(resData.data.token))
+            console.log("user Data ====> ", resData.data.token)
         }
         catch (err) {
             toast.error("There is an error")

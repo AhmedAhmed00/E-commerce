@@ -16,10 +16,10 @@ export default function Order() {
 
     return (
         <div>
-            {numOfCartItems ? <>
+            {numOfCartItems ? <div className='container'>
                 <OrderStatus setOrderStatus={setOrderStatus} totalOrderPrice={orderStatus.totalOrderPrice} isConfrimed={orderStatus.isConfrimed} />
                 <Outlet />
-            </> : <div className='p-5 text-2xl'>There Is no items in Your Cart</div>}
+            </div> : <div className='p-5 header  text-2xl'>There Is no items in Your Cart</div>}
 
 
         </div>

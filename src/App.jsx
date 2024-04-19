@@ -19,6 +19,10 @@ import CreatedOrderProvider from './Context/CreatedOrderContext';
 import Orders from './features/Orders/Orders';
 import SelectedOrder from './features/Orders/SelectedOrder';
 import NotSelectedOrder from './features/Orders/NotSelectedOrder';
+import User from './Pages/Profile';
+import Profile from './Pages/Profile';
+import PersonalInformation from './features/user.jsx/PersonalInformation';
+import UpdatePassword from './features/user.jsx/UpdatePassword';
 
 
 
@@ -53,6 +57,25 @@ function App() {
                   <Route path='home' element={<Homepage />} />
                   <Route path='signup' element={<Signup />} />
                   <Route path='login' element={<Login />} />
+
+
+
+
+
+
+
+
+
+                  <Route path='profile' element={<Profile />} >
+                    <Route index element={<Navigate to={'personalinformation'} />} />
+                    <Route path='personalinformation' element={<PersonalInformation />} />
+                    <Route path='updatepassword' element={<UpdatePassword />} />
+                  </Route>
+
+
+
+
+
                   <Route path='orders' element={<Orders />} >
                     <Route index element={<NotSelectedOrder />} />
                     <Route path=':orderId' element={<SelectedOrder />} />

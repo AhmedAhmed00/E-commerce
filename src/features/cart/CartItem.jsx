@@ -48,7 +48,7 @@ export default function CartItem({ product }) {
         <>
             {confirmShow && <ConfirmDelettion handleDeletion={() => handleDeletion(id)} setConfirmShow={setConfirmShow} />}
 
-            <tr className='after:h-[1px] after:bg-[#e8dfdf] after:left-4 after:right-4 after:bottom-0 after:absolute relative'>
+            <tr className='after:h-[1px] after:bg-[#e8dfdf]  after:left-4 after:right-4 after:bottom-0 after:absolute relative'>
                 <button onClick={() => setConfirmShow(show => !show)} className='absolute right-4 top-3 text-red-600'><i><TiDeleteOutline /></i></button>
                 <td className='flex ps-4 py-3 items-center '>
                     <img src={imageCover} alt="" className='w-24 h-24 rounded-2xl shadow-sm object-cover' />

@@ -20,13 +20,14 @@ export default function Navbar() {
           </h2>
         </div>
 
-        <ul className='flex gap-5 items-center     '>
+        <ul className='flex gap-1 items-center     '>
           {accessToken ? <>
 
-            <NavLink className='' to={'/home'}>Home</NavLink>
-            <NavLink className='' to={'/order/payment'}>Payment</NavLink>
-            <NavLink className='' to={'/orders/'}>Orders</NavLink>
-            <NavLink className='' to='' onClick={() => { logout() }} >Logout</NavLink >
+            <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
+            <NavLink className='px-2 py-0.5' to={'/order/payment'}>Payment</NavLink>
+            <NavLink className='px-2 py-0.5' to={'/orders'}>Orders</NavLink>
+            <NavLink className='px-2 py-0.5' to={'/profile'}>Profile</NavLink>
+            <NavLink className='px-2 py-0.5' to='' onClick={() => { logout() }} >Logout</NavLink >
             <NavLink to={'/cart'} className='relative '>
               Cart
               <span class="

@@ -28,11 +28,11 @@ export default function Cart() {
 
     return (
         <>
-            {isLoading ? <LoaderSpinner /> : isError ? <div>You have not cart yet</div> :
+            {isLoading ? <LoaderSpinner /> : isError ? <div className='header  container text-2xl'>You have no cart yet</div> :
 
 
 
-                <div className='mt-4 relative'>
+                <div className='mt-4 relative container'>
 
                     {numOfCartItems ? <>
 
