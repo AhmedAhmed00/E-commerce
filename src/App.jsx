@@ -69,6 +69,7 @@ function App() {
                   <Route path='profile' element={<Profile />} >
                     <Route index element={<Navigate to={'personalinformation'} />} />
                     <Route path='personalinformation' element={<PersonalInformation />} />
+                    {/* <Route path='updateprofile' element={<UpdateProfile />} /> */}
                     <Route path='updatepassword' element={<UpdatePassword />} />
                   </Route>
 

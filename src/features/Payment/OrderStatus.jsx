@@ -97,7 +97,7 @@ export default function OrderStatus() {
                         <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" value={formatPrice(totalOrderPrice)} />
                     </div>
                 </div>
-                    <h2 className='text-center my-5 text-green-500 text-2xl'>Your order is created Successfully, Thank you ya <span className='capitalize'>{decodedToken.name.split(" ").slice(0, 1)}</span>  </h2>
+                    <h2 className='text-center my-5 text-green-500 text-2xl'>Your order is created Successfully, Thank you ya <span className='capitalize'>{decodedToken?.name?.split(" ").slice(0, 1)}</span>  </h2>
                 </>
 
             }

@@ -5,6 +5,8 @@ import sideImage from "../assets/SideImage.png"
 import { useAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Input from '../Components/Input';
+import { emailValid, passValid } from '../utilities/inputsValidation';
 
 export default function Login() {
 
@@ -30,35 +32,51 @@ export default function Login() {
 
 
     return (<>
-        <div className='flex container mb-8 justify-between items-center text-c'>
-            <div className='w-5/12'>
+        <div className='flex container gap-8 mb-8 justify-between items-center '>
 
+            <div className='w-1/2'>
                 <img src={sideImage} alt='products' />
             </div>
-            <div className='w-1/2'>
-                <h3 className='text-3xl mb-3'>Log in to Exclusive</h3>
+
+
+
+
+
+            <div className='w-1/2 text-primary'>
+
+
+
+                <h3 className='text-3xl mb-2'>Log in to Exclusive</h3>
                 <p>Enter your details below</p>
 
-                <form onSubmit={handleSubmit(onSubmit, onError)} className='mt-5'>
 
-                    <input name='email' {...register("email", {
-                        required: "Required input", pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "Invalid Email"
-                        }
-                    })} type="text" placeholder='Email' className='px-3 py-2 border-b-2 mt-2  w-full mb-3' />
-                    {errors.email ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.email.message}</small> : ""
-                    }
+                <form onSubmit={handleSubmit(onSubmit, onError)} className=''>
 
-                    <input name='password' {...register("password", {
-                        required: "Required Input", pattern: {
-                            value: /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                            message: "start with capital letter, at least one number and symbol"
+                    <div className="flex flex-col ">
+                        <Input
+                            key={2}
+                            type={'email'}
+                            id={'email'}
+                            errors={errors}
+                            name={'email'}
+                            placeholder={'Email'}
+                            register={register} regex={emailValid}
+                        />
+                    </div>
 
-                        }
-                    })} type="password" placeholder='Password' className='px-3 py-2 border-b-2  w-full mb-3' />
-                    {errors.password ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.password.message}</small> : ""
-                    }
+                    <div className='flex flex-col '>
+                        <Input
+                            key={2}
+                            placeholder={'Password'}
+                            id={'password'}
+                            name={'password'}
+                            readOnly={false}
+                            type={'password'}
+                            register={register}
+                            regex={passValid}
+                            errors={errors} />
+
+                    </div>
 
 
                     <Button isLoading={isLoading} textContent={"Login"} styles={'px-5 py-2'} />

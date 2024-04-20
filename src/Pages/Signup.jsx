@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
+import Input from '../Components/Input';
+import { emailValid, nameValid, passValid, phoneValid } from '../utilities/inputsValidation';
 
 
 
@@ -40,70 +42,104 @@ export default function Signup() {
       setIsLoading(false)
     }
   }
+
   return (
 
-    <div className='flex container mb-8 justify-between items-center text-c'>
-      <div className='w-5/12'>
+    <div className='flex container mb-8 gap-8 justify-between items-center '>
 
-        <img src={sideImage} alt='products
+
+      <div className='w-1/2'>
+
+        <img className='w-full  ' src={sideImage} alt='products
         ' />
       </div>
-      <div className='w-1/2'>
-        <h3 className='text-3xl mb-3'>Create an account</h3>
+
+      <div className='w-1/2 text-primary'>
+        <h3 className='text-3xl mb-2'>Create an account</h3>
         <p>Enter Your details below</p>
 
-        <form onSubmit={handleSubmit(onSubmit, onError)} className='mt-5'>
+        <form onSubmit={handleSubmit(onSubmit, onError)} className='mt-2'>
 
-          <input name='name' {...register("name", {
-            required: "This input is required",
-            min: 3,
-            max: 12,
-            pattern: {
-              value: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
-              message: "Must be three chars at least and must be valid name"
-            },
-
-
-          })} type="text" placeholder='Name' className='px-3 py-2 border-b-2  w-full mb-3' />
-          {errors.name ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.name.message}</small> : ""
-          }
+          <div className="flex flex-col ">
+            <Input key={1}
+              type={'text'}
+              id={'name'}
+              errors={errors}
+              name={'name'}
+              placeholder={'Your Name'}
+              register={register} regex={nameValid}
+            />
+          </div>
 
 
-          <input name='email' {...register("email", {
-            required: "Required input", pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "Invalid Email"
+          <div className="flex flex-col ">
+            <Input
+              key={2}
+              type={'email'}
+              id={'email'}
+              errors={errors}
+              name={'email'}
+              placeholder={'Email'}
+              register={register} regex={emailValid}
+            />
+          </div>
 
-            }
-          })} type="text" placeholder='Email' className='px-3 py-2 border-b-2 mt-2  w-full mb-3' />
-          {errors.email ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.email.message}</small> : ""
-          }
-          <input name='phone' {...register("phone", {
-            required: "Required input", pattern: {
-              value: /^(01|02|03|010|011|012|015)[0-9]{8}$/
-              ,
-              message: "Must be egyptian phone number"
 
-            }
-          })} type="text" placeholder='Phone Number' className='px-3 py-2 border-b-2  w-full mb-3' />
-          {errors.phone ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.phone.message}</small> : ""
-          }
-          <input name='password' {...register("password", {
-            required: "Required Input", pattern: {
-              value: /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-              message: "start with capital letter, at least one number and symbol"
 
-            }
-          })} type="password" placeholder='Password' className='px-3 py-2 border-b-2  w-full mb-3' />
-          {errors.password ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.password.message}</small> : ""
-          }
-          <input name='rePassword' {...register("rePassword", {
-            validate: (value) =>
-              value === getValues().password || "passwords doesn't match"
 
-          })} type="rePassword" placeholder='rePassword' className='px-3 py-2 border-b-2  w-full mb-3' />
-          {errors.rePassword ? <small className='bg-red-200 px-3 py-1 inline-block w-full rounded' >{errors.rePassword.message}</small> : ""
-          }
+
+
+
+
+
+          <div className='flex flex-col '>
+            <Input
+              key={3}
+              type={'tel'}
+              id={'phone'}
+              errors={errors}
+              placeholder={'Phone Number'}
+              name={'phone'}
+              register={register} regex={phoneValid}
+            />
+          </div>
+
+          <div className='flex flex-col '>
+            <Input
+              key={2}
+              placeholder={'Password'}
+              id={'password'}
+              name={'password'}
+              readOnly={false}
+              type={'password'}
+              register={register}
+              regex={passValid}
+              errors={errors} />
+
+          </div>
+
+
+          <div className='flex flex-col '>
+            <Input
+              key={3}
+              id={'rePassword'}
+              name={'rePassword'}
+              placeholder={'Confirm password'}
+              type={'password'}
+              errors={errors}
+              register={register} regex={{
+                required: "Required Input",
+                pattern: {
+                  value: /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                  message: "start with capital letter, at least one number and symbol"
+
+                },
+                validate: (value) =>
+                  value === getValues().password || "passwords doesn't match"
+
+              }} />
+          </div>
+
 
           <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 py-2'} />
         </form>
@@ -112,6 +148,10 @@ export default function Signup() {
 
 
       </div>
+
+
+
+
     </div>
   )
 }

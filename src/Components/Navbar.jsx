@@ -28,23 +28,20 @@ export default function Navbar() {
             <NavLink className='px-2 py-0.5' to={'/orders'}>Orders</NavLink>
             <NavLink className='px-2 py-0.5' to={'/profile'}>Profile</NavLink>
             <NavLink className='px-2 py-0.5' to='' onClick={() => { logout() }} >Logout</NavLink >
-            <NavLink to={'/cart'} className='relative '>
+            <NavLink to={'/cart'} className=' px-2 py-0.5 relative '>
               Cart
-              <span class="
-              bg-green-800 absolute left-[100%] 
-              -top-[10px]  text-xs
-             font-medium me-2 px-1.5 py-0.5 rounded
-            
-              text-white
-                border
-               ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
+              <span className=" bg-green-800
+              rounded-lg
+              absolute -top-[10px]  text-xs font-medium
+              px-1.5 py-0.5  text-white  border
+     ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
             </NavLink>
           </> :
             <>
 
-              <NavLink className='' to={'/home'}>Home</NavLink>
-              <NavLink className='' to={'/login'}>Login</NavLink>
-              <NavLink className='' to={'/signup'}>Sign Up</NavLink>
+              <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
+              <NavLink className='px-2 py-0.5' to={'/login'}>Login</NavLink>
+              <NavLink className='px-2 py-0.5' to={'/signup'}>Sign Up</NavLink>
 
             </>
 

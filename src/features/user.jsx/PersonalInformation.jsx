@@ -1,33 +1,140 @@
-import { jwtDecode } from 'jwt-decode';
-import React from 'react'
+import React, { useState } from 'react'
+import useUser from './useUser';
+import useUpdateProfile from './useUpdateProfile';
+import { useForm } from 'react-hook-form';
+import { MdModeEditOutline } from 'react-icons/md';
+import { IoExitOutline } from 'react-icons/io5';
+import LoaderSpinner from './../../Components/LoaderSpinner';
+import { useQueryClient } from '@tanstack/react-query';
+import ErrorInputmsg from '../../Components/ErrorInputmsg';
+import { emailValid, phoneValid } from '../../utilities/inputsValidation';
+import { nameValid } from '../../utilities/inputsValidation';
+import Input from '../../Components/Input';
 
 export default function PersonalInformation() {
 
 
-    const accessToken = localStorage.getItem("accessToken")
-    const user = jwtDecode(accessToken)
-    console.log(user.name);
+    const queryClient = useQueryClient()
+
+
+
+    const { isError, isLoading, userData: { data: { active, createdAt, email, name, phone } = {} } = {} } = useUser()
+
+    const { mutateProfile, status, data: mutateData } = useUpdateProfile()
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+
+    const [editMode, setEditMode] = useState(false)
+
+
+    function onSubmit(data) {
+        mutateProfile(data, {
+            onSuccess: () => {
+                handleeditMode()
+            }
+        })
+    }
+
+    function handleeditMode() {
+        reset()
+        setEditMode(edit => !edit)
+    }
+
+
+
+
+
+
+
+
+
 
     return (
-        <div>
+        <>
 
 
-            <h3 className="text-2xl  text-primary">Personal Information</h3>
-            <div className="flex header gap-10 py-8 ">
-                <div className="flex w-1/2 flex-col">
-                    <label htmlFor="">
-                        First Name
-                    </label>
-                    <input className="capitalize border p-3 rounded-lg mt-2 text-primary" type="text" name="" value={user.name.split(' ')[0]} id="" />
-                </div>
-                <div className="flex w-1/2 flex-col">
-                    <label htmlFor="">
-                        Last Name
-                    </label>
-                    <input className="capitalize border p-3 rounded-lg mt-2 text-primary" type="text" name="" value={user.name.split(' ')[1]} id="" />
-                </div>
+            <div className='flex justify-between'>
+
+                <h3 className="text-2xl text-primary">Personal Information</h3>
+                <button onClick={handleeditMode} type='button' className='flex items-center gap-1 px-3 rounded-lg border' >
+                    {editMode ? <IoExitOutline /> : <MdModeEditOutline />}
+                    <span>{editMode ? "Close" : "Edit"}</span>   </button>
+
             </div>
-        </div>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+
+
+
+                {status === 'pending' || isLoading ? <LoaderSpinner /> :
+
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 py-5">
+
+                        <div className="flex flex-col">
+                            <Input key={1}
+                                label={'Name'}
+                                type={'text'}
+                                id={'name'}
+                                errors={errors}
+                                name={'name'}
+                                readOnly={!editMode}
+                                placeholder={editMode ? "Insert New Name" : ''}
+                                register={register} regex={nameValid}
+                                defaultValue={editMode ? "" : name} />
+                        </div>
+
+
+
+                        <div className="flex flex-col">
+                            <Input
+                                key={2}
+                                label={'Email'}
+                                type={'email'}
+                                id={'email'}
+                                errors={errors}
+                                name={'email'}
+                                readOnly={!editMode}
+                                placeholder={editMode ? "Insert New Email" : ''}
+                                register={register} regex={emailValid}
+                                defaultValue={editMode ? "" : email} />
+                        </div>
+
+
+
+                        <div className='flex flex-col'>
+                            <Input
+                                key={3}
+                                label={'Phone Number'}
+                                type={'tel'}
+                                id={'phone'}
+                                errors={errors}
+                                name={'phone'}
+                                readOnly={!editMode}
+                                register={register} regex={phoneValid}
+                                placeholder={editMode ? "Insert New Phone Number" : ''}
+                                defaultValue={editMode ? "" : phone}
+
+                            />
+                        </div>
+                    </div>
+                }
+
+                {editMode ? <input type="submit" className='submit-profile' value={'Update'} />
+                    : ""}
+
+
+
+
+
+            </form>
+
+
+
+
+
+
+
+        </>
 
 
 
