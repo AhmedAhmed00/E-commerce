@@ -24,8 +24,8 @@ import PersonalInformation from './features/user.jsx/PersonalInformation';
 import UpdatePassword from './features/user.jsx/UpdatePassword';
 import Wishlist from './Pages/Wishlist';
 import ForgotPass from './features/authentication/ForgotPass';
-import NewPassword from './features/authentication/NewPassword';
 import Verify from './features/authentication/Verify';
+import NewPassword from './features/authentication/NewPassword';
 
 
 
@@ -64,9 +64,17 @@ function App() {
 
 
                   <Route path='login' element={<Login />} />
+
                   <Route path='forgotpassword' element={<ForgotPass />} />
+
                   <Route path='forgotpassword/verify' element={<Verify />} />
+
                   <Route path='forgotpassword/verify/newpassword' element={<NewPassword />} />
+
+                  {/*
+
+
+                  */}
 
 
 

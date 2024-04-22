@@ -57,7 +57,7 @@ export default function Cart() {
                             <div className="details w-3/12 self-start sticky top-20  rounded-xl ">
 
                                 <PayDetails  >
-                                    <Button onclick={handlePay} styles={'px-2 py-2 w-full mt-4 text-black font-bold bg-primary '} textContent={"Proced to Checkout"} />
+                                    <Button onclick={handlePay} styles={'px-2 py-2 w-full mt-4  font-bold bg-primary text-white '} textContent={"Proced to Checkout"} />
                                 </PayDetails>
 
                             </div>

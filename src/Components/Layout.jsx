@@ -20,11 +20,6 @@ export default function Layout() {
     }, [setAccessToken, tkn])
 
 
-
-
-
-
-
     return (
         <>
 
@@ -32,8 +27,9 @@ export default function Layout() {
 
             <Topheader />
             <Navbar />
-
-            <Outlet />
+            <main className="layout ">
+                <Outlet />
+            </main>
 
             <Footer />
 

@@ -54,13 +54,13 @@ export async function updataProductCount(id, quantity) {
 
 
 
-export async function deleteCartItem(id) {
+export async function deleteCartItem(id, token) {
 
 
     const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
         headers: {
             "Content-Type": "application/json",
-            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTUyMGVmYmU4YjUyMzIzNWMwNDU5NCIsIm5hbWUiOiJhaG1lZCBoYW1keSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzEzMDA5NTQ2LCJleHAiOjE3MjA3ODU1NDZ9.pbTr_wONEesaWKWKtyLaAxStyo9J2vMF6An4wMxzifA"
+            token: token
 
         },
         method: "DELETE"

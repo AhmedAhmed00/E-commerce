@@ -19,7 +19,7 @@ export default function Orders() {
                 isLoading ?
                     <LoaderSpinner />
                     : !isError && <>
-                        <div className='flex gap-5 mb-6 container justify-between'>
+                        <div className='flex gap-5 my-6 container justify-between'>
 
                             <div className='w-3/12 self-start max-h-screen sticky top-20   overflow-y-scroll   rounded-lg border shadow-sm'>
                                 <h3 className='text-2xl px-3 pt-3 font-oswald text-primary'>Order history</h3>

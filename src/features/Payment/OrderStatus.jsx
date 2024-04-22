@@ -44,9 +44,8 @@ export default function OrderStatus() {
 
 
 
-        <div className='mt-6 mb-12 '>
-            <h3 className='text-xl py-1'>Order Details {id ? `#${id}` : ''} <span className='font-oswald bg-primary text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
-
+        <>
+            <h3 className='text-xl my-6 py-1'>Order Details {id ? `#${id}` : ''} <span className='font-oswald  bg-primary text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
             <p className='font-oswald'>{date && formatDate(date)}</p>
 
             <div className={` 
@@ -102,7 +101,7 @@ export default function OrderStatus() {
 
             }
 
-        </div >
+        </>
 
 
 

@@ -32,9 +32,9 @@ export default function Login() {
 
 
     return (<>
-        <div className='flex container gap-8 mb-8 justify-between items-center '>
+        <div className='flex container gap-8  justify-between items-center '>
 
-            <div className='w-1/2'>
+            <div className='w-1/2 my-6'>
                 <img src={sideImage} alt='products' />
             </div>
 
@@ -77,7 +77,7 @@ export default function Login() {
                     <Link to={'/forgotpassword'} className='block my-2'>Forgot Password ?</Link>
 
 
-                    <Button isLoading={isLoading} textContent={"Login"} styles={'px-5 py-2'} />
+                    <Button isLoading={isLoading} textContent={"Login"} styles={'px-5 py-2 text-white'} />
                 </form>
 
 

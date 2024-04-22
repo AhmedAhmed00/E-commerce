@@ -32,11 +32,12 @@ export function AuthProvider({ children }) {
     }
 
     function logout() {
+        setAccessToken('')
         localStorage.removeItem("accessToken")
-        setAccessToken(null)
-
-
     }
+
+
+
     useEffect(() => {
         if (localStorage.getItem("accessToken")) {
             setAccessToken(localStorage.getItem("accessToken"))

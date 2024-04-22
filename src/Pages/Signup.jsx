@@ -45,10 +45,10 @@ export default function Signup() {
 
   return (
 
-    <div className='flex container mb-8 gap-8 justify-between items-center '>
+    <div className='flex container  gap-8 justify-between items-center '>
 
 
-      <div className='w-1/2'>
+      <div className='w-1/2 my-6'>
 
         <img className='w-full  ' src={sideImage} alt='products
         ' />
@@ -141,7 +141,7 @@ export default function Signup() {
           </div>
 
 
-          <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 py-2'} />
+          <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 py-2 text-white'} />
         </form>
 
 

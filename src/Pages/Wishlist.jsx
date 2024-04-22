@@ -26,12 +26,19 @@ export default function Wishlist() {
 
                 wishlist.data.length ?
 
-                    < div className='mb-8 '>
+                    < div className='my-6 '>
                         <h3 className='text-2xl text-center text-primary  mb-3  
                 '> Your Favourites <span className='text-3xl text-red-500 '>&#9829;</span> </h3>
                         <div className='flex flex-col'>
                             <Row items={itemsToShow} />
-                            <Button onclick={handleNumberChange} textContent={"Show More"} styles={'px-3 py-2 text-xl'} />
+
+                            {itemsToShow.length < wishlist.data.length && <Button onclick={handleNumberChange} textContent={"Show More"} styles={'px-3 text-white py-2 text-xl'} />}
+
+
+
+
+
+
                         </div>
                     </div > : <div className='header text-3xl mt-10 '>There is no Items in your wishlist</div>
 

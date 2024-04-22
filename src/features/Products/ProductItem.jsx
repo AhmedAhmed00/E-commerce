@@ -123,7 +123,7 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
           <Rating rating={ratingsAverage} />
         </div>
 
-        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full   '} />
+        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full  text-white '} />
       </div>
 
 

@@ -6,9 +6,9 @@ import { emailValid, passValid } from '../../utilities/inputsValidation'
 import { useMutation } from '@tanstack/react-query'
 import { resetPass } from '../../Services/userApi'
 import toast from 'react-hot-toast'
-import { data } from 'autoprefixer'
 import { useAuth } from './AuthContext'
 import { useNavigate } from 'react-router-dom'
+import useNewPass from './useNewPass'
 
 export default function NewPassword() {
 
@@ -19,31 +19,17 @@ export default function NewPassword() {
     const { register, formState: { errors }, handleSubmit, } = useForm()
 
 
-    const { setAccessToken } = useAuth()
 
     let navigate = useNavigate()
+
+    const { isError, resetData, status } = useNewPass()
 
     function onSubmit(data) {
         console.log(data);
         resetData(data)
-
     }
 
-    const { mutate: resetData, isError, status } = useMutation({
 
-        mutationFn: (data) => resetPass(data),
-        onSuccess: () => {
-            navigate('/home')
-            setAccessToken(data.token)
-            localStorage.setItem("accessToken", data.token)
-            toast.success('Your email and password updated Successfully');
-        },
-        onError: (err) => {
-            console.log(err);
-            toast.error("Cannot update")
-        }
-
-    })
 
 
 
@@ -53,7 +39,7 @@ export default function NewPassword() {
 
     return (
 
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center bg-gray-100 header '>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center bg-gray-100'>
 
             <div className='w-1/2  py-3  border rounded-lg bg-white shadow-md '>
 

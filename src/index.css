@@ -47,8 +47,8 @@
   transition: 0.2s color;
 }
 
-.header {
-  height: calc(100vh - 100px);
+.layout {
+  min-height: calc(100vh - 100px);
 }
 
 .slider-item {
