@@ -26,7 +26,6 @@ export default function PersonalInformation() {
 
     const [editMode, setEditMode] = useState(false)
 
-
     function onSubmit(data) {
         mutateProfile(data, {
             onSuccess: () => {
@@ -39,13 +38,6 @@ export default function PersonalInformation() {
         reset()
         setEditMode(edit => !edit)
     }
-
-
-
-
-
-
-
 
 
 

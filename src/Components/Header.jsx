@@ -25,24 +25,15 @@ export default function Header() {
                 <div className='md:w-full lg:w-10/12'>
 
                     <SliderContainer slidesToShow={1} slidesToScroll={1} draggable={true} isResponsive={false} >
-                        <div className='' >
-                            <img src="../../public/assets/iphone.png" alt="" className='rounded-xl' />
-                        </div>
+
                         <div >
                             <img src="../../public/assets/slider-2.jpeg" alt="" className='rounded-xl' />
                         </div>
-                        <div >
-                            <img src="../../public/assets/slider-3.jpeg" alt="" className='rounded-xl' />
-                        </div>
+
                         <div >
                             <img src="../../public/assets/slider-2.jpeg" alt="" className='rounded-xl' />
                         </div>
-                        <div >
-                            <img src="../../public/assets/slider-2.jpeg" alt="" className='rounded-xl' />
-                        </div>
-                        <div>
-                            <img src="../../public/assets/slider-2.jpeg" alt="" className='rounded-xl' />
-                        </div>
+
                     </SliderContainer>
 
 

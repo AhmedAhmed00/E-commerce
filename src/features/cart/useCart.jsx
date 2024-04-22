@@ -7,6 +7,8 @@ export default function useCart(token) {
 
 
 
+
+
     const accessToken = localStorage.getItem("accessToken")
     const { data: cart, isError, isLoading } = useQuery({
         queryKey: ['cart', accessToken],

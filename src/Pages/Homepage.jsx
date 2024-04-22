@@ -13,7 +13,7 @@ import React, { Suspense } from 'react';
 import Section from '../Components/Section';
 import Categories from '../features/categories/Categories';
 import OurSevices from '../Components/OurSevices';
-const Produtcs = React.lazy(() => import("./../features/Products/Products"))
+import Produtcs from '../features/Products/Products';
 
 
 
@@ -41,10 +41,10 @@ export default function Homepage() {
                 <SectionHeader redContent={"Our Items"} textContent={"Best Products For You"} />
 
                 <Section  >
-                    <Suspense fallback={<div>tst</div>} >
 
-                        <Produtcs />
-                    </Suspense>
+
+                    <Produtcs />
+
                 </Section>
 
                 <SectionHeader textContent={'Explore Our Categories'} />

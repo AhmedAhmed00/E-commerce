@@ -9,7 +9,7 @@ import ColorInput from './../../Components/ColorInput';
 import { MdFavoriteBorder } from "react-icons/md"
 import { GrDeliver } from "react-icons/gr"
 import { TbRestore } from "react-icons/tb"
-import Row from "../../Components/Row"
+import Row from "./ProductsRow"
 import { formatPrice } from "../../utilities/helpres"
 import CounterBtn from "../../Components/CounterBtn"
 import useProduct from "./useProduct"
@@ -72,12 +72,10 @@ export default function ProductDetails() {
 
     return (
 
-        <>
+        <div className="container mb-8">
             {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
                 <>
-
-
-                    < div className='flex columns-3 gap-5  items-center my-8' >
+                    < div className='flex columns-3 gap-5  items-center mb-8 ' >
 
                         <div className="  w-1/12 sticky top-0 ">
                             <div className='flex flex-col gap-5'>
@@ -116,7 +114,8 @@ export default function ProductDetails() {
                                 <p className='pt-4'>Colors:
                                     <ColorInput color={"red"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
                                     <ColorInput color={"green"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
-                                    <ColorInput color={"orange"} fakeColor={fakeColor} changeProductColor={changeProductColor} />                                    <ColorInput color={"blue"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
+                                    <ColorInput color={"orange"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
+                                    <ColorInput color={"blue"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
 
                                 </p>
                             </div>
@@ -185,7 +184,7 @@ export default function ProductDetails() {
 
 
 
-        </>
+        </div>
 
 
 

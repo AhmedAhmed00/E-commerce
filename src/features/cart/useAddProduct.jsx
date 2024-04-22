@@ -1,14 +1,19 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addProductToCart } from "../../Services/cartApi";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function useAddProduct() {
 
-    const queryClient = useQueryClient()
+
     const accessToken = localStorage.getItem("accessToken")
-    const { data, isError, isIdle, status, mutate: addProduct } = useMutation({
+    const navigate = useNavigate()
+
+
+    const queryClient = useQueryClient()
+    const { data, isError, status, mutate: addProduct } = useMutation({
         mutationFn: (prouctId) => addProductToCart(prouctId, accessToken),
         onSuccess: () => {
             queryClient.invalidateQueries({
@@ -16,7 +21,17 @@ export default function useAddProduct() {
             })
             toast.success("Product Addes Successfully")
         }, onError: () => {
-            toast.error("Error while adding")
+
+
+            if (!accessToken) {
+                navigate('/login')
+                toast.dismiss()
+                toast("You must be logged in first")
+            }
+            else {
+                toast.dismiss()
+                toast.error("cannot add this product")
+            }
         }
     })
 

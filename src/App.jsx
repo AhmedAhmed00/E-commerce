@@ -19,10 +19,10 @@ import CreatedOrderProvider from './Context/CreatedOrderContext';
 import Orders from './features/Orders/Orders';
 import SelectedOrder from './features/Orders/SelectedOrder';
 import NotSelectedOrder from './features/Orders/NotSelectedOrder';
-import User from './Pages/Profile';
 import Profile from './Pages/Profile';
 import PersonalInformation from './features/user.jsx/PersonalInformation';
 import UpdatePassword from './features/user.jsx/UpdatePassword';
+import Wishlist from './Pages/Wishlist';
 
 
 
@@ -32,7 +32,8 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 90 * 1000
+        staleTime: 90 * 1000,
+        refetchOnMount: false
       }
     }
 
@@ -56,7 +57,10 @@ function App() {
                   <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
                   <Route path='home' element={<Homepage />} />
                   <Route path='signup' element={<Signup />} />
+
                   <Route path='login' element={<Login />} />
+                  <Route path='whishlist' element={<Wishlist />} />
+
 
 
 
@@ -69,20 +73,14 @@ function App() {
                   <Route path='profile' element={<Profile />} >
                     <Route index element={<Navigate to={'personalinformation'} />} />
                     <Route path='personalinformation' element={<PersonalInformation />} />
-                    {/* <Route path='updateprofile' element={<UpdateProfile />} /> */}
                     <Route path='updatepassword' element={<UpdatePassword />} />
                   </Route>
-
-
-
 
 
                   <Route path='orders' element={<Orders />} >
                     <Route index element={<NotSelectedOrder />} />
                     <Route path=':orderId' element={<SelectedOrder />} />
                   </Route>
-
-
 
                   <Route path='order' element={<Order />} >
                     <Route path='payment' element={<Payment />} />

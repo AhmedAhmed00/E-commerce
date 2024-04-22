@@ -10,7 +10,7 @@ function SampleNextArrow(props) {
             style={{
                 ...style,
 
-                right: "20px", zIndex: "1", borderRadius: "50%",
+                right: "-8px", zIndex: "1", borderRadius: "50%",
                 backgroundColor: "gray",
                 height: "30px",
                 width: "30px",
@@ -33,7 +33,7 @@ function SamplePrevArrow(props) {
         <div
             className={className}
             style={{
-                ...style, left: "20px", zIndex: "1", borderRadius: "50%",
+                ...style, left: "-8px", zIndex: "1", borderRadius: "50%",
                 backgroundColor: "gray",
                 height: "30px",
                 width: "30px",
@@ -63,7 +63,7 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 9,
                     slidesToScroll: 3,
                     infinite: true,
                     dots: false
@@ -89,7 +89,7 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
     };
     return (
         <div className="slider-container">
-            <Slider className="p-4" {...settings}>
+            <Slider  {...settings}>
                 {children}
             </Slider>
         </div>

@@ -10,10 +10,6 @@ import { getAllOrders } from '../../Services/OrdersApi'
 export default function useOrders() {
 
 
-
-
-    // const { accessToken } = useAuth()
-
     const accessToken = localStorage.getItem("accessToken")
 
     const { id } = jwtDecode(accessToken)

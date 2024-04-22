@@ -27,6 +27,7 @@ export default function Navbar() {
             <NavLink className='px-2 py-0.5' to={'/order/payment'}>Payment</NavLink>
             <NavLink className='px-2 py-0.5' to={'/orders'}>Orders</NavLink>
             <NavLink className='px-2 py-0.5' to={'/profile'}>Profile</NavLink>
+            <NavLink className='px-2 py-0.5' to={'/whishlist'}>Wishlist</NavLink>
             <NavLink className='px-2 py-0.5' to='' onClick={() => { logout() }} >Logout</NavLink >
             <NavLink to={'/cart'} className=' px-2 py-0.5 relative '>
               Cart
