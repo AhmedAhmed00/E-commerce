@@ -3,7 +3,7 @@ import React from 'react'
 // import { getAllOrders } from '../../Services/ordersApi'
 
 import { jwtDecode } from 'jwt-decode'
-import { useAuth } from '../../Context/AuthContext'
+import { useAuth } from '../authentication/AuthContext'
 import { getAllOrders } from '../../Services/OrdersApi'
 
 

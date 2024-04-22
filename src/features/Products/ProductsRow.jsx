@@ -20,8 +20,6 @@ export default function Row({ items, role = "row" }) {
     const productsToShow = items
     const { wishlist: { data: wishlistItems } = {} } = useWishlist()
 
-    const isFav = items?.map(product => product)
-    console.log(isFav);
 
 
 

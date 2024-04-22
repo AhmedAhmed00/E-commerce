@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import useUpdatePass from "./useUpdatePass";
+import useUpdatePass from "../authentication/useUpdatePass";
 import Input from '../../Components/Input';
 import { passValid } from '../../utilities/inputsValidation'
 

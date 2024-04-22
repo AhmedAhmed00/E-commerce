@@ -107,4 +107,88 @@ export async function updateUserPassword(body, token) {
 
 
 
+export async function forgotPassword(body) {
+    console.log(body);
+
+    const res = await fetch(`${BASE_URL}/auth/forgotPasswords`,
+
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body)
+
+
+        })
+
+    if (!res.ok) {
+        throw new Error("cannot update")
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data
+
+}
+
+
+
+
+export async function verifyResetCode(verifyCode) {
+    console.log(verifyCode);
+
+    const res = await fetch(`${BASE_URL}/auth/verifyResetCode`,
+
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(verifyCode)
+        })
+
+    if (!res.ok) {
+        throw new Error("cannot update")
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data
+
+}
+
+
+
+
+
+export async function resetPass(body) {
+
+    const res = await fetch(`${BASE_URL}/auth/resetPassword`,
+
+        {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body)
+        })
+
+    if (!res.ok) {
+        throw new Error("cannot update")
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data
+
+}
+
+
+
+
+
+
+
+
 

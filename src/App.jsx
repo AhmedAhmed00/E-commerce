@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import '../src/index.css'
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './Context/AuthContext';
+import { AuthProvider } from './features/authentication/AuthContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import Layout from './Components/Layout'
@@ -23,6 +23,9 @@ import Profile from './Pages/Profile';
 import PersonalInformation from './features/user.jsx/PersonalInformation';
 import UpdatePassword from './features/user.jsx/UpdatePassword';
 import Wishlist from './Pages/Wishlist';
+import ForgotPass from './features/authentication/ForgotPass';
+import NewPassword from './features/authentication/NewPassword';
+import Verify from './features/authentication/Verify';
 
 
 
@@ -58,18 +61,20 @@ function App() {
                   <Route path='home' element={<Homepage />} />
                   <Route path='signup' element={<Signup />} />
 
+
+
                   <Route path='login' element={<Login />} />
+                  <Route path='forgotpassword' element={<ForgotPass />} />
+                  <Route path='forgotpassword/verify' element={<Verify />} />
+                  <Route path='forgotpassword/verify/newpassword' element={<NewPassword />} />
+
+
+
+
+
+
+
                   <Route path='whishlist' element={<Wishlist />} />
-
-
-
-
-
-
-
-
-
-
                   <Route path='profile' element={<Profile />} >
                     <Route index element={<Navigate to={'personalinformation'} />} />
                     <Route path='personalinformation' element={<PersonalInformation />} />

@@ -3,7 +3,6 @@ import CategoriesHeader from './CategoriesHeader';
 import SliderContainer from './SliderContainer';
 import useBrands from '../features/Brands/useBrands';
 import BrandItem from '../features/Brands/BrandItem';
-import useCart from '../features/cart/useCart';
 
 
 

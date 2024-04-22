@@ -3,7 +3,7 @@ import Topheader from './Topheader'
 import Navbar from './Navbar'
 import { Outlet } from "react-router-dom";
 import Footer from './Footer';
-import { useAuth } from '../Context/AuthContext';
+import { useAuth } from '../features/authentication/AuthContext';
 import { useEffect } from 'react';
 
 
