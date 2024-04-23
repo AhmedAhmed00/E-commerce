@@ -5,11 +5,9 @@ import useCart from '../features/cart/useCart';
 
 
 export default function Navbar() {
-  // const { cart: { numOfCartItems } = {}, isError, isLoading } = useCart()
+  const { cart: { numOfCartItems } = {}, isError, isLoading } = useCart()
 
   const { accessToken, logout } = useAuth()
-
-  // 313133
 
   return (
     <nav className='border-b py-3 sticky -top-1 z-50   bg-[#f2f8fd] shadow-md  text-primary font-bold'>
@@ -20,7 +18,7 @@ export default function Navbar() {
           </h2>
         </div>
 
-        <ul className='flex gap-1 items-center     '>
+        <ul className='flex gap-1 items-center'>
           {accessToken ? <>
 
             <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
@@ -31,11 +29,11 @@ export default function Navbar() {
             <NavLink className='px-2 py-0.5' to='' onClick={() => { logout() }} >Logout</NavLink >
             <NavLink to={'/cart'} className=' px-2 py-0.5 relative '>
               Cart
-              {/* <span className=" bg-green-800
+              <span className=" bg-green-800
               rounded-lg
               absolute -top-[10px]  text-xs font-medium
               px-1.5 py-0.5  text-white  border
-     ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span> */}
+     ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
             </NavLink>
           </> :
             <>

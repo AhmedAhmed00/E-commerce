@@ -79,32 +79,6 @@ export async function deleteCartItem(id, token) {
 }
 
 
-// export async function clearCart() {
-
-
-//     const res = await fetch(`https://ecommerce.routemisr.com/api/v1/cart/`, {
-//         headers: {
-//             "Content-Type": "application/json",
-//             token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTUyMGVmYmU4YjUyMzIzNWMwNDU5NCIsIm5hbWUiOiJhaG1lZCBoYW1keSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzEzMDA5NTQ2LCJleHAiOjE3MjA3ODU1NDZ9.pbTr_wONEesaWKWKtyLaAxStyo9J2vMF6An4wMxzifA"
-
-//         },
-//         method: "DELETE"
-//     })
-
-//     if (!res.ok) {
-//         throw new Error("Failed to fetch data 222222222")
-//     }
-
-//     const data = await res.json()
-
-
-//     return data
-
-
-// }
-
-
-
 
 
 
@@ -129,7 +103,6 @@ export async function clearCart(token) {
     const res = await fetch(`${BASE_URL}/cart/`, {
         headers: {
             "Content-Type": "application/json",
-
             token
         },
         method: "DELETE"

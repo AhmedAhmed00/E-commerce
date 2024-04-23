@@ -15,7 +15,7 @@ export default function Payment() {
 
         <>
 
-            <div className='flex justify-between gap-x-5 mb-12'>
+            <div className='flex justify-between gap-x-5 mb-12 '>
                 <div className='w-9/12 shadow-lg  border border-black p-4 rounded-xl gap '>
                     <CheckoutForm />
 

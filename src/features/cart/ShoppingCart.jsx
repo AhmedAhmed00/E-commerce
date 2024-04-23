@@ -6,6 +6,7 @@ import Button from './../../Components/Button';
 import LoaderSpinner from '../../Components/LoaderSpinner';
 import PayDetails from '../../Components/PayDetails';
 import { useNavigate } from 'react-router-dom';
+import useClearCart from './useClearCart';
 
 export default function Cart() {
 
@@ -15,6 +16,10 @@ export default function Cart() {
 
     const price = products?.reduce((acc, cur) => { return acc + (cur.price * cur.count) }, 0)
     const priceAfterTax = price + (price * 0.12)
+
+
+
+    const { clearCartItems, status } = useClearCart()
 
     function handlePay() {
         navigate("/order/payment")
@@ -34,15 +39,17 @@ export default function Cart() {
 
                 <div className='mt-4 relative container'>
 
+
+
                     {numOfCartItems ? <>
-
-
                         <div>
                             <h3 className='text-2xl mb-1' >Shopping Bag</h3>
                             <p><span className='font-bold text-primary'>{numOfCartItems} items</span>  In Your Cart</p>
                         </div>
 
-                        <div className='flex columns-2 justify-between items-start py-5 gap-12' >
+                        <button onClick={clearCartItems} className='text-sm text-red-500  pt-3 pb-1'>Clear Cart</button>
+
+                        <div className='flex columns-2 justify-between items-start py- gap-12' >
                             <div className='w-9/12 border  shadow-md bg-white rounded-lg'>
                                 <table >
                                     <tr className='border-b '>
