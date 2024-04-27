@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
-import OrderStatus from './OrderStatus'
-import Payment from './Payment'
-import CreatedOrder from './CreatedOrder'
-import { Outlet, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 import useCart from '../cart/useCart'
 
 export default function Order() {
 
-    const [orderStatus, setOrderStatus] = useState({})
-    const { cart: { numOfCartItems, data: { products } = {} } = {}, } = useCart()
+    const { cart: { numOfCartItems } = {} } = useCart()
 
 
 
@@ -16,10 +12,9 @@ export default function Order() {
 
     return (
         <>
-            {numOfCartItems ? <div className='container'>
-                <OrderStatus setOrderStatus={setOrderStatus} totalOrderPrice={orderStatus.totalOrderPrice} isConfrimed={orderStatus.isConfrimed} />
+            {numOfCartItems ? <div className='container py-6'>
                 <Outlet />
-            </div> : <div className='p-5   text-2xl'>There Is no items in Your Cart</div>}
+            </div> : <div className='p-5 text-2xl'>There Is no items in Your Cart</div>}
         </>
 
 

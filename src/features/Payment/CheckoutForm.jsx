@@ -2,8 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import useCashPay from './useCashPay'
 import useOnlineOrder from './useOnlineOrder'
 import { useForm } from 'react-hook-form'
-import useCart from '../cart/useCart'
 import { CreatedOrderContext } from '../../Context/CreatedOrderContext'
+import Input from '../../Components/Input'
+import { emailValid, nameValid, phoneValid } from '../../utilities/inputsValidation'
 
 
 
@@ -12,12 +13,11 @@ export default function CheckoutForm() {
 
 
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
 
 
 
-    const { cart, cart: { numOfCartItems, data: { _id, cartOwner, products } = {} } = {}, isLoading } = useCart()
 
     const { addCashOrder } = useCashPay()
     const { addOnlineOrder } = useOnlineOrder()
@@ -71,30 +71,59 @@ export default function CheckoutForm() {
             <div >
                 <h3 className='col-start-1 col-end-3 text-2xl mb-3 tex-4xl text-primary'>Checkout</h3>
                 <form id='checkoutForm' className='' onSubmit={handleSubmit(onSubmit)}>
+
+
                     <div className='grid grid-cols-2 gap-x-4 gap-y-4 mb-3'>
 
                         <p className='col-start-1 col-end-3'>Personal Information:</p>
-                        <div className='' >
-                            <label htmlFor="firstName" className='text-sm text-gray-700'>First Name</label>
-                            <input id='firstName' className='rounded-lg  w-full px-1 py-1  border ' type="text" />
+
+
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'firstName'}
+                                id={'firstName'}
+                                errors={errors}
+                                name={'firstName'}
+                                register={register} regex={nameValid}
+                                label={'First Name'}
+                            />
                         </div>
-                        <div className='' >
-                            <label htmlFor="lastName" className='text-sm text-gray-700'>Last Name</label>
-                            <input id='lastName' className='rounded-lg  w-full px-1 py-1  border ' type="text" />
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'lastName'}
+                                id={'lastName'}
+                                errors={errors}
+                                name={'lastName'}
+                                register={register} regex={nameValid}
+                                label={'Last Name'}
+
+                            />
+                        </div>
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'tel'}
+                                id={'phone'}
+                                errors={errors}
+                                name={'phone'}
+                                register={register} regex={phoneValid}
+                                label={'Phone Number'}
+
+                            />
                         </div>
 
-
-                        <div className='phone '>
-                            <label {...register("phone", {
-                            })} htmlFor="phone" className='text-sm text-gray-700'>Phone</label>
-                            <input value="01115012004" id='phone' className='rounded-lg  w-full px-1 py-1  border ' type="text" />
-                        </div>
-
-
-
-                        <div className='mb-4 email' >
-                            <label htmlFor="email" className='text-sm text-gray-700'>Email</label>
-                            <input id='email' className='rounded-lg  w-full px-1 py-1  border ' type="text" />
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'tel'}
+                                id={'email'}
+                                errors={errors}
+                                name={'email'}
+                                register={register} regex={emailValid}
+                                label={'Email'}
+                            />
                         </div>
 
 
@@ -103,9 +132,12 @@ export default function CheckoutForm() {
                         <p className='col-start-1 col-end-3'>Delivery details:</p>
 
 
-                        <div className='city' >
-                            <label htmlFor="city" className='text-sm text-gray-700'>City</label>
-                            <select {...register("city")} className='rounded-lg  w-full px-1 py-1  border ' name="city" id="city">
+
+
+
+                        <div className='city ' >
+                            <label htmlFor="city" className=''>City</label>
+                            <select {...register("city")} className='rounded-lg profile-input  w-full  ' name="city" id="city">
                                 <option value="cairo">Cairo</option>
                                 <option value="gize">Giza</option>
                                 <option value="alexandria">Alexandria</option>
@@ -118,16 +150,34 @@ export default function CheckoutForm() {
 
 
 
-                        <div className='' >
-                            <label htmlFor="street" className='text-sm text-gray-700'>Streat</label>
-                            <input id='street' className='rounded-lg shadow-sm w-full px-1 py-1  border ' type="text" />
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'text'}
+                                id={'street'}
+                                errors={errors}
+                                name={'street'}
+                                register={register}
+                                label={'Street'}
+                                regex={{
+                                    required: "this input is requierd"
+                                }}
+                            />
                         </div>
 
-                        <div className='' >
-                            <label htmlFor="details" className='text-sm text-gray-700'>Details</label>
-                            <textarea value="balada" {...register("details", {
-                                required: "this input is requierd"
-                            })} id='details' className='rounded-lg shadow-sm w-full px-1 py-1  border ' type="text" />
+
+                        <div className="flex flex-col ">
+                            <Input
+                                key={2}
+                                type={'text'}
+                                id={'details'}
+                                errors={errors}
+                                name={'details'}
+                                register={register} regex={{
+                                    required: "this input is requierd"
+                                }}
+                                label={"Details"}
+                            />
                         </div>
 
 
@@ -140,12 +190,22 @@ export default function CheckoutForm() {
                     <div>
 
                         <div className='flex justify-between items-center border-b'>
+                            <div className=''>
+                                <Input
+                                    label={"Cash Payment"}
+                                    key={2}
+                                    type={'radio'}
+                                    id={'cash'}
+                                    errors={errors}
+                                    name={'paymentMethod'}
+                                    defaultValue={'cash'}
+                                    className={'mx-2'}
+                                    register={register} regex={{
+                                        required: "this input is requierd"
+                                    }}
+                                />
+                            </div>
 
-
-
-                            <label htmlFor="cash">
-                                <input  {...register("paymentMethod", { required: true })} name='paymentMethod' id='cash' value="cash" className='me-1' type="radio" />
-                                Cash Payment</label>
 
                             <div className='w-12'>
                                 <img className='' src="../.././../public/assets/cashPay.png" alt="s" />
@@ -153,12 +213,29 @@ export default function CheckoutForm() {
 
                         </div>
 
-                        <div className='flex justify-between items-center border-b py-3'>
 
-                            <label htmlFor="online">
-                                <input {...register("paymentMethod", { required: true })} id='online' name='paymentMethod' value="online" className='me-1' type="radio" />
-                                Online Payment
-                            </label>
+                        <div className='flex justify-between items-center pt-2'>
+
+                            <div className='' >
+                                <Input
+                                    label={"Online Payment"}
+                                    key={2}
+                                    type={'radio'}
+                                    id={'online'}
+                                    errors={errors}
+                                    name={'paymentMethod'}
+                                    defaultValue={'online'}
+                                    className={'mx-2'}
+                                    register={register} regex={{
+                                        required: "Payment Method is requierd"
+                                    }}
+                                />
+                            </div>
+
+
+
+
+
                             <div className='flex items-center'>
 
                                 <div className='w-12'>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import '../src/index.css'
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './features/authentication/AuthContext';
+import { AuthProvider } from './Context/AuthContext';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import Layout from './Components/Layout'
@@ -13,7 +13,6 @@ import ProductDetails from './features/Products/ProductDetails';
 import ShoppingCart from './features/cart/ShoppingCart'
 import ProtectedRoute from './Components/ProtectedRoute';
 import Payment from './features/Payment/Payment';
-import CreatedOrder from './features/Payment/CreatedOrder';
 import Order from './features/Payment/Order';
 import CreatedOrderProvider from './Context/CreatedOrderContext';
 import Orders from './features/Orders/Orders';
@@ -28,6 +27,7 @@ import Verify from './features/authentication/Verify';
 import NewPassword from './features/authentication/NewPassword';
 import Shop from './Pages/Shop';
 import ScrollToTop from './Components/ScrollToTop';
+import OrderStatus from './features/Payment/OrderStatus';
 
 
 
@@ -94,14 +94,14 @@ function App() {
                   </Route>
 
 
-                  <Route path='orders' element={<Orders />} >
+                  <Route path='allorders' element={<Orders />} >
                     <Route index element={<NotSelectedOrder />} />
                     <Route path=':orderId' element={<SelectedOrder />} />
                   </Route>
 
                   <Route path='order' element={<Order />} >
                     <Route path='payment' element={<Payment />} />
-                    <Route path='payment/createdOrder/:orderId' element={<CreatedOrder />} />
+                    <Route path='payment/createdOrder/:orderId' element={<OrderStatus />} />
                   </Route>
 
                   <Route path='products/productInfo/:productId' element={<ProductDetails />} />

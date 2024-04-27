@@ -3,7 +3,7 @@ import React from 'react'
 import { resetPass } from '../../Services/userApi'
 import { Navigate, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { useAuth } from './AuthContext'
+import { useAuth } from '../../Context/AuthContext'
 
 export default function useNewPass() {
     const { setAccessToken } = useAuth()

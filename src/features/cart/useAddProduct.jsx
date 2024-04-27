@@ -19,7 +19,7 @@ export default function useAddProduct() {
             queryClient.invalidateQueries({
                 queryKey: ['cart']
             })
-            toast.success("Product Addes Successfully")
+            toast.success("Product Added Successfully")
         }, onError: () => {
 
 

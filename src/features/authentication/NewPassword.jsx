@@ -6,7 +6,7 @@ import { emailValid, passValid } from '../../utilities/inputsValidation'
 import { useMutation } from '@tanstack/react-query'
 import { resetPass } from '../../Services/userApi'
 import toast from 'react-hot-toast'
-import { useAuth } from './AuthContext'
+import { useAuth } from '../../Context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import useNewPass from './useNewPass'
 

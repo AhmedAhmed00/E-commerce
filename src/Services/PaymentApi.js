@@ -30,19 +30,20 @@ export async function createCashOrder(body, _id, token) {
 
 
 
-export async function createOnlineOrder(body, _id, token, url = "http://localhost:5173/ordercreated") {
+export async function createOnlineOrder(body, _id, token, urlId) {
 
 
 
     console.log(body);
     console.log(_id);
     console.log(token);
+    const url = `http://${window.location.host}`
 
 
 
     const res = await fetch(`${BASE_URL}/orders/checkout-session/${_id}?url=${url}`, { body: JSON.stringify(body), headers: { token: token }, method: "POST" })
     if (!res.ok) {
-        throw new Error("Failed to fetch data 222222222")
+        throw new Error("Failed to fetch data ")
     }
     const data = await res.json()
 

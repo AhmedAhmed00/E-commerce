@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteCartItem, updataProductCount } from '../../Services/cartApi'
 import toast from 'react-hot-toast'
-import { useAuth } from '../authentication/AuthContext'
+import { useAuth } from '../../Context/AuthContext'
 
 export default function useDeleteItems() {
 

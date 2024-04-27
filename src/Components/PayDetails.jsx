@@ -2,15 +2,16 @@
 import React from 'react'
 import { AiOutlinePercentage } from 'react-icons/ai'
 import { formatPrice } from '../utilities/helpres'
-import Button from './Button'
 import useCart from '../features/cart/useCart'
-
 export default function PayDetails({ children, handlePay }) {
 
     const { cart: { numOfCartItems, data: { products } = {} } = {}, } = useCart()
 
     const price = products?.reduce((acc, cur) => { return acc + (cur.price * cur.count) }, 0)
     const priceAfterTax = price + (price * 0.12)
+
+
+
 
 
 
@@ -26,7 +27,7 @@ export default function PayDetails({ children, handlePay }) {
                 <span className='flex items-center'>12<i><AiOutlinePercentage /></i></span>
             </div>
             <div className='flex justify-between '>
-                <p>Price Before Tax</p>
+                <p>Price Before Tax <span className='text-sm'>(Real Price)</span> </p>
                 <span className='flex items-center'>{formatPrice(price)}</span>
             </div>
             <div className='flex justify-between mt-3 pt-2 border-t border-black'>

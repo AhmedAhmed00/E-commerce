@@ -13,6 +13,8 @@ import Row from "./ProductsRow"
 import { formatPrice } from "../../utilities/helpres"
 import CounterBtn from "../../Components/CounterBtn"
 import useProduct from "./useProduct"
+import Button from "../../Components/Button"
+import useAddProduct from "../cart/useAddProduct"
 
 
 
@@ -26,13 +28,15 @@ export default function ProductDetails() {
 
     const mainImage = useRef()
 
+    const { addProduct, status } = useAddProduct()
+
 
 
     const { productId } = useParams()
 
     const [isOpenImage, setIsOpenImage] = useState("")
 
-    const { isError, product: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
+    const { isError, product: { _id, images, ratingsQuantity, title, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
     } = useProduct(productId)
 
     const { data: items, isLoading: isLoadingRelated } = useQuery({
@@ -58,18 +62,18 @@ export default function ProductDetails() {
         setFakeColor(color)
     }
 
-    function handleDecreaseQuantity() {
-        if (orderQuantity === 1) {
-            toast.error("Cannot order zero items")
-        }
-        else {
-            setOrderQuantity(counter => counter - 1)
-        }
+    // function handleDecreaseQuantity() {
+    //     if (orderQuantity === 1) {
+    //         toast.error("Cannot order zero items")
+    //     }
+    //     else {
+    //         setOrderQuantity(counter => counter - 1)
+    //     }
 
-    }
-    function handleIncreaseQuantity() {
-        setOrderQuantity(counter => counter + 1)
-    }
+    // }
+    // function handleIncreaseQuantity() {
+    //     setOrderQuantity(counter => counter + 1)
+    // }
 
 
     return (
@@ -77,7 +81,7 @@ export default function ProductDetails() {
         <div className="container  py-6">
             {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
                 <>
-                    < div className='flex gap-6 bg-   mb-8 ' >
+                    < div className='flex gap-6  mb-8 ' >
 
                         <div className="w-1/12 self-center sticky top-16 ">
                             <div className='flex flex-col gap-5'>
@@ -102,7 +106,7 @@ export default function ProductDetails() {
                         <div className='flex flex-col  justify-between'>
                             <div>
                                 <h2 className='mb-1 text-4xl font-semibold text-red-700'>{title}</h2>
-                                <Link href='/' className='font-semiboldtext-red-700  underline'>{name}</Link>
+                                <Link to={`/shop?category[in]=${categoryId}`} className='font-semiboldtext-red-700  underline'>{name}</Link>
                                 <p className='my-1'>Avalibale Quantity - <span className='text-green-500'>{quantity}</span> </p>
                             </div>
 
@@ -132,9 +136,10 @@ export default function ProductDetails() {
 
                             <div className='flex gap-3 my-6 items-center '>
 
-                                <CounterBtn decrease={handleDecreaseQuantity} increase={handleIncreaseQuantity} quantiny={orderQuantity} />
+                                {/* <CounterBtn decrease={handleDecreaseQuantity} increase={handleIncreaseQuantity} quantiny={orderQuantity} /> */}
 
-                                <button className='px-8 py-1 shadow-lg flex-1  border bg-[#f68b1e] rounded-lg text-c'>Buy Now</button>
+                                <Button isLoading={status === 'pending'} onclick={() => addProduct(_id)} textContent={'Add To Cart'} styles={'w-full text-white bg-[#f68b1e]'} />
+
 
                                 <i className='border shadow-sm p-2 rounded-lg '><MdFavoriteBorder /></i>
 

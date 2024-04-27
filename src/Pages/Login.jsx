@@ -2,7 +2,7 @@
 import Button from '../Components/Button'
 import { useForm } from 'react-hook-form'
 import sideImage from "../assets/SideImage.png"
-import { useAuth } from '../features/authentication/AuthContext';
+import { useAuth } from '../Context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Input from '../Components/Input';

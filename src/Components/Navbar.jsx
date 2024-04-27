@@ -1,5 +1,5 @@
 import Searchbar from './Searchbar';
-import { useAuth } from '../features/authentication/AuthContext';
+import { useAuth } from '../Context/AuthContext';
 import { NavLink } from 'react-router-dom';
 import useCart from '../features/cart/useCart';
 
@@ -22,8 +22,7 @@ export default function Navbar() {
           {accessToken ? <>
 
             <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/order/payment'}>Payment</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/orders'}>Orders</NavLink>
+            <NavLink className='px-2 py-0.5' to={'/allorders'}>Orders</NavLink>
             <NavLink className='px-2 py-0.5' to={'/profile'}>Profile</NavLink>
             <NavLink className='px-2 py-0.5' to={'/whishlist'}>Wishlist</NavLink>
             <NavLink className='px-2 py-0.5' to={'/shop'}>Shop</NavLink>
