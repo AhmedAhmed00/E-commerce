@@ -12,7 +12,7 @@ export default function Categories() {
 
 
         <div className='grid grid-cols-5 gap-5 container'>
-            {categories?.map(category => <CategoryItem item={category} />)}
+            {categories?.map(category => <CategoryItem key={category._id} item={category} />)}
         </div>
 
 

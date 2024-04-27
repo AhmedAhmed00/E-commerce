@@ -1,16 +1,18 @@
-import axios from "axios";
 import BASE_URL from "./BaseUrl";
-import { json } from "react-router-dom";
 
 
-export async function getProducts(urlParams = {}) {
+export async function getProducts(params) {
+
+    const queryParams = new URLSearchParams()
+    for (const key in params) {
+        if (params.hasOwnProperty(key) && params[key] !== '') {
+            queryParams.append(key, params[key]);
+        }
+    }
 
 
 
-
-    const params = new URLSearchParams(urlParams)
-    const url = `${BASE_URL}/products?` + params
-    console.log(url);
+    const url = `${BASE_URL}/products?${queryParams}`
 
 
 
@@ -22,8 +24,7 @@ export async function getProducts(urlParams = {}) {
         throw new Error("Failed to fetch data")
     }
     const products = await res.json()
-    console.log(products);
-    return products.data
+    return products
 
 }
 

@@ -26,6 +26,8 @@ import Wishlist from './Pages/Wishlist';
 import ForgotPass from './features/authentication/ForgotPass';
 import Verify from './features/authentication/Verify';
 import NewPassword from './features/authentication/NewPassword';
+import Shop from './Pages/Shop';
+import ScrollToTop from './Components/ScrollToTop';
 
 
 
@@ -49,17 +51,19 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient} >
-
         <ReactQueryDevtools />
         <AuthProvider>
           <CreatedOrderProvider>
             <BrowserRouter>
+              <ScrollToTop />
               <Routes>
+
                 <Route element=<Layout />  >
                   <Route index element={<Navigate to={'home'} />} />
                   <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
                   <Route path='home' element={<Homepage />} />
                   <Route path='signup' element={<Signup />} />
+                  <Route path='shop' element={<Shop />} />
 
 
 

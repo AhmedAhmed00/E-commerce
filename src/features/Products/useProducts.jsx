@@ -1,18 +1,29 @@
 import { useQuery } from "@tanstack/react-query"
 import { getProducts } from "../../Services/ProductsApi"
+import { useSearchParams } from "react-router-dom"
 
-function useProducts() {
+function useProducts(limit) {
 
-    const { data: products, isLoading, status, isError } = useQuery(
+    const [searchParams] = useSearchParams()
+    const params = {
+        "limit": limit || '',
+        'category[in]': searchParams.get("category[in]") || '',
+        'brand': searchParams.get("brand") || '',
+        "price[lte]": searchParams.get("price[lte]") || '',
+        "price[gte]": searchParams.get("price[gte]") || '',
+        "page": searchParams.get("page") || '',
+        "sort": searchParams.get("sort") || '',
+    }
+
+    const { data, isLoading, status, isError, refetch, isFetching } = useQuery(
         {
-            queryKey: ["products"],
+            queryKey: ["products", params],
             queryFn: () =>
-                getProducts()
-            ,
+                getProducts(params),
         },
     )
 
-    return { products, isLoading, status, isError }
+    return { data, isLoading, status, isError, refetch, isFetching }
 }
 
 export default useProducts

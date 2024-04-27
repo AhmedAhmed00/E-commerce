@@ -164,6 +164,8 @@ export async function verifyResetCode(verifyCode) {
 
 export async function resetPass(body) {
 
+
+
     const res = await fetch(`${BASE_URL}/auth/resetPassword`,
 
         {
@@ -179,7 +181,6 @@ export async function resetPass(body) {
     }
 
     const data = await res.json();
-    console.log(data);
     return data
 
 }

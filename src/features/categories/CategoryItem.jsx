@@ -15,7 +15,7 @@ export default function CategoryItem({ item }) {
                         shadow-md
                         relative
                           duration-300 hover:transform hover:-translate-y-3'>
-            <Link >
+            <Link to={`/shop?category[in]=${item._id}`} >
                 <img className='w-full h-full  object-cover rounded-lg' src={image} alt="" />
                 <p className='
   

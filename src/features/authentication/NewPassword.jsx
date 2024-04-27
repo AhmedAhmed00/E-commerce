@@ -39,7 +39,7 @@ export default function NewPassword() {
 
     return (
 
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center bg-gray-100'>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex layout flex-col items-center justify-center bg-gray-100'>
 
             <div className='w-1/2  py-3  border rounded-lg bg-white shadow-md '>
 

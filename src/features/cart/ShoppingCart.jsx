@@ -33,11 +33,11 @@ export default function Cart() {
 
     return (
         <>
-            {isLoading ? <LoaderSpinner /> : isError ? <div className='header  container text-2xl'>You have no cart yet</div> :
+            {isLoading ? <LoaderSpinner /> : isError ? <div className='header   container text-2xl'>You have no cart yet</div> :
 
 
 
-                <div className='mt-4 relative container'>
+                <div className='mt-4  py-6 relative container'>
 
 
 
@@ -52,13 +52,13 @@ export default function Cart() {
                         <div className='flex columns-2 justify-between items-start py- gap-12' >
                             <div className='w-9/12 border  shadow-md bg-white rounded-lg'>
                                 <table >
-                                    <tr className='border-b '>
+                                    <thead className='border-b '>
                                         <th className='p-4  '>Product</th>
                                         <th >Price</th>
                                         <th >Quantity</th>
                                         <th>Total Price</th>
-                                    </tr>
-                                    {products && products.map(product => <CartItem product={product} />)}
+                                    </thead>
+                                    {products && products.map(product => <CartItem key={product._id} product={product} />)}
                                 </table>
                             </div>
                             <div className="details w-3/12 self-start sticky top-20  rounded-xl ">

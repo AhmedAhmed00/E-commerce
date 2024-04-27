@@ -35,11 +35,13 @@ export default function ProductDetails() {
     const { isError, product: { images, subcategory, ratingsQuantity, title, _id, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
     } = useProduct(productId)
 
-    const { data: related } = useQuery({
+    const { data: items, isLoading: isLoadingRelated } = useQuery({
         queryKey: ["related", categoryId],
         queryFn: () => getProducts({ "category": categoryId }),
         enabled: !!categoryId
     })
+
+    console.log(items);
 
 
 
@@ -72,14 +74,15 @@ export default function ProductDetails() {
 
     return (
 
-        <div className="container mb-8">
+        <div className="container  py-6">
             {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
                 <>
-                    < div className='flex columns-3 gap-5  items-center mb-8 ' >
+                    < div className='flex gap-6 bg-   mb-8 ' >
 
-                        <div className="  w-1/12 sticky top-0 ">
+                        <div className="w-1/12 self-center sticky top-16 ">
                             <div className='flex flex-col gap-5'>
-                                {images.map(img => <img
+                                {images.map((img, i) => <img
+                                    key={i}
                                     onClick={() => {
                                         changeMainImage(img)
                                     }} className='border shadow-sm rounded-md w-full max-h-[100px] object-cover' src={img} alt='' />)}
@@ -90,16 +93,19 @@ export default function ProductDetails() {
 
                         <img onClick={(e) => {
                             handleMainImageClick(e.target.src)
-                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  w-4/12 flex-1' />
+                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border  shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  w-4/12 flex-1' />
 
 
 
 
 
-                        <div className='ps-8 self-start   '>
-                            <h2 className='mb-1 text-4xl font-semibold text-red-700'>{title}</h2>
-                            <Link href='/' className='font-semiboldtext-red-700  underline'>{name}</Link>
-                            <p className='my-1'>Avalibale Quantity - <span className='text-green-500'>{quantity}</span> </p>
+                        <div className='flex flex-col  justify-between'>
+                            <div>
+                                <h2 className='mb-1 text-4xl font-semibold text-red-700'>{title}</h2>
+                                <Link href='/' className='font-semiboldtext-red-700  underline'>{name}</Link>
+                                <p className='my-1'>Avalibale Quantity - <span className='text-green-500'>{quantity}</span> </p>
+                            </div>
+
 
                             <div className='flex items-center'>
                                 <Rating rating={ratingsAverage} />
@@ -108,8 +114,11 @@ export default function ProductDetails() {
                                 <span className='text-green-500'>In Stock</span>
                             </div>
 
-                            <p className='text-red-700 font-semibold my-2'>{formatPrice(price)}</p>
-                            <p className='pb-3  border-b'>{description}</p>
+                            <div>
+                                <p className='text-red-700 font-semibold my-2'>{formatPrice(price)}</p>
+                                <p className='pb-3  border-b'>{description}</p>
+                            </div>
+
                             <div>
                                 <p className='pt-4'>Colors:
                                     <ColorInput color={"red"} fakeColor={fakeColor} changeProductColor={changeProductColor} />
@@ -130,9 +139,6 @@ export default function ProductDetails() {
                                 <i className='border shadow-sm p-2 rounded-lg '><MdFavoriteBorder /></i>
 
                             </div>
-
-
-
 
                             <div className='border-2 shadow-sm'>
                                 <div className='flex items-center p-5 border-b-2 '>
@@ -160,14 +166,17 @@ export default function ProductDetails() {
 
 
 
+
                         </div>
 
 
                     </div>
 
 
-                    <h2 className='mb-2'>Related Items</h2>
-                    <Row items={related} role='slider' />
+                    <h3 className='mb-2 text-2xl text-center text-primary '>Related Items</h3>
+
+                    {!isLoadingRelated && <Row items={items.data} role='slider' />}
+
 
                 </>
 

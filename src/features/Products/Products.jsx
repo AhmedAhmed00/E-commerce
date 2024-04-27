@@ -2,7 +2,6 @@
 import Row from './ProductsRow';
 import Error from './../../Components/Error';
 import useProducts from './useProducts';
-import { useEffect, useState } from 'react';
 import useWishlist from '../wishlist/useWishlist';
 
 
@@ -14,7 +13,7 @@ export default function Produtcs() {
 
 
 
-    const { products, isLoading, isError } = useProducts()
+    const { data: { data: products } = {}, isLoading, isError } = useProducts({})
     const { wishlist } = useWishlist()
 
 
@@ -26,9 +25,6 @@ export default function Produtcs() {
             {isError ? <Error message={"Error while fetching"} /> :
 
                 <Row role='slider' items={products} />
-
-
-
 
 
             }

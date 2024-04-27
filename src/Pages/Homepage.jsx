@@ -36,7 +36,6 @@ export default function Homepage() {
 
 
 
-                {/* bg={'bg-[#fbece3]'} */}
 
                 <SectionHeader redContent={"Our Items"} textContent={"Best Products For You"} />
 

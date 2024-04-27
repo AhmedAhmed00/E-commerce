@@ -27,7 +27,7 @@ export default function Layout() {
 
             <Topheader />
             <Navbar />
-            <main className="layout ">
+            <main className="layout">
                 <Outlet />
             </main>
 
