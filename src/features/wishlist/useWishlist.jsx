@@ -8,7 +8,8 @@ export default function useWishlist() {
 
     const { isError, data: wishlist, isLoading } = useQuery({
         queryFn: () => getWishlist(accessToken),
-        queryKey: ['wishlist', accessToken]
+        queryKey: ['wishlist', accessToken],
+        enabled: !!accessToken
 
     })
 

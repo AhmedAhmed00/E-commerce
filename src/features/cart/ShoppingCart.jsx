@@ -1,79 +1,91 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useCart from './useCart';
 import CartItem from './CartItem';
 import Button from './../../Components/Button';
-
 import LoaderSpinner from '../../Components/LoaderSpinner';
 import PayDetails from '../../Components/PayDetails';
 import { useNavigate } from 'react-router-dom';
 import useClearCart from './useClearCart';
+import ConfirmDelettion from '../../Components/ConfirmDelettion';
 
 export default function Cart() {
 
-
+    const [confirmShow, setConfirmShow] = useState(false)
     const navigate = useNavigate()
-    const { cart, cart: { numOfCartItems, data: { _id, cartOwner, products } = {} } = {}, isLoading, isError } = useCart()
+    const { cart: { numOfCartItems, data: { products } = {} } = {}, isLoading, isError } = useCart()
 
-    const price = products?.reduce((acc, cur) => { return acc + (cur.price * cur.count) }, 0)
-    const priceAfterTax = price + (price * 0.12)
-
-
-
-    const { clearCartItems, status } = useClearCart()
+    const { clearCartItems } = useClearCart()
 
     function handlePay() {
         navigate("/order/payment")
     }
 
+    function handleClearCart() {
 
+        clearCartItems()
+        setConfirmShow(show => !show)
 
+    }
 
 
 
 
     return (
         <>
-            {isLoading ? <LoaderSpinner /> : isError ? <div className='header   container text-2xl'>You have no cart yet</div> :
+            {isLoading ? <LoaderSpinner /> : isError ? <div className='container py-6 text-2xl'>You have no cart yet</div> :
 
 
-
-                <div className='mt-4  py-6 relative container'>
+                <div className='py-6 relative container'>
+                    {confirmShow && <ConfirmDelettion handleDeletion={() => handleClearCart()} setConfirmShow={setConfirmShow} />}
 
 
 
                     {numOfCartItems ? <>
                         <div>
-                            <h3 className='text-2xl mb-1' >Shopping Bag</h3>
-                            <p><span className='font-bold text-primary'>{numOfCartItems} items</span>  In Your Cart</p>
+                            <h3 className='text-head' >Shopping Bag</h3>
+                            <p className='mb-2'><span className='font-bold text-title'>{numOfCartItems} items</span>  In Your Cart</p>
                         </div>
 
-                        <button onClick={clearCartItems} className='text-sm text-red-500  pt-3 pb-1'>Clear Cart</button>
 
-                        <div className='flex columns-2 justify-between items-start py- gap-12' >
-                            <div className='w-9/12 border  shadow-md bg-white rounded-lg'>
+                        <div className='flex  xs:flex-col lg:flex-row justify-between items-start gap-6' >
+
+
+                            <div className='xs:w-full lg:w-9/12 border  shadow-md bg-white rounded-lg'>
                                 <table >
-                                    <thead className='border-b '>
-                                        <th className='p-4  '>Product</th>
-                                        <th >Price</th>
-                                        <th >Quantity</th>
-                                        <th>Total Price</th>
+
+                                    <thead className='border-b'>
+                                        <tr>
+                                            <th className='p-4  '>Product</th>
+                                            <th >Price</th>
+                                            <th >Quantity</th>
+                                            <th>Total Price</th>
+                                        </tr>
+
                                     </thead>
-                                    {products && products.map(product => <CartItem key={product._id} product={product} />)}
+
+
+
+                                    <tbody  >
+                                        {products && products.map(product => <CartItem key={product._id} product={product} />)}
+
+                                    </tbody>
                                 </table>
                             </div>
-                            <div className="details w-3/12 self-start sticky top-20  rounded-xl ">
 
-                                <PayDetails  >
-                                    <Button onclick={handlePay} styles={'px-2 py-2 w-full mt-4  font-bold bg-primary text-white '} textContent={"Proced to Checkout"} />
-                                </PayDetails>
 
-                            </div>
+                            <PayDetails  >
+                                <Button onclick={handlePay} styles={'py-1.5 w-full mt-4 mb-1 font-bold bg-sky text-white '} textContent={"Proced to Checkout"} />
+                                <Button onclick={() => setConfirmShow(show => !show)} styles='py-1.5 w-full mt-0  bg-red-700 text-white ' textContent={"Clear Cart"} />
+
+                            </PayDetails>
+
 
 
                         </div>
 
 
-                    </> : "Your Cart Item is Empty"}
+
+                    </> : <p className='container py-6 text-xl'>Your Cart Item is Empty</p>}
 
 
                 </div>

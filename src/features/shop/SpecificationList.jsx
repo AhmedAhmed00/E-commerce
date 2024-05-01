@@ -11,7 +11,7 @@ export default function SpecificationList({ type, name, handleSpecificationsChan
     return (
 
         <div className='my-2 text-sm '>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between '>
                 <h3 className='text-xl text-primary mb-2'>{text}</h3>
                 <ShowArrow handleIsShown={handleIsShown} isShown={isShown} />
             </div>
@@ -19,7 +19,7 @@ export default function SpecificationList({ type, name, handleSpecificationsChan
 
 
                 {isShown && <>
-                    <div className='flex items-center gap-2 '>
+                    <div className='flex items-center gap-2  '>
                         <input
                             className='cursor-pointer justify-center w-4 h-4 my-2 border border-primary rounded-full'
                             onChange={handleSpecificationsChange}
@@ -30,7 +30,7 @@ export default function SpecificationList({ type, name, handleSpecificationsChan
                         <label className='cursor-pointer' htmlFor={type.name}>All</label>
                     </div>
 
-                    {type.map(type => <div className='flex items-center gap-2 '>
+                    {type.map(type => <div key={type._id} className='flex items-center gap-2   '>
                         <input
                             className='cursor-pointer justify-center w-4 h-4 my-2 border border-primary rounded-full'
                             onChange={handleSpecificationsChange}

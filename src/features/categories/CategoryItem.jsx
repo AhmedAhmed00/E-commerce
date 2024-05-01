@@ -10,7 +10,7 @@ export default function CategoryItem({ item }) {
         <div className='
        group
        overflow-hidden
-                         rounded-lg transition-transform
+                     rounded-lg transition-transform
                          border border-black
                         shadow-md
                         relative
@@ -24,7 +24,7 @@ export default function CategoryItem({ item }) {
                 
                  w-full
             
-                 text-white translate-x-[320px] 
+                 text-white translate-x-[620px] 
                  text-center py-5 
                    group-hover:translate-x-[0] 
                     

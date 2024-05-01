@@ -12,7 +12,7 @@ export function ShopSpecifications({ handleSpecificationsChange, specifications,
 
     return (
 
-        <form className=' py-6 px-3 border-e w-2/12 h-screen overflow-y-scroll '>
+        <form className='py-6 xs:w-full   md:w-4/12 lg:w-3/12  max-h-screen    overflow-y-scroll px-4 border rounded-lg '>
             <Filter handleSpecificationsChange={handleSpecificationsChange} specifications={specifications} setSpecifications={setSpecifications} />
             {categories && <SpecificationList handleSpecificationsChange={handleSpecificationsChange} type={categories} name={'category[in]'} text={'Category'} />}
             {brands && <SpecificationList handleSpecificationsChange={handleSpecificationsChange} type={brands} name={'brand'} text={'Brand'} />}

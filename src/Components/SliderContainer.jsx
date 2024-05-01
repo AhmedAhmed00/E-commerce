@@ -9,7 +9,6 @@ function SampleNextArrow(props) {
             className={className}
             style={{
                 ...style,
-
                 right: "-8px", zIndex: "1", borderRadius: "50%",
                 backgroundColor: "gray",
                 height: "30px",
@@ -47,6 +46,9 @@ function SamplePrevArrow(props) {
 }
 
 
+
+
+
 export default function SliderContainer({ children, slidesToShow, slidesToScroll, draggable, className, isResponsive }) {
 
     const settings = {
@@ -59,18 +61,28 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
         prevArrow: <SamplePrevArrow />,
         className,
         initialSlide: 1,
+
         responsive: isResponsive ? [
             {
-                breakpoint: 1024,
+                breakpoint: 992,
                 settings: {
-                    slidesToShow: 9,
+                    slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
                     dots: false
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -78,7 +90,7 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
@@ -88,8 +100,8 @@ export default function SliderContainer({ children, slidesToShow, slidesToScroll
 
     };
     return (
-        <div className="slider-container">
-            <Slider  {...settings}>
+        <div className="slider-container ">
+            <Slider   {...settings}>
                 {children}
             </Slider>
         </div>

@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import Button from '../../Components/Button'
 import { useNavigate } from 'react-router-dom'
 import useForgotPass from './useForgotPass'
-import { ThreeDots } from 'react-loader-spinner'
 
 export default function ForgotPass() {
     const { register, handleSubmit } = useForm()
@@ -37,7 +36,7 @@ export default function ForgotPass() {
                         id={'email'}
                         register={register} />
 
-                    <Button type={'submit'} styles={'text-white  w-full mb-0'} textContent={'Send'} isLoading={status === 'pending'} />
+                    <Button type={'submit'} styles={'text-white bg-sky  w-full mb-0'} textContent={'Send'} isLoading={status === 'pending'} />
                     <Button type={'button'} styles={'w-full border   bg-opacity-0  border-primary text-primary  '}
 
                         textContent={'Back To Login'} onclick={() => (navigate('/login'))} />

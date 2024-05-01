@@ -8,7 +8,6 @@ export async function getCategories() {
         throw new Error("Failed to fetch data")
     }
     const categories = await res.json()
-    console.log(categories);
     return categories.data
 
 }
@@ -19,7 +18,6 @@ export async function getSpecificCategory({ categoryId }) {
         throw new Error("Failed to fetch data")
     }
     const categories = await res.json()
-    console.log(categories);
 
     return categories.data
 

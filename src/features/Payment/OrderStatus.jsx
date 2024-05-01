@@ -79,16 +79,16 @@ export default function OrderStatus() {
 
                     <div className='w-1/2 '>
                         <label className='block' htmlFor="">Orderd For</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" value={decodedToken.name} />
+                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={decodedToken.name} />
                     </div>
 
                     <div className='w-1/2'>
                         <label className='block' htmlFor="">Payment Method</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" value={"Cash"} />
+                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={"Cash"} />
                     </div>
                     <div className='w-1/2'>
                         <label className='block' htmlFor="">Total Order Price</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" value={formatPrice(totalOrderPrice)} />
+                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" readOnly value={formatPrice(totalOrderPrice)} />
                     </div>
                 </div>
                     <h2 className='text-center my-5 text-green-500 text-2xl'>Your order is created Successfully, Thank you ya <span className='capitalize'>{decodedToken?.name?.split(" ").slice(0, 1)}</span>  </h2>

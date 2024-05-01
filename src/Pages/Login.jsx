@@ -24,31 +24,24 @@ export default function Login() {
     function onSubmit(data) {
         login(data);
     }
-    function onError(err) {
-        console.log(err);
 
-    }
 
 
 
     return (<>
-        <div className='flex container gap-8  justify-between items-center '>
+        <div className='container flex gap-6 items-center layout'>
 
-            <div className='w-1/2 my-6'>
+            <div className='xs:hidden md:block md:w-1/2'>
                 <img src={sideImage} alt='products' />
             </div>
 
-
-
-
-
-            <div className='w-1/2 text-primary'>
+            <div className='xs:w-full md:w-1/2 text-primary'>
 
                 <h3 className='text-3xl mb-2'>Log in to Exclusive</h3>
                 <p>Enter your details below</p>
 
 
-                <form onSubmit={handleSubmit(onSubmit, onError)} className=''>
+                <form onSubmit={handleSubmit(onSubmit)} className='space-y-2' >
 
                     <div className="flex flex-col ">
                         <Input
@@ -74,10 +67,8 @@ export default function Login() {
                             regex={passValid}
                             errors={errors} />
                     </div>
-                    <Link to={'/forgotpassword'} className='block my-2'>Forgot Password ?</Link>
-
-
-                    <Button isLoading={isLoading} textContent={"Login"} styles={'px-5 py-2 text-white'} />
+                    <Link to={'/forgotpassword'} className='block '>Forgot Password ?</Link>
+                    <Button isLoading={isLoading} textContent={"Login"} styles={'px-8 bg-primary py-2 text-white'} />
                 </form>
 
 

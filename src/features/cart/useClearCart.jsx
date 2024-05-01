@@ -15,7 +15,7 @@ export default function useClearCart() {
             toast.success("Cart Item Deleted successfully ")
         },
         onError: (e) => {
-            console.log(e);
+
             toast.error("Error while Deleting")
         }
     })

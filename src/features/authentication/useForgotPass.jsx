@@ -1,5 +1,4 @@
 import { useMutation } from '@tanstack/react-query'
-import React from 'react'
 import { forgotPassword } from '../../Services/userApi'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'

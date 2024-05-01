@@ -1,6 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import useCashPay from './useCashPay'
-import useOnlineOrder from './useOnlineOrder'
 import { useForm } from 'react-hook-form'
 import { CreatedOrderContext } from '../../Context/CreatedOrderContext'
 import Input from '../../Components/Input'
@@ -9,7 +7,7 @@ import { emailValid, nameValid, phoneValid } from '../../utilities/inputsValidat
 
 
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ addCashOrder, addOnlineOrder }) {
 
 
 
@@ -19,8 +17,6 @@ export default function CheckoutForm() {
 
 
 
-    const { addCashOrder } = useCashPay()
-    const { addOnlineOrder } = useOnlineOrder()
 
 
     const { setCreatedOrder } = useContext(CreatedOrderContext)
@@ -68,30 +64,31 @@ export default function CheckoutForm() {
 
         <>
 
-            <div >
+            <div className='xs:w-full lg:w-9/12 shadow-lg  border border-black p-4 rounded-xl gap' >
                 <h3 className='col-start-1 col-end-3 text-2xl mb-3 tex-4xl text-primary'>Checkout</h3>
                 <form id='checkoutForm' className='' onSubmit={handleSubmit(onSubmit)}>
 
 
-                    <div className='grid grid-cols-2 gap-x-4 gap-y-4 mb-3'>
+                    <div className='md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 mb-3 '>
 
                         <p className='col-start-1 col-end-3'>Personal Information:</p>
 
 
-                        <div className="flex flex-col ">
+                        <div className="flex flex-col">
                             <Input
-                                key={2}
+
                                 type={'firstName'}
                                 id={'firstName'}
                                 errors={errors}
                                 name={'firstName'}
                                 register={register} regex={nameValid}
                                 label={'First Name'}
+                                className={'w-full'}
                             />
                         </div>
                         <div className="flex flex-col ">
                             <Input
-                                key={2}
+
                                 type={'lastName'}
                                 id={'lastName'}
                                 errors={errors}
@@ -103,7 +100,7 @@ export default function CheckoutForm() {
                         </div>
                         <div className="flex flex-col ">
                             <Input
-                                key={2}
+
                                 type={'tel'}
                                 id={'phone'}
                                 errors={errors}
@@ -116,7 +113,7 @@ export default function CheckoutForm() {
 
                         <div className="flex flex-col ">
                             <Input
-                                key={2}
+
                                 type={'tel'}
                                 id={'email'}
                                 errors={errors}
@@ -142,7 +139,7 @@ export default function CheckoutForm() {
                                 <option value="gize">Giza</option>
                                 <option value="alexandria">Alexandria</option>
                                 <option value="fayoum">Fayoum</option>
-                                <option value="bani sweif">bani sweif</option>
+                                <option value="bani sweif">Bani sweif</option>
                             </select>
                         </div>
 
@@ -152,7 +149,7 @@ export default function CheckoutForm() {
 
                         <div className="flex flex-col ">
                             <Input
-                                key={2}
+
                                 type={'text'}
                                 id={'street'}
                                 errors={errors}
@@ -168,7 +165,7 @@ export default function CheckoutForm() {
 
                         <div className="flex flex-col ">
                             <Input
-                                key={2}
+
                                 type={'text'}
                                 id={'details'}
                                 errors={errors}
@@ -193,7 +190,6 @@ export default function CheckoutForm() {
                             <div className=''>
                                 <Input
                                     label={"Cash Payment"}
-                                    key={2}
                                     type={'radio'}
                                     id={'cash'}
                                     errors={errors}
@@ -219,7 +215,6 @@ export default function CheckoutForm() {
                             <div className='' >
                                 <Input
                                     label={"Online Payment"}
-                                    key={2}
                                     type={'radio'}
                                     id={'online'}
                                     errors={errors}

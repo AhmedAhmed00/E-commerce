@@ -31,7 +31,7 @@ export default function SelectedOrderdItem({ item }) {
       </div>
       <div>
 
-        <p className='text-2xl  text-[#aa813f] font-extrabold  '> {formatPrice(price)}</p>
+        <p className='xs:text-xl md:text-2xl  text-[#aa813f] font-extrabold  '> {formatPrice(price)}</p>
       </div>
     </div>
   )

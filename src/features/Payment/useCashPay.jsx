@@ -24,12 +24,9 @@ export default function useCashPay() {
     const navigate = useNavigate()
     const { setCreatedOrder } = useContext(CreatedOrderContext)
 
-    const { mutate: addCashOrder, data: order, isError, isLoading } = useMutation({
+    const { mutate: addCashOrder, data: order, status, isError } = useMutation({
 
         mutationFn: (body) => createCashOrder(body, _id, accessToken),
-        onMutate: () => {
-            toast.loading("Loading")
-        },
 
         onSuccess: (data) => {
 
@@ -47,20 +44,18 @@ export default function useCashPay() {
             })
 
             queryClient.invalidateQueries({ queryKey: ['orders', 'cart'] })
-            toast.dismiss()
 
             toast.success("Your Order Created Successfully")
             return navigate(`createdorder/${data.data.id}`, { state: { order: data } })
 
         },
         onError: () => {
-            toast.dismiss()
             toast.error("Cannot Create Your order")
         }
 
 
     })
-    return { isError, isLoading, addCashOrder, order }
+    return { isError, status, addCashOrder, order }
 }
 
 

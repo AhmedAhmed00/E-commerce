@@ -9,7 +9,6 @@ export default function useCategory() {
         queryFn: (categoryId) => getSpecificCategory(categoryId),
     })
 
-    console.log(category);
     return { category, isError, isLoading }
 
 }

@@ -1,9 +1,6 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
-import React from 'react'
-// import { getAllOrders } from '../../Services/ordersApi'
+import { useQuery } from '@tanstack/react-query'
 
 import { jwtDecode } from 'jwt-decode'
-import { useAuth } from '../../Context/AuthContext'
 import { getAllOrders } from '../../Services/OrdersApi'
 
 

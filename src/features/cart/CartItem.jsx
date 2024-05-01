@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { clearCart } from '../../Services/cartApi';
 import CounterBtn from '../../Components/CounterBtn';
-import axios from 'axios';
 import useUpdateCount from './useUpdateCount';
 import { formatPrice, trimTitle } from '../../utilities/helpres';
 import { TiDeleteOutline } from "react-icons/ti";
@@ -11,7 +9,7 @@ import ConfirmDelettion from '../../Components/ConfirmDelettion';
 
 export default function CartItem({ product }) {
 
-    const { count, _id, price, product: { brand: { name: brandName, _id: brandId }, category: { name: categoryName, _id: categoryId }, id, imageCover, title } } = product
+    const { count, price, product: { brand: { name: brandName }, category: { name: categoryName }, id, imageCover, title } } = product
 
 
 
@@ -19,11 +17,10 @@ export default function CartItem({ product }) {
 
     const { mutateCount, status } = useUpdateCount()
 
-    const { deleteItem, status: deleteStatus } = useDeleteItem()
+    const { deleteItem } = useDeleteItem()
 
 
     function handleDecrease() {
-        console.log(status);
         mutateCount({ id, quantiny: count - 1 })
     }
 
@@ -31,7 +28,7 @@ export default function CartItem({ product }) {
         mutateCount({ id, quantiny: count + 1 })
     }
 
-    function handleDeletion(id) {
+    function handleDeletion() {
 
         deleteItem(id)
         setConfirmShow(show => !show)
@@ -48,8 +45,8 @@ export default function CartItem({ product }) {
         <>
             {confirmShow && <ConfirmDelettion handleDeletion={() => handleDeletion(id)} setConfirmShow={setConfirmShow} />}
 
-            <tr className='after:h-[1px] after:bg-[#e8dfdf]  after:left-4 after:right-4 after:bottom-0 after:absolute relative'>
-                <button onClick={() => setConfirmShow(show => !show)} className='absolute right-4 top-3 text-red-600'><i><TiDeleteOutline /></i></button>
+            <tr className='border border-b relative '>
+
                 <td className='flex ps-4 py-3 items-center '>
                     <img src={imageCover} alt="" className='w-24 h-24 rounded-2xl shadow-sm object-cover' />
                     <div className='px-6'>
@@ -57,13 +54,17 @@ export default function CartItem({ product }) {
                         <p className='text-sm'> {categoryName}</p>
                         <p className='text-sm'>{brandName}</p>
 
-
                     </div>
                 </td>
                 <td className='text-center w-2/12 font-bold  '>{formatPrice(price)}</td>
                 <td className='text-center w-1/12'>{<CounterBtn quantiny={count} status={status} increase={handleIncrease} decrease={handleDecrease} />}</td>
                 <td className='text-center w-2/12 font-bold  '>{formatPrice(price * count)}</td>
+                <td className='w-0 hid'>
+                    <button onClick={() => setConfirmShow(show => !show)} className='absolute right-3 top-3   text-red-600'><i><TiDeleteOutline /></i></button>
+                </td>
             </tr>
+
+
         </>
     )
 }

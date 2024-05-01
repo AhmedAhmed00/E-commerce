@@ -5,8 +5,6 @@ import { useForm } from 'react-hook-form';
 import { MdModeEditOutline } from 'react-icons/md';
 import { IoExitOutline } from 'react-icons/io5';
 import LoaderSpinner from './../../Components/LoaderSpinner';
-import { useQueryClient } from '@tanstack/react-query';
-import ErrorInputmsg from '../../Components/ErrorInputmsg';
 import { emailValid, phoneValid } from '../../utilities/inputsValidation';
 import { nameValid } from '../../utilities/inputsValidation';
 import Input from '../../Components/Input';
@@ -14,13 +12,12 @@ import Input from '../../Components/Input';
 export default function PersonalInformation() {
 
 
-    const queryClient = useQueryClient()
 
 
 
-    const { isError, isLoading, userData: { data: { active, createdAt, email, name, phone } = {} } = {} } = useUser()
+    const { isLoading, isError, userData: { data: { email, name, phone } = {} } = {} } = useUser()
 
-    const { mutateProfile, status, data: mutateData } = useUpdateProfile()
+    const { mutateProfile, status } = useUpdateProfile()
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
@@ -47,7 +44,7 @@ export default function PersonalInformation() {
 
             <div className='flex justify-between'>
 
-                <h3 className="text-2xl text-primary">Personal Information</h3>
+                <h3 className="text-3xl text-primary font-bold">Personal Information</h3>
                 <button onClick={handleeditMode} type='button' className='flex items-center gap-1 px-3 rounded-lg border' >
                     {editMode ? <IoExitOutline /> : <MdModeEditOutline />}
                     <span>{editMode ? "Close" : "Edit"}</span>   </button>
@@ -58,9 +55,9 @@ export default function PersonalInformation() {
 
 
 
-                {status === 'pending' || isLoading ? <LoaderSpinner /> :
+                {status === 'pending' || isLoading ? <LoaderSpinner /> : (isError || status === 'error') ? <div>errrrrrrrrrrrrror</div> :
 
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 py-5">
+                    <div className="grid xs:grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-3 py-5">
 
                         <div className="flex flex-col">
                             <Input key={1}
@@ -74,6 +71,8 @@ export default function PersonalInformation() {
                                 register={register} regex={nameValid}
                                 defaultValue={editMode ? "" : name} />
                         </div>
+
+
 
 
 

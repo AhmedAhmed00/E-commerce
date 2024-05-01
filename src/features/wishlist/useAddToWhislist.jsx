@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import React from 'react'
 import { addToWishList } from '../../Services/wishlistApi'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +11,7 @@ export default function useAddToWhislist() {
     const queryClient = useQueryClient()
 
 
-    const { mutate, isError, status, data } = useMutation({
+    const { mutate, isError, status } = useMutation({
         mutationFn: (body) => addToWishList(body, accessToken),
         onMutate: () => {
             toast.loading("Loading")

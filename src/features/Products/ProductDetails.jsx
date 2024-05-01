@@ -1,20 +1,18 @@
 import { useQuery } from "@tanstack/react-query"
 import { useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { getProducts, getSpecificProduct } from "../../Services/ProductsApi"
-import toast from "react-hot-toast"
+import { getProducts } from "../../Services/ProductsApi"
 import LoaderSpinner from './../../Components/LoaderSpinner';
 import Rating from './../../Components/Rating';
 import ColorInput from './../../Components/ColorInput';
 import { MdFavoriteBorder } from "react-icons/md"
 import { GrDeliver } from "react-icons/gr"
 import { TbRestore } from "react-icons/tb"
-import Row from "./ProductsRow"
 import { formatPrice } from "../../utilities/helpres"
-import CounterBtn from "../../Components/CounterBtn"
 import useProduct from "./useProduct"
 import Button from "../../Components/Button"
 import useAddProduct from "../cart/useAddProduct"
+import ProductsRow from "./ProductsRow";
 
 
 
@@ -24,7 +22,7 @@ import useAddProduct from "../cart/useAddProduct"
 export default function ProductDetails() {
 
     const [fakeColor, setFakeColor] = useState("red")
-    const [orderQuantity, setOrderQuantity] = useState(1)
+    // const [orderQuantity, setOrderQuantity] = useState(1)
 
     const mainImage = useRef()
 
@@ -36,7 +34,7 @@ export default function ProductDetails() {
 
     const [isOpenImage, setIsOpenImage] = useState("")
 
-    const { isError, product: { _id, images, ratingsQuantity, title, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, brand, ratingsAverage } = {}, isLoading
+    const { isError, product: { _id, images, ratingsQuantity, title, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, ratingsAverage } = {}, isLoading
     } = useProduct(productId)
 
     const { data: items, isLoading: isLoadingRelated } = useQuery({
@@ -45,13 +43,12 @@ export default function ProductDetails() {
         enabled: !!categoryId
     })
 
-    console.log(items);
 
 
 
     function handleMainImageClick(img) {
         setIsOpenImage(img)
-        console.log(isOpenImage);
+            (isOpenImage);
     }
 
 
@@ -78,32 +75,38 @@ export default function ProductDetails() {
 
     return (
 
-        <div className="container  py-6">
+        <div className="container py-6">
             {isLoading ? <LoaderSpinner /> : isError ? <div>Eroor</div> :
                 <>
-                    < div className='flex gap-6  mb-8 ' >
+                    < div className='flex xs:flex-col md:flex-row  gap-6  pb-6 ' >
 
-                        <div className="w-1/12 self-center sticky top-16 ">
-                            <div className='flex flex-col gap-5'>
+
+                        <div className="flex xs:w-full  xs:flex-col md:flex-row md:items-center  md:w-1/2 gap-3">
+
+
+                            <div className='flex md:self-center xs:flex-row  md:flex-col gap-3'>
                                 {images.map((img, i) => <img
                                     key={i}
                                     onClick={() => {
                                         changeMainImage(img)
                                     }} className='border shadow-sm rounded-md w-full max-h-[100px] object-cover' src={img} alt='' />)}
+
+
                             </div>
 
+
+
+
+                            <img onClick={(e) => {
+                                handleMainImageClick(e.target.src)
+                            }} src={imageCover} ref={mainImage} alt="ImageCover"
+                                className=' border  shadow-lg rounded-md object-cover  md:w-10/12 max-h-[550px]  ' />
                         </div>
 
 
-                        <img onClick={(e) => {
-                            handleMainImageClick(e.target.src)
-                        }} src={imageCover} ref={mainImage} alt="ImageCover" className=' border  shadow-lg rounded-md object-contain object-top max-w-[600px] max-h-[600px]  w-4/12 flex-1' />
 
 
-
-
-
-                        <div className='flex flex-col  justify-between'>
+                        <div className='flex flex-col xs:w-full md:w-1/2  justify-between'>
                             <div>
                                 <h2 className='mb-1 text-4xl font-semibold text-red-700'>{title}</h2>
                                 <Link to={`/shop?category[in]=${categoryId}`} className='font-semiboldtext-red-700  underline'>{name}</Link>
@@ -178,9 +181,9 @@ export default function ProductDetails() {
                     </div>
 
 
-                    <h3 className='mb-2 text-2xl text-center text-primary '>Related Items</h3>
+                    <h3 className=' text-head text-center my-6 '>Related Items</h3>
 
-                    {!isLoadingRelated && <Row items={items.data} role='slider' />}
+                    {!isLoadingRelated && <ProductsRow items={items.data} role='slider' />}
 
 
                 </>

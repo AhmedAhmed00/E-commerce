@@ -10,7 +10,7 @@ export default function Button({ isLoading, textContent, onclick, styles, type, 
 
     return (
         <button disabled={disabled} ref={btnRef} type={type} form={formId} onClick={onclick} className={
-            `bg-primary  text-center mx-auto text-sm rounded-md my-2 py-1 ` + styles}>{isLoading ?
+            ` text-center mx-auto text-sm rounded-md my-2 py-1 ` + styles}>{isLoading ?
 
                 <i className='w-10 inline-block '>
                     <ThreeDots

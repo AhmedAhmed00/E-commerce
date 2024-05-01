@@ -1,17 +1,16 @@
 import React from 'react'
-import useCategories from './useCategories'
 import CategoryItem from './CategoryItem'
 
-export default function Categories() {
+export default function Categories({ categories }) {
 
 
-    const { categories, isLoading } = useCategories()
 
     return (
 
 
 
-        <div className='grid grid-cols-5 gap-5 container'>
+        <div className='grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 container'>
+
             {categories?.map(category => <CategoryItem key={category._id} item={category} />)}
         </div>
 

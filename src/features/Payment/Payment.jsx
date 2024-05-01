@@ -1,10 +1,14 @@
 import Button from '../../Components/Button';
 import PayDetails from '../../Components/PayDetails';
 import CheckoutForm from './CheckoutForm';
+import useCashPay from './useCashPay';
+import useOnlineOrder from './useOnlineOrder';
 
 
 export default function Payment() {
 
+    const { addCashOrder, status: cashLoading } = useCashPay()
+    const { addOnlineOrder, status: onlineLoading } = useOnlineOrder()
 
 
 
@@ -14,17 +18,13 @@ export default function Payment() {
 
         <>
 
-            <div className='flex justify-between gap-x-5 mb-12 '>
-                <div className='w-9/12 shadow-lg  border border-black p-4 rounded-xl gap '>
-                    <CheckoutForm />
-                </div>
-                <div className='details w-3/12 self-start sticky top-20'>
-                    <PayDetails >
-                        <Button type={"submit"} formId={"checkoutForm"} styles={'px-2 py-2 w-full mt-4 text-white font-bold bg-primary '} textContent={"Confirm Checkout"} />
-                    </PayDetails>
-                </div>
-
+            <div className='flex xs:flex-col lg:flex-row justify-between items-center gap-6  '>
+                <CheckoutForm addCashOrder={addCashOrder} addOnlineOrder={addOnlineOrder} />
+                <PayDetails >
+                    <Button isLoading={(cashLoading === 'pending' || onlineLoading === 'pending')} type={"submit"} formId={"checkoutForm"} styles={'px-2 py-2 w-full mt-4 text-white font-bold bg-primary '} textContent={"Confirm Checkout"} />
+                </PayDetails>
             </div>
+
 
 
         </>

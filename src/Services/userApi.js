@@ -1,14 +1,8 @@
-import { json } from "react-router-dom";
 import BASE_URL from "./BaseUrl";
 
 
 
-
-
-
-
 export async function getLoggedUserData(id) {
-    console.log(id);
 
 
     const res = await fetch(`${BASE_URL}/users/${id}`,
@@ -31,7 +25,6 @@ export async function getLoggedUserData(id) {
 
 
 export async function updateUserData(body, token) {
-    console.log(body, token);
 
 
     const res = await fetch(`${BASE_URL}/users/updateMe`,
@@ -73,7 +66,7 @@ export async function updateUserData(body, token) {
 
 
 export async function updateUserPassword(body, token) {
-    console.log(body, token);
+
 
 
     const res = await fetch(`${BASE_URL}/users/changeMyPassword`,
@@ -97,7 +90,6 @@ export async function updateUserPassword(body, token) {
     }
 
     const data = await res.json();
-    console.log(data);
     return data
 
 }
@@ -108,7 +100,7 @@ export async function updateUserPassword(body, token) {
 
 
 export async function forgotPassword(body) {
-    console.log(body);
+
 
     const res = await fetch(`${BASE_URL}/auth/forgotPasswords`,
 
@@ -127,7 +119,6 @@ export async function forgotPassword(body) {
     }
 
     const data = await res.json();
-    console.log(data);
     return data
 
 }
@@ -136,7 +127,7 @@ export async function forgotPassword(body) {
 
 
 export async function verifyResetCode(verifyCode) {
-    console.log(verifyCode);
+
 
     const res = await fetch(`${BASE_URL}/auth/verifyResetCode`,
 
@@ -153,7 +144,6 @@ export async function verifyResetCode(verifyCode) {
     }
 
     const data = await res.json();
-    console.log(data);
     return data
 
 }

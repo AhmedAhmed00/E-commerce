@@ -12,7 +12,9 @@ export default function Layout() {
 
 
 
-    const { accessToken, setAccessToken } = useAuth()
+
+
+    const { setAccessToken } = useAuth()
     const tkn = localStorage.getItem("accessToken")
 
     useEffect(() => {

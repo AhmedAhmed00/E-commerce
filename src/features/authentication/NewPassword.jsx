@@ -1,12 +1,8 @@
 import Button from '../../Components/Button'
-import { ThreeDots } from 'react-loader-spinner'
 import Input from '../../Components/Input'
 import { useForm } from 'react-hook-form'
 import { emailValid, passValid } from '../../utilities/inputsValidation'
-import { useMutation } from '@tanstack/react-query'
-import { resetPass } from '../../Services/userApi'
-import toast from 'react-hot-toast'
-import { useAuth } from '../../Context/AuthContext'
+
 import { useNavigate } from 'react-router-dom'
 import useNewPass from './useNewPass'
 
@@ -22,10 +18,9 @@ export default function NewPassword() {
 
     let navigate = useNavigate()
 
-    const { isError, resetData, status } = useNewPass()
+    const { resetData, status } = useNewPass()
 
     function onSubmit(data) {
-        console.log(data);
         resetData(data)
     }
 
@@ -75,7 +70,7 @@ export default function NewPassword() {
                         id={'newPassword'}
                         name={'newPassword'}
                         readOnly={false}
-                        type={'newPassword'}
+                        type={'password'}
                         register={register}
                         regex={passValid}
                         errors={errors}
@@ -92,7 +87,7 @@ export default function NewPassword() {
                     <Button
                         onclick={() => navigate('/login')}
                         styles={'text-primary  ms-3  me-2   px-3 bg-transparent border border-primary text-gray-800'} textContent={'Cancel'} />
-                    <Button styles={'text-white px-3'} textContent={'Continue'} isLoading={status === 'pending'} />
+                    <Button styles={'text-white bg-sky px-3'} textContent={'Continue'} isLoading={status === 'pending'} />
 
 
                 </div>

@@ -1,29 +1,34 @@
-import axios from "axios";
 import BASE_URL from "./BaseUrl";
 
 
 
+
 export async function addProductToCart(id, accessToken) {
-    console.log(id);
 
     const body = {
         productId: id
     }
-    const res = await axios.post(`${BASE_URL}/cart/`, body, {
-        headers: {
-            token: accessToken
-        }
+    const res = await fetch(`${BASE_URL}/cart/`,
+        {
+            headers: {
+                "Accept": 'application/json, text/plain, */*',
+                "content-type": "application/json",
+                "token": accessToken
+            }, body: JSON.stringify(body), method: "POST"
+        })
+    if (!res.ok) {
+        throw new Error("error")
 
-    })
-
-    console.log(res);
-    return res.data
+    }
+    const data = await res.json()
+    return data
 
 }
 
 
+
 export async function updataProductCount(id, quantity) {
-    console.log(id);
+
 
 
 
@@ -112,7 +117,7 @@ export async function clearCart(token) {
         throw new Error("Failed to fetch data")
     }
     const data = await res.json()
-    console.log(data);
+
     return data
 
 }

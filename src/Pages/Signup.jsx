@@ -19,9 +19,7 @@ export default function Signup() {
 
 
 
-  function onError(errors) {
-    console.log(errors);
-  }
+
 
 
   async function onSubmit(data) {
@@ -34,7 +32,6 @@ export default function Signup() {
       }
     }
     catch (err) {
-      console.log(err);
       toast.error("There is an error")
 
     }
@@ -45,23 +42,23 @@ export default function Signup() {
 
   return (
 
-    <div className='flex container  gap-8 justify-between items-center '>
+    <div className='container flex gap-x-6 items-center layout'>
 
 
-      <div className='w-1/2 my-6'>
-
-        <img className='w-full  ' src={sideImage} alt='products
+      <div className='xs:hidden md:block md:w-1/2'>
+        <img className='w-full' src={sideImage} alt='products
         ' />
       </div>
 
-      <div className='w-1/2 text-primary'>
+
+      <div className='xs:w-full md:w-1/2 text-primary'>
         <h3 className='text-3xl mb-2'>Create an account</h3>
         <p>Enter Your details below</p>
 
-        <form onSubmit={handleSubmit(onSubmit, onError)} className='mt-2'>
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-2' >
 
           <div className="flex flex-col ">
-            <Input key={1}
+            <Input
               type={'text'}
               id={'name'}
               errors={errors}
@@ -74,7 +71,6 @@ export default function Signup() {
 
           <div className="flex flex-col ">
             <Input
-              key={2}
               type={'email'}
               id={'email'}
               errors={errors}
@@ -94,7 +90,6 @@ export default function Signup() {
 
           <div className='flex flex-col '>
             <Input
-              key={3}
               type={'tel'}
               id={'phone'}
               errors={errors}
@@ -106,7 +101,6 @@ export default function Signup() {
 
           <div className='flex flex-col '>
             <Input
-              key={2}
               placeholder={'Password'}
               id={'password'}
               name={'password'}
@@ -121,7 +115,6 @@ export default function Signup() {
 
           <div className='flex flex-col '>
             <Input
-              key={3}
               id={'rePassword'}
               name={'rePassword'}
               placeholder={'Confirm password'}
@@ -141,10 +134,8 @@ export default function Signup() {
           </div>
 
 
-          <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 py-2 text-white'} />
+          <Button isLoading={isLoading} textContent={"Create Account"} styles={'px-5 bg-primary py-2 text-white'} />
         </form>
-
-
 
 
       </div>

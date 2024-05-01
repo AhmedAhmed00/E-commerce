@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../../Components/Button'
-import { useMutation } from '@tanstack/react-query';
-import { verifyResetCode } from '../../Services/userApi';
-import toast from 'react-hot-toast';
-import { ThreeDots } from 'react-loader-spinner';
+
 import { useNavigate } from 'react-router-dom';
 import useVerify from './useVerify';
 import { useForm } from 'react-hook-form';
@@ -18,10 +15,9 @@ export default function Verify() {
 
     const navigate = useNavigate()
 
-    const { data, isError, status, mutateVerify } = useVerify()
+    const { status, mutateVerify } = useVerify()
 
     function onSubmit(data) {
-        console.log(data);
         mutateVerify(data)
     }
 
@@ -66,7 +62,7 @@ export default function Verify() {
                             onclick={() => navigate('/login')}
                             styles={'text-primary  ms-3  me-2   px-3 bg-transparent border border-primary text-gray-800'} textContent={'Cancel'} />
 
-                        <Button type={'submit'} styles={'text-white px-3'} textContent={'Continue'} isLoading={status === 'pending'} />
+                        <Button type={'submit'} styles={'text-white px-3 bg-sky'} textContent={'Continue'} isLoading={status === 'pending'} />
 
 
 

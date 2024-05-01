@@ -1,63 +1,49 @@
 import Searchbar from './Searchbar';
 import { useAuth } from '../Context/AuthContext';
-import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import useCart from '../features/cart/useCart';
+import { RxHamburgerMenu } from 'react-icons/rx';
+import { memo, useEffect, useState } from 'react';
+import { NavLinks } from './NavLinks';
 
 
-export default function Navbar() {
+function Navbar() {
   const { cart: { numOfCartItems } = {}, isError, isLoading } = useCart()
+  const [showNav, setShowNav] = useState(false)
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setShowNav(false)
+  }, [pathname]);
+
 
   const { accessToken, logout } = useAuth()
 
   return (
-    <nav className='border-b py-3 sticky -top-1 z-50   bg-[#f2f8fd] shadow-md  text-primary font-bold'>
-      <div className="container flex justify-between items-center">
+
+
+
+    <nav className='border-b  sticky -top-1 z-50   bg-[#f2f8fd] shadow-md  text-primary font-bold'>
+      <div className="container py-3  relative flex justify-between  items-center ">
+
+        <div className='xs:flex  xs:justify-between xs:items-center  xs:w-full md:w-auto md:items-center'>
+          <div className='w-[160px]'>
+            <img className='w-full' src="../../public/assets/logo2.png" alt="" />
+          </div>
+          <RxHamburgerMenu onClick={() => setShowNav(show => !show)} className='text-3xl p-1 cursor-pointer border rounded-lg md:hidden' />
+        </div>
         <div>
-          <h2 className='text-2xl font-bold '>
-            Logo
-          </h2>
+          <NavLinks showNav={showNav} accessToken={accessToken} isError={isError} logout={logout} isLoading={isLoading} numOfCartItems={numOfCartItems} />
         </div>
 
-        <ul className='flex gap-1 items-center'>
-          {accessToken ? <>
-
-            <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/allorders'}>Orders</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/profile'}>Profile</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/whishlist'}>Wishlist</NavLink>
-            <NavLink className='px-2 py-0.5' to={'/shop'}>Shop</NavLink>
-            <NavLink className='px-2 py-0.5' to='' onClick={() => { logout() }} >Logout</NavLink >
-            <NavLink to={'/cart'} className=' px-2 py-0.5 relative '>
-              Cart
-              <span className=" bg-green-800
-              rounded-lg
-              absolute -top-[10px]  text-xs font-medium
-              px-1.5 py-0.5  text-white  border
-     ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
-            </NavLink>
-          </> :
-            <>
-
-              <NavLink className='px-2 py-0.5' to={'/home'}>Home</NavLink>
-              <NavLink className='px-2 py-0.5' to={'/login'}>Login</NavLink>
-              <NavLink className='px-2 py-0.5' to={'/signup'}>Sign Up</NavLink>
-
-            </>
-
-
-          }
-
-        </ul>
-
-        <Searchbar />
-
-
-
+        <div className='xs:hidden lg:block '>
+          <Searchbar />
+        </div>
       </div>
-
-
-
-
     </nav >
   )
 }
+
+
+export default memo(Navbar)

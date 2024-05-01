@@ -4,13 +4,17 @@ import { formatDate } from './../Payment/OrderStatus';
 import { Link } from 'react-router-dom';
 
 
-export default function Order({ order, selectedItemId, setSelectedItemId }) {
+export default function Order({ order, selectedItemId, setSelectedItemId, handleShowDetails }) {
     const { id, totalOrderPrice, cartItems, createdAt } = order
 
 
     function handleSelectedItem(id) {
         setSelectedItemId(id)
+        handleShowDetails()
     }
+
+
+
 
 
 
@@ -21,17 +25,17 @@ export default function Order({ order, selectedItemId, setSelectedItemId }) {
             onClick={() => handleSelectedItem(id)}
 
 
-            to={`${id}`} className={`flex px-3 justify-between py-4
+            to={`${id}`} className={`flex px-2 gap-3 justify-between py-2
                           items-center font-oswald
                           text-sm text-primary border-b
                            ` + (selectedItemId === id ? 'bg-primary-2 ' : "")}     >
-            <div className='' >
+            <div className='w-3/12' >
                 <p>#{id}</p>
                 <p className='my-0.5'>{formatDate(createdAt)}</p>
                 <p>{cartItems.length} items</p>
             </div>
 
-            <p className='text-[#aa813f]'>{formatPrice(totalOrderPrice)}</p>
+            <p className='text-title'>{formatPrice(totalOrderPrice)}</p>
 
             <div >
                 <div className='flex items-center   '>

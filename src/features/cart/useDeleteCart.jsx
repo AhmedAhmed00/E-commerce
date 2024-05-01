@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { deleteCartItem, updataProductCount } from '../../Services/cartApi'
+import { deleteCartItem } from '../../Services/cartApi'
 import toast from 'react-hot-toast'
-import { useAuth } from '../../Context/AuthContext'
 
 export default function useDeleteItems() {
 
@@ -17,7 +16,6 @@ export default function useDeleteItems() {
             toast.success("Cart Item Deleted successfully ")
         },
         onError: (e) => {
-            console.log(e);
             toast.error("Error while Deleting")
         }
     })

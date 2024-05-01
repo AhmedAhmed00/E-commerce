@@ -14,7 +14,6 @@ export async function getAllOrders(id) {
     }
     const data = await res.json()
 
-    console.log(data);
 
 
 

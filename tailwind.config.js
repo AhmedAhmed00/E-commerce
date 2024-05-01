@@ -7,6 +7,7 @@ export default {
   theme: {
 
 
+
     fontFamily: {
       oswald: ['oswald', 'sans-serif'],
       lato: ["Lato", "sans-serif"]
@@ -16,23 +17,36 @@ export default {
 
     container: {
       center: true,
-      padding: 20
+      padding: "15px",
 
+      screens: {
+        sm: "540px",
+        md: "720px",
+        lg: "960px",
+        xl: "1140px",
+        "2xl": "1336px"
+      }
 
     },
     screens: {
+      xs: 0,
       sm: "576px",
       md: " 768px",
       lg: "992px",
       xl: "1200px",
-      "2xl": "1400px"
+      "2xl": "1320px"
     },
 
     extend: {
       colors: {
         "primary": "#002d58",
         "primary-2": "#e6f1fc",
-        "primary-3": "#f6f3f0"
+        "primary-3": "#f6f3f0",
+        "vanilla": "#fbece3",
+        "sky": "#0071dc",
+        "teal": "085f63",
+        "title": "#aa813f"
+
 
       },
 

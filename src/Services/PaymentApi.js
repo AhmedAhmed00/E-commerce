@@ -7,9 +7,6 @@ export async function createCashOrder(body, _id, token) {
 
 
 
-    console.log(body);
-    console.log(_id);
-    console.log(token);
 
 
 
@@ -19,7 +16,7 @@ export async function createCashOrder(body, _id, token) {
     }
     const data = await res.json()
 
-    console.log(data);
+
 
 
 
@@ -34,9 +31,7 @@ export async function createOnlineOrder(body, _id, token, urlId) {
 
 
 
-    console.log(body);
-    console.log(_id);
-    console.log(token);
+
     const url = `http://${window.location.host}`
 
 
@@ -47,7 +42,6 @@ export async function createOnlineOrder(body, _id, token, urlId) {
     }
     const data = await res.json()
 
-    console.log(data);
 
     return data
 
@@ -62,20 +56,4 @@ export async function createOnlineOrder(body, _id, token, urlId) {
 
 
 
-// export async function getAllOrders(body, _id, token) {
-
-
-//     const res = await fetch(`${BASE_URL}/orders/${_id}`, { body: JSON.stringify(body), headers: { token: token }, method: "POST" })
-//     if (!res.ok) {
-//         throw new Error("Failed to fetch data 222222222")
-//     }
-//     const data = await res.json()
-
-//     console.log(data);
-
-
-
-//     return data
-
-// }
 

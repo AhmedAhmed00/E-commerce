@@ -1,11 +1,7 @@
-import React, { useContext } from 'react'
-import { createCashOrder, createOnlineOrder } from '../../Services/PaymentApi'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { createOnlineOrder } from '../../Services/PaymentApi'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import useCart from '../cart/useCart'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom';
-import { CreatedOrderContext } from '../../Context/CreatedOrderContext'
-
 
 export default function useOnlineOrder() {
 
@@ -15,12 +11,10 @@ export default function useOnlineOrder() {
     const accessToken = localStorage.getItem("accessToken")
     const queryClient = useQueryClient()
     const url = window.location.href
-    const { createdOrder, setCreatedOrder } = useContext(CreatedOrderContext)
 
 
-    const navigate = useNavigate()
 
-    const { mutate: addOnlineOrder, data: order, isError, isLoading } = useMutation({
+    const { mutate: addOnlineOrder, data: order, isError, status } = useMutation({
 
         mutationFn: (body) => createOnlineOrder(body, _id, accessToken, url),
 
@@ -41,7 +35,7 @@ export default function useOnlineOrder() {
 
 
     })
-    return { isError, isLoading, addOnlineOrder, order }
+    return { isError, status, addOnlineOrder, order }
 }
 
 

@@ -8,7 +8,7 @@ export default function useDeleteWishlist() {
     const queryClient = useQueryClient()
 
 
-    const { mutate, isError, status, data } = useMutation({
+    const { mutate, isError, status } = useMutation({
         mutationFn: (id) => removeFromWishlist(id, accessToken),
         onMutate: () => {
             toast.loading("Deleting")
