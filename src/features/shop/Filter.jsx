@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ShowArrow } from './ShowArrow';
 
 export function Filter({ handleSpecificationsChange }) {
-    const [isShown, setIsShown] = useState(true);
+    const [isShown, setIsShown] = useState(false);
     function handleIsShown() {
         setIsShown(shown => !shown);
     }

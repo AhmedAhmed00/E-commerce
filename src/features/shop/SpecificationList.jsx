@@ -3,7 +3,7 @@ import { ShowArrow } from './ShowArrow';
 
 export default function SpecificationList({ type, name, handleSpecificationsChange, text }) {
 
-    const [isShown, setIsShown] = useState(true);
+    const [isShown, setIsShown] = useState(false);
     function handleIsShown() {
         setIsShown(shown => !shown);
     }
