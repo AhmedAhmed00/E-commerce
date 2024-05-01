@@ -1,5 +1,5 @@
 import React from 'react'
-import { InfinitySpin, Oval } from 'react-loader-spinner'
+import { InfinitySpin } from 'react-loader-spinner'
 
 export default function FullPageSpinner() {
     return (

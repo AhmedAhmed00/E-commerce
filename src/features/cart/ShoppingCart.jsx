@@ -56,7 +56,7 @@ export default function Cart() {
                                     <thead className='border-b'>
                                         <tr>
                                             <th className='p-4  '>Product</th>
-                                            <th >Price</th>
+                                            <th className=' xs:hidden md:table-cell ' >Price</th>
                                             <th >Quantity</th>
                                             <th>Total Price</th>
                                         </tr>

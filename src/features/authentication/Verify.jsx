@@ -29,7 +29,7 @@ export default function Verify() {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='flex layout flex-col items-center justify-center bg-gray-100 '>
 
-            <div className='w-1/2  py-3  border rounded-lg bg-white shadow-md '>
+            <div className='xs:w-96 md:w-1/2  py-3  border rounded-lg bg-white shadow-md '>
                 <h3 className=' relative 
                     py-2 px-3 
                     after:absolute after:h-[1px] after:w-full

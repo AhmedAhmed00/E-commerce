@@ -20,7 +20,7 @@ export default function ForgotPass() {
 
     return (
         <form className=' flex flex-col layout bg-gray-100 ' onSubmit={handleSubmit(onSubmit)}>
-            <div className="w-1/2 m-auto py-5  border rounded-lg bg-white shadow-md">
+            <div className="xs:w-96 md:w-1/2 m-auto py-5  border rounded-lg bg-white shadow-md">
 
 
                 <div className='flex flex-col items-center'>

@@ -12,12 +12,12 @@ export default function CounterBtn({ decrease, increase, quantiny, status }) {
 
     return (
 
-        <div className='border-2 flex columns-3  justify-between rounded-md font-semibold'>
+        <div className='border flex  text-sm   justify-between rounded-md font-semibold'>
 
-            <button className='px-2'
+            <button className='w-1/3 bg-red-800 rounded-s-md text-white '
                 onClick={decrease}
             >-</button>
-            <p className='px-4 py-0.5 border-s text-sm font-lato' >{status === 'pending' ?
+            <p className='w-1/3 py-0.5 ' >{status === 'pending' ?
 
                 <i className='inline-block '>
 
@@ -32,7 +32,7 @@ export default function CounterBtn({ decrease, increase, quantiny, status }) {
                     />
                 </i>
                 : quantiny}  </p>
-            <button className='px-3 bg-green-600 rounded-e-md text-white'
+            <button className='w-1/3   bg-green-600 rounded-e-md text-white'
                 onClick={increase}
             >+</button>
         </div>

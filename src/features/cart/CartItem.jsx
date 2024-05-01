@@ -56,10 +56,10 @@ export default function CartItem({ product }) {
 
                     </div>
                 </td>
-                <td className='text-center w-2/12 font-bold  '>{formatPrice(price)}</td>
+                <td className='text-center w-2/12  xs:hidden md:table-cell  font-bold  '>{formatPrice(price)}</td>
                 <td className='text-center w-1/12'>{<CounterBtn quantiny={count} status={status} increase={handleIncrease} decrease={handleDecrease} />}</td>
-                <td className='text-center w-2/12 font-bold  '>{formatPrice(price * count)}</td>
-                <td className='w-0 hid'>
+                <td className='text-center w-2/12 font-bold px-3  '>{formatPrice(price * count)}</td>
+                <td className='w-0'>
                     <button onClick={() => setConfirmShow(show => !show)} className='absolute right-3 top-3   text-red-600'><i><TiDeleteOutline /></i></button>
                 </td>
             </tr>
