@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import profile from "../../public/profile.jpg"
 
 export default function Profile() {
 
@@ -8,7 +9,7 @@ export default function Profile() {
         <div className="container py-6 flex xs:flex-col md:flex-row min-h-[500px] gap-8">
 
             <div className="xs:w-full md:w-4/12 lg:w-3/12  p-4 rounded-lg border shadow-md ">
-                <img className="w-24 rounded-2xl m-auto" src="../../public/assets/profile.jpg" alt="" />
+                <img className="w-24 rounded-2xl m-auto" src={profile} alt="" />
                 <ul className="flex flex-col gap-1 mt-6">
 
 

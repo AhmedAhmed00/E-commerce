@@ -1,6 +1,6 @@
 import Searchbar from './Searchbar';
 import { useAuth } from '../Context/AuthContext';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useCart from '../features/cart/useCart';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { memo, useEffect, useState } from 'react';
@@ -28,12 +28,12 @@ function Navbar() {
     <nav className='border-b  sticky -top-1 z-50   bg-[#f2f8fd] shadow-md  text-primary font-bold'>
       <div className="container py-3  relative flex justify-between  items-center ">
 
-        <div className='xs:flex  xs:justify-between xs:items-center  xs:w-full md:w-auto md:items-center'>
+        <Link to={'/home'} className='xs:flex  xs:justify-between xs:items-center  xs:w-full md:w-auto md:items-center'>
           <div className='w-[160px]'>
             <img className='w-full' src={Logo} alt="" />
           </div>
           <RxHamburgerMenu onClick={() => setShowNav(show => !show)} className='text-3xl p-1 cursor-pointer border rounded-lg md:hidden' />
-        </div>
+        </Link>
         <div>
           <NavLinks showNav={showNav} accessToken={accessToken} isError={isError} logout={logout} isLoading={isLoading} numOfCartItems={numOfCartItems} />
         </div>
