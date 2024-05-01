@@ -23,7 +23,7 @@ export function NavLinks({ accessToken, login, logout, numOfCartItems, isError, 
                 <NavLink className='nav-item' to={'/allorders'}>Orders</NavLink>
                 <NavLink className='nav-item' to={'/profile'}>Profile</NavLink>
                 <NavLink className='nav-item' to={'/whishlist'}>Wishlist</NavLink>
-                <NavLink className='nav-item' to={'/payment'}>Payment</NavLink>
+                <NavLink className='nav-item' to={'/order/payment'}>Payment</NavLink>
                 <NavLink className='nav-item' to={'/shop'}>Shop</NavLink>
                 <NavLink className='nav-item' to='' onClick={() => { logout(); }}>Logout</NavLink>
                 <NavLink to={'/cart'} className='nav-item relative '>

@@ -81,7 +81,6 @@ function App() {
 
 
 
-                    <Route path='payment' element={<ProtectedRoute><Payment /></ProtectedRoute>} />
                     <Route path='whishlist' element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
                     <Route path='profile' element={<ProtectedRoute><Profile /> </ProtectedRoute>} >
                       <Route index element={<Navigate to={'personalinformation'} />} />
