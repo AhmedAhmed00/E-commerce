@@ -3,7 +3,7 @@ import { useAuth } from '../Context/AuthContext';
 import { useLocation } from 'react-router-dom';
 import useCart from '../features/cart/useCart';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLinks } from './NavLinks';
 
 
@@ -46,4 +46,4 @@ function Navbar() {
 }
 
 
-export default memo(Navbar)
+export default Navbar
