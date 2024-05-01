@@ -18,7 +18,7 @@ export default function Payment() {
 
         <>
 
-            <div className='flex xs:flex-col lg:flex-row justify-between items-center gap-6  '>
+            <div className='flex xs:flex-col lg:flex-row justify-between container py-6 items-center gap-6  '>
                 <CheckoutForm addCashOrder={addCashOrder} addOnlineOrder={addOnlineOrder} />
                 <PayDetails >
                     <Button isLoading={(cashLoading === 'pending' || onlineLoading === 'pending')} type={"submit"} formId={"checkoutForm"} styles={'px-2 py-2 w-full mt-4 text-white font-bold bg-primary '} textContent={"Confirm Checkout"} />

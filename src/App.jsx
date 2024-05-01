@@ -7,7 +7,6 @@ import { Suspense, lazy } from 'react';
 import ScrollToTop from './Components/ScrollToTop';
 import ProtectedRoute from './Components/ProtectedRoute';
 import ProductDetails from './features/Products/ProductDetails';
-import Payment from './features/Payment/Payment';
 import Order from './features/Payment/Order';
 import CreatedOrderProvider from './Context/CreatedOrderContext';
 import SelectedOrder from './features/Orders/SelectedOrder';
@@ -30,6 +29,7 @@ const ForgotPass = lazy(() => import('./features/authentication/ForgotPass'))
 const Verify = lazy(() => import('./features/authentication/Verify'))
 const Orders = lazy(() => import('./features/Orders/Orders'))
 const Profile = lazy(() => import('./Pages/Profile'))
+const Payment = lazy(() => import('./features/Payment/Payment'))
 const ShoppingCart = lazy(() => import('./features/cart/ShoppingCart'))
 
 
@@ -81,6 +81,7 @@ function App() {
 
 
 
+                    <Route path='payment' element={<ProtectedRoute><Payment /></ProtectedRoute>} />
                     <Route path='whishlist' element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
                     <Route path='profile' element={<ProtectedRoute><Profile /> </ProtectedRoute>} >
                       <Route index element={<Navigate to={'personalinformation'} />} />
