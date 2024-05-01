@@ -43,9 +43,9 @@ export default function OrderStatus() {
 
 
 
-        <div className='p-10 rounded-lg bg-gray-100'>
-            <h3 className='text-xl my-6 py-1'>Order Details {id ? `#${id}` : ''} <span className='font-oswald  bg-primary text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
-            <p className='font-oswald'>{date && formatDate(date)}</p>
+        <div className='p-6 rounded-lg bg-gray-100'>
+            <h3 className='text-head'>Order Details {id ? `#${id}` : ''} <span className='font-oswald  bg-primary text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
+            <p className='font-oswald mt-2'>{date && formatDate(date)}</p>
 
             <div className={` 
             mt-6 relative  flex justify-between
@@ -75,18 +75,18 @@ export default function OrderStatus() {
             </div>
             {
                 isConfrimed &&
-                <>            <div className='flex columns-3 gap-4'>
+                <>            <div className='flex xs:text-sm xs:flex-col md:flex-row md:text-base gap-4 '>
 
-                    <div className='w-1/2 '>
+                    <div className='xs:w-full md:w-1/2 '>
                         <label className='block' htmlFor="">Orderd For</label>
                         <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={decodedToken.name} />
                     </div>
 
-                    <div className='w-1/2'>
+                    <div className='xs:w-full md:w-1/2'>
                         <label className='block' htmlFor="">Payment Method</label>
                         <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={"Cash"} />
                     </div>
-                    <div className='w-1/2'>
+                    <div className='xs:w-full md:w-1/2'>
                         <label className='block' htmlFor="">Total Order Price</label>
                         <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" readOnly value={formatPrice(totalOrderPrice)} />
                     </div>
