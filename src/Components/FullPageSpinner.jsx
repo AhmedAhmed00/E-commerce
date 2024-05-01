@@ -7,8 +7,8 @@ export default function FullPageSpinner() {
             <InfinitySpin
                 color='#002d58'
                 visible={true}
-                height="250"
-                width="250"
+                height="200"
+                width="200"
 
                 ariaLabel="oval-loading"
                 wrapperStyle={{}}
