@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import sideImage from "../assets/SideImage.png"
+import sideImage from "../../public/SideImage.png"
 import Button from '../Components/Button'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +42,7 @@ export default function Signup() {
 
   return (
 
-    <div className='container flex gap-x-6 items-center layout'>
+    <div className='container flex py-6 gap-x-6 items-center layout'>
 
 
       <div className='xs:hidden md:block md:w-1/2'>

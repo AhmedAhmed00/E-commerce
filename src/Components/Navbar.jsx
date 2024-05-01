@@ -5,6 +5,7 @@ import useCart from '../features/cart/useCart';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useEffect, useState } from 'react';
 import { NavLinks } from './NavLinks';
+import Logo from '../../public/logo2.png'
 
 
 function Navbar() {
@@ -29,7 +30,7 @@ function Navbar() {
 
         <div className='xs:flex  xs:justify-between xs:items-center  xs:w-full md:w-auto md:items-center'>
           <div className='w-[160px]'>
-            <img className='w-full' src="../../public/assets/logo2.png" alt="" />
+            <img className='w-full' src={Logo} alt="" />
           </div>
           <RxHamburgerMenu onClick={() => setShowNav(show => !show)} className='text-3xl p-1 cursor-pointer border rounded-lg md:hidden' />
         </div>

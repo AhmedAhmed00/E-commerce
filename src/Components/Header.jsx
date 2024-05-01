@@ -1,7 +1,6 @@
 import React from 'react'
 import CategoriesHeader from './CategoriesHeader'
 
-import useBrands from '../features/Brands/useBrands';
 import Brands from './../features/Brands/Brands';
 import HeaderImages from './HeaderImages';
 

@@ -1,7 +1,7 @@
 
 import Button from '../Components/Button'
 import { useForm } from 'react-hook-form'
-import sideImage from "../assets/SideImage.png"
+import sideImage from "../../public/SideImage.png"
 import { useAuth } from '../Context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -29,7 +29,7 @@ export default function Login() {
 
 
     return (<>
-        <div className='container flex gap-6 items-center layout'>
+        <div className='container flex gap-6 py-6 items-center layout'>
 
             <div className='xs:hidden md:block md:w-1/2'>
                 <img src={sideImage} alt='products' />

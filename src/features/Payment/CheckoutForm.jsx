@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form'
 import { CreatedOrderContext } from '../../Context/CreatedOrderContext'
 import Input from '../../Components/Input'
 import { emailValid, nameValid, phoneValid } from '../../utilities/inputsValidation'
+import visa from '../../../public/visa.png'
+import masterCard from "../../../public/masterCard.png"
+import cashPay from "../../../public/cashPay.png"
 
 
 
@@ -204,10 +207,12 @@ export default function CheckoutForm({ addCashOrder, addOnlineOrder }) {
 
 
                             <div className='w-12'>
-                                <img className='' src="../.././../public/assets/cashPay.png" alt="s" />
+                                <img className='' src={cashPay} alt="s" />
                             </div>
 
                         </div>
+
+
 
 
                         <div className='flex justify-between items-center pt-2'>
@@ -230,14 +235,13 @@ export default function CheckoutForm({ addCashOrder, addOnlineOrder }) {
 
 
 
-
                             <div className='flex items-center'>
 
                                 <div className='w-12'>
-                                    <img className='' src="../.././../public/assets/visa.png" alt="" />
+                                    <img className='' src={visa} alt="" />
                                 </div>
                                 <div className='w-12'>
-                                    <img className='' src="../.././../public/assets/masterCard.png" alt="" />
+                                    <img className='' src={masterCard} alt="" />
                                 </div>
 
                             </div>

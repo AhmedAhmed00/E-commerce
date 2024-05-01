@@ -18,7 +18,7 @@ export default function useDeleteWishlist() {
                 queryKey: ['wishlist']
             })
             toast.dismiss()
-            toast.success("Remover Successfully From wishlist")
+            toast.success("Removed Successfully From wishlist")
         },
         onError: () => {
             toast.dismiss()

@@ -1,0 +1,9 @@
+import{d as l,v as d,y as m,_ as i,c as x,j as e,B as c}from"./index-CNfmmmxb.js";function y(){const s=l(),{data:r,isError:a,status:n,mutate:o}=d({mutationFn:t=>m(t),onSuccess:t=>{s("newpassword"),i.success("Success")},onError:t=>{i.error("Enter Valid Code")}});return{verifyData:r,isError:a,status:n,mutateVerify:o}}function f(){const{register:s,handleSubmit:r}=x(),a=l(),{status:n,mutateVerify:o}=y();function t(u){o(u)}return e.jsx("form",{onSubmit:r(t),className:"flex layout flex-col items-center justify-center bg-gray-100 ",children:e.jsxs("div",{className:"w-1/2  py-3  border rounded-lg bg-white shadow-md ",children:[e.jsx("h3",{className:` relative \r
+                    py-2 px-3 \r
+                    after:absolute after:h-[1px] after:w-full\r
+                    after:left-0\r
+                    after:bg-gray-300 after:bottom-0\r
+                    text-primary\r
+                    text-2xl\r
+                    mb-4\r
+                    `,children:"Enter security code"}),e.jsx("p",{className:"py-3 px-3",children:"Please check your emails for a message with your code. Your code is 6 numbers long."}),e.jsxs("div",{className:"flex px-3 mb-2 items-center  ",children:[e.jsx("input",{name:"resetCode",...s("resetCode",{maxLength:6}),className:"border outline-none px-2 py-0.5 rounded-md",type:"text",placeholder:"Enter code"}),e.jsx("p",{className:"px-3 text-sm text-gray-500",children:"We sent your code to your email"})]}),e.jsx("div",{className:"w-fit ms-auto px-4",children:e.jsxs("div",{className:"flex items-end",children:[e.jsx(c,{type:"button",onclick:()=>a("/login"),styles:"text-primary  ms-3  me-2   px-3 bg-transparent border border-primary text-gray-800",textContent:"Cancel"}),e.jsx(c,{type:"submit",styles:"text-white px-3 bg-sky",textContent:"Continue",isLoading:n==="pending"})]})})]})})}export{f as default};
