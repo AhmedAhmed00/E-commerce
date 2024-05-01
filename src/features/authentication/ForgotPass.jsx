@@ -19,33 +19,37 @@ export default function ForgotPass() {
 
 
     return (
-        <form className=' flex flex-col layout bg-gray-100 ' onSubmit={handleSubmit(onSubmit)}>
-            <div className="xs:w-96 md:w-1/2 m-auto py-5  border rounded-lg bg-white shadow-md">
+        <section className='bg-gray-100 '>
+            <form className=' flex container    flex-col layout  ' onSubmit={handleSubmit(onSubmit)}>
+
+                <div className="xs:full  container md:w-1/2 m-auto py-5  border rounded-lg bg-white shadow-md">
+
+                    <div className='flex flex-col items-center'>
+                        <FaUserLock className='text-6xl bg-primary rounded-lg m-2 p-2 text-white' />
+                        <h3 className='my-1 mb-3 text-2xl'>Forgot Password</h3>
+                        <p className='text-sm w-1/2 text-gray-500 w-'>Enter the email you used to create your account so we can send you code for reseting your password</p>
+                    </div>
+                    <div className=' items-center w-1/2 m-auto py-3' >
 
 
-                <div className='flex flex-col items-center'>
-                    <FaUserLock className='text-6xl bg-primary rounded-lg m-2 p-2 text-white' />
-                    <h3 className='my-1 mb-3 text-2xl'>Forgot Password</h3>
-                    <p className='text-sm w-1/2 text-gray-500 w-'>Enter the email you used to create your account so we can send you code for reseting your password</p>
+                        <Input className={'w-full'} type={'email'} name={'email'} regex={emailValid}
+                            placeholder={'example@mail.com'} errors={'email'}
+                            id={'email'}
+                            register={register} />
+
+                        <Button type={'submit'} styles={'text-white bg-sky  w-full mb-0'} textContent={'Send'} isLoading={status === 'pending'} />
+                        <Button type={'button'} styles={'w-full border   bg-opacity-0  border-primary text-primary  '}
+
+                            textContent={'Back To Login'} onclick={() => (navigate('/login'))} />
+
+                    </div>
+
                 </div>
-                <div className=' items-center w-1/2 m-auto py-3' >
 
 
-                    <Input className={'w-full'} type={'email'} name={'email'} regex={emailValid}
-                        placeholder={'example@mail.com'} errors={'email'}
-                        id={'email'}
-                        register={register} />
+            </form>
 
-                    <Button type={'submit'} styles={'text-white bg-sky  w-full mb-0'} textContent={'Send'} isLoading={status === 'pending'} />
-                    <Button type={'button'} styles={'w-full border   bg-opacity-0  border-primary text-primary  '}
+        </section>
 
-                        textContent={'Back To Login'} onclick={() => (navigate('/login'))} />
-
-                </div>
-
-            </div>
-
-
-        </form>
     )
 }
