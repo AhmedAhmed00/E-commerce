@@ -27,9 +27,9 @@ export default function ForgotPass() {
                     <div className='flex flex-col items-center'>
                         <FaUserLock className='text-6xl bg-primary rounded-lg m-2 p-2 text-white' />
                         <h3 className='my-1 mb-3 text-2xl'>Forgot Password</h3>
-                        <p className='text-sm w-1/2 text-gray-500 w-'>Enter the email you used to create your account so we can send you code for reseting your password</p>
+                        <p className='text-sm xs:w-full md:w-1/2 text-gray-500 w-'>Enter the email you used to create your account so we can send you code for reseting your password</p>
                     </div>
-                    <div className=' items-center w-1/2 m-auto py-3' >
+                    <div className=' items-center  xs:w-full md:w-1/2 m-auto py-3' >
 
 
                         <Input className={'w-full'} type={'email'} name={'email'} regex={emailValid}

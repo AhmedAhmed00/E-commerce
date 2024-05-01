@@ -47,11 +47,11 @@ export default function Verify() {
                     '>Enter security code</h3>
                     <p className='py-3 px-3'>Please check your emails for a message with your code. Your code is 6 numbers long.</p>
 
-                    <div className='flex px-3 mb-2 items-center  '>
+                    <div className='flex xs:flex-col gap-3 md:flex-row px-3 mb-2 items-center  '>
                         <input name='resetCode' {...register("resetCode", {
                             maxLength: 6
-                        })} className='border outline-none px-2 py-0.5 rounded-md' type="text" placeholder='Enter code' />
-                        <p className='px-3 text-sm text-gray-500'>We sent your code to your email</p>
+                        })} className='border outline-none px-2 py-0.5 rounded-md w-full' type="text" placeholder='Enter code' />
+                        <p className='text-sm text-gray-500'>We sent your code to your email</p>
                     </div>
 
 

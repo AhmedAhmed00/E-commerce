@@ -36,9 +36,9 @@ export default function NewPassword() {
         <section className='bg-gray-100 '>
 
 
-            <form onSubmit={handleSubmit(onSubmit)} className='flex layout flex-col items-center justify-center container'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex container layout flex-col items-center justify-center '>
 
-                <div className=' xs:w-96 md:w-1/2   py-3  border rounded-lg bg-white shadow-md '>
+                <div className=' xs:w-full md:w-1/2   py-3  border rounded-lg bg-white shadow-md '>
 
 
                     <h3 className='relative 
