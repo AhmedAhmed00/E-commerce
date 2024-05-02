@@ -8,13 +8,20 @@ export default function useClearCart() {
 
     const { mutate: clearCartItems, status } = useMutation({
         mutationFn: () => clearCart(accessToken),
+        onMutate: () => {
+            toast.loading("Clearing ....")
+        },
         onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: ['cart']
+
+
+            queryClient.resetQueries({
+                queryKey: ['cart', accessToken]
             })
-            toast.success("Cart Item Deleted successfully ")
+            toast.dismiss()
+            toast.success("Cart Items have been Deleted successfully ")
         },
         onError: (e) => {
+            toast.dismiss()
 
             toast.error("Error while Deleting")
         }

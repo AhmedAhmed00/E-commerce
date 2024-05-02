@@ -17,7 +17,7 @@ function useProducts(limit) {
 
     const { data, isLoading, status, isError, refetch, isFetching } = useQuery(
         {
-            queryKey: ["products", params],
+            queryKey: ["products", "cart", params],
             queryFn: () =>
                 getProducts(params),
         },

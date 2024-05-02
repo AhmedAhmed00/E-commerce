@@ -21,7 +21,9 @@ export default function CartItem({ product }) {
 
 
     function handleDeletion() {
+        setConfirmShow(show => !show)
         deleteItem(id)
+
     }
 
 

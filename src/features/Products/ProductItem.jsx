@@ -9,10 +9,10 @@ import Button from '../../Components/Button';
 import useAddToWhislist from '../wishlist/useAddToWhislist';
 import useDeleteWishlist from '../wishlist/useDeleteWishlist';
 import Favourite from '../../Components/Favourite';
-import useCart from '../cart/useCart';
 import useDeleteItems from '../cart/useDeleteCart';
+import { useEffect, useState } from 'react';
 
-export default function ProductItem({ product, className = '', wishlistItems }) {
+export default function ProductItem({ product, className = '', wishlistItems, cart }) {
 
 
 
@@ -26,7 +26,20 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
   const { mutate: deleteFromWishlist, status: deleteFromWishlistStatus } = useDeleteWishlist()
 
 
+  const [isInCart, setIsInCart] = useState(false)
 
+
+  useEffect(() => {
+    if (!cart) {
+      setIsInCart(false)
+    }
+    else {
+      setIsInCart(() => cart.data.products.some(item => item.product._id === _id))
+
+    }
+
+
+  }, [cart, _id])
 
 
 
@@ -36,9 +49,7 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
   const isFav = wishlistItems?.some(item => item._id === _id)
 
 
-  const { cart } = useCart()
 
-  const isInCart = cart?.data.products.some(item => item.product._id === _id)
   console.log(isInCart);
 
 

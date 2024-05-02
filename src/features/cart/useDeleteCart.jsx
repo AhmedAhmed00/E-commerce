@@ -9,13 +9,20 @@ export default function useDeleteItems() {
 
     const { mutate: deleteItem, status } = useMutation({
         mutationFn: (id) => deleteCartItem(id, accessToken),
+        onMutate: () => {
+            toast.loading("Deleting ..")
+        },
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['cart']
             })
+            toast.dismiss()
+
             toast.success("Cart Item Deleted successfully ")
         },
         onError: (e) => {
+            toast.dismiss()
+
             toast.error("Error while Deleting")
         }
     })
