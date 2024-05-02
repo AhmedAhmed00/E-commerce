@@ -17,23 +17,33 @@ export default function CartItem({ product }) {
 
     const { mutateCount, status } = useUpdateCount()
 
-    const { deleteItem } = useDeleteItem()
+    const { deleteItem, status: deleteStatus } = useDeleteItem()
+
+
+    function handleDeletion() {
+        deleteItem(id)
+    }
 
 
     function handleDecrease() {
-        mutateCount({ id, quantiny: count - 1 })
+        if (count === 1) {
+            setConfirmShow(show => !show)
+        }
+        else {
+            mutateCount({ id, quantiny: count - 1 })
+
+        }
+
+
     }
 
     function handleIncrease() {
+
         mutateCount({ id, quantiny: count + 1 })
-    }
-
-    function handleDeletion() {
-
-        deleteItem(id)
-        setConfirmShow(show => !show)
 
     }
+
+
 
 
 
@@ -43,7 +53,7 @@ export default function CartItem({ product }) {
 
     return (
         <>
-            {confirmShow && <ConfirmDelettion handleDeletion={() => handleDeletion(id)} setConfirmShow={setConfirmShow} />}
+            {confirmShow && <ConfirmDelettion deleteStatus={deleteStatus} handleDeletion={() => handleDeletion(id)} setConfirmShow={setConfirmShow} />}
 
             <tr className='border border-b relative   '>
 

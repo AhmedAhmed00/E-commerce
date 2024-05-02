@@ -44,7 +44,7 @@ export default function PersonalInformation() {
 
             <div className='flex justify-between'>
 
-                <h3 className="text-3xl text-primary font-bold">Personal Information</h3>
+                <h3 className="text-head">Personal Information</h3>
                 <button onClick={handleeditMode} type='button' className='flex items-center gap-1 px-3 rounded-lg border' >
                     {editMode ? <IoExitOutline /> : <MdModeEditOutline />}
                     <span>{editMode ? "Close" : "Edit"}</span>   </button>

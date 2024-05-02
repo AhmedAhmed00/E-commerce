@@ -12,7 +12,7 @@ export default function useUpdateCount() {
             queryClient.invalidateQueries({
                 queryKey: ['cart']
             })
-            toast.success("count Increased successfully ")
+            toast.success("count Updated successfully ")
         },
         onError: (e) => {
 

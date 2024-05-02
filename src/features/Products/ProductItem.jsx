@@ -24,6 +24,14 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
 
   const { mutate: addToWishList, status: addToWishListStatus } = useAddToWhislist()
   const { mutate: deleteFromWishlist, status: deleteFromWishlistStatus } = useDeleteWishlist()
+
+
+
+
+
+
+
+
   const isLoading = status === "pending"
   const isFav = wishlistItems?.some(item => item._id === _id)
 
@@ -43,6 +51,7 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
   function handleDeleteFromWishlist(id) {
     deleteFromWishlist(id)
   }
+
 
 
 
@@ -69,8 +78,8 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
           <p className='text-sm'>{formatPrice(price)}</p>
           <Rating rating={ratingsAverage} />
         </div>
-        {isInCart ? <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already Added (Remove)"} styles={'w-full bg-title text-white  '} /> :
-
+        {isInCart ?
+          <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already Added (Remove)"} styles={'w-full bg-title text-white  '} /> :
           <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full bg-primary text-white '} />
         }
       </div>

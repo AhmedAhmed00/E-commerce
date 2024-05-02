@@ -29,7 +29,7 @@ export default function ShopItems({ isFetching, isLoading, products, handlePrev,
                 </div>
                 :
                 <div className='grid'>
-                    <p className='text-2xl'>Sorry, These specifications is not available right now </p>
+                    <p className='text-2xl'>Sorry, These specifications are not available right now </p>
                 </div>}
         </>
     )
