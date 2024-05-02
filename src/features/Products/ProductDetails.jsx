@@ -52,7 +52,6 @@ export default function ProductDetails() {
     const { deleteItem, status: delStauts } = useDeleteItems()
 
 
-    const isInCart = cart?.data.products.some(item => item.product._id === _id)
 
 
     const { data: items, isLoading: isLoadingRelated } = useQuery({
@@ -60,6 +59,8 @@ export default function ProductDetails() {
         queryFn: () => getProducts({ "category": categoryId }),
         enabled: !!categoryId
     })
+    const isInCart = cart?.data.products.some(item => item.product._id === _id)
+
 
 
 

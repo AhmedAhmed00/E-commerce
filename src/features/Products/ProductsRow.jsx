@@ -27,7 +27,7 @@ export default function ProductsRow({ items, role = "row", resbonsiveStyles }) {
 
             {role === "slider" &&
                 <SliderContainer className={'products mt-[-18px]'} draggable={false} slidesToShow={5} slidesToScroll={2} isResponsive={true} >
-                    {items?.map((product) => <ProductItem wishlistItems={wishlistItems} product={product} key={product._id} className={'mx-2 '} />)}
+                    {items?.map((product) => <ProductItem cart={cart} wishlistItems={wishlistItems} product={product} key={product._id} className={'mx-2 '} />)}
                 </SliderContainer>
 
 
