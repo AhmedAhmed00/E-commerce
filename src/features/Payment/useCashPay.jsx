@@ -39,14 +39,14 @@ export default function useCashPay() {
             })
 
 
-            queryClient.invalidateQueries({
-                queryKey: ['cart']
+            queryClient.resetQueries({
+                queryKey: ['cart', accessToken]
             })
 
-            queryClient.invalidateQueries({ queryKey: ['orders', 'cart'] })
+            queryClient.invalidateQueries({ queryKey: ['orders'] })
 
             toast.success("Your Order Created Successfully")
-            return navigate(`createdorder/${data.data.id}`, { state: { order: data } })
+            navigate(`createdorder/${data.data.id}`, { state: { order: data } })
 
         },
         onError: () => {

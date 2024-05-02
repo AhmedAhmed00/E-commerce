@@ -17,7 +17,7 @@ export default function useAddProduct() {
         mutationFn: (prouctId) => addProductToCart(prouctId, accessToken),
         onSuccess: () => {
             queryClient.invalidateQueries({
-                queryKey: ['cart']
+                queryKey: ['cart', accessToken]
             })
             toast.success("Product Added Successfully")
         }, onError: () => {
