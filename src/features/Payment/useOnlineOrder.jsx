@@ -20,9 +20,11 @@ export default function useOnlineOrder() {
 
 
         onSuccess: (data) => {
-            queryClient.invalidateQueries({
-                queryKey: ['cart']
+            queryClient.resetQueries({
+                queryKey: ['cart', accessToken]
             })
+
+            queryClient.invalidateQueries({ queryKey: ['orders'] })
 
             toast.success("Your Order Created Successfully")
 
