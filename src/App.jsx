@@ -16,6 +16,7 @@ import UpdatePassword from './features/user.jsx/UpdatePassword';
 import NewPassword from './features/authentication/NewPassword';
 import OrderStatus from './features/Payment/OrderStatus';
 import FullPageSpinner from './Components/FullPageSpinner';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 
 
@@ -54,6 +55,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient} >
+        <ReactQueryDevtools />
         <AuthProvider>
           <CreatedOrderProvider>
             <BrowserRouter>

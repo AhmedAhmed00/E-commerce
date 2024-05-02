@@ -7,13 +7,13 @@ export default function Favourite({ isFav, handleAddToWishList, handleDeleteFrom
         <>
             {
                 addToWishListStatus === 'pending' || deleteFromWishlistStatus === 'pending' ?
-                    <div className='absolute top-3  left-5 rounded-full z-10 '>
-                        <Oval color='red' secondaryColor='red' width={40} height={40} />
+                    <div className='absolute top-3 p-1  left-3 rounded-full z-10 '>
+                        <Oval color='red' secondaryColor='red' width={35} height={35} />
                     </div>
                     : isFav ?
                         <button onClick={() => handleDeleteFromWishlist(_id)}
-                            className='absolute  hover:bg-red-300 top-3 left-5 rounded-full z-10'>
-                            < svg height="40px"
+                            className='absolute p-1  hover:bg-red-300 top-3 left-3 rounded-full z-10'>
+                            < svg height="35px"
                                 viewBox="0 0 24.00 24.00" fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                                 stroke="#550000"
@@ -24,9 +24,9 @@ export default function Favourite({ isFav, handleAddToWishList, handleDeleteFrom
                         </button >
 
                         :
-                        <button onClick={() => handleAddToWishList(_id)} className='absolute  top-3 hover:bg-red-300 left-5 rounded-full  z-10'>
+                        <button onClick={() => handleAddToWishList(_id)} className='absolute p-1   top-3 hover:bg-red-300 left-3 rounded-full  z-10'>
 
-                            <svg height="40px"
+                            <svg height="35px"
 
                                 viewBox="0 0 24.00 24.00" fill="none"
                                 xmlns="http://www.w3.org/2000/svg"

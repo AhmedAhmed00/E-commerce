@@ -17,6 +17,8 @@ import useWishlist from "../wishlist/useWishlist";
 import useAddToWhislist from './../wishlist/useAddToWhislist';
 import useDeleteWishlist from './../wishlist/useDeleteWishlist';
 import { Oval } from "react-loader-spinner";
+import useCart from "../cart/useCart";
+import useDeleteItems from "../cart/useDeleteCart";
 
 
 
@@ -30,7 +32,7 @@ export default function ProductDetails() {
 
     const mainImage = useRef()
 
-    const { addProduct, status } = useAddProduct()
+    const { addProduct, status: addStatus } = useAddProduct()
     const { wishlist } = useWishlist()
     const { mutate: addTowhishlist, status: AddToWhislistStatus } = useAddToWhislist()
     const { mutate: removeFromWhishlist, status: removeFromWhislistStatus } = useDeleteWishlist()
@@ -46,6 +48,12 @@ export default function ProductDetails() {
 
     const { isError, product: { _id, images, ratingsQuantity, title, description, quantity, price, imageCover, category: { _id: categoryId, name } = {}, ratingsAverage } = {}, isLoading
     } = useProduct(productId)
+    const { cart } = useCart()
+    const { deleteItem, status: delStauts } = useDeleteItems()
+
+
+    const isInCart = cart?.data.products.some(item => item.product._id === _id)
+
 
     const { data: items, isLoading: isLoadingRelated } = useQuery({
         queryKey: ["related", categoryId],
@@ -68,6 +76,7 @@ export default function ProductDetails() {
     function changeProductColor(color) {
         setFakeColor(color)
     }
+
 
     // function handleDecreaseQuantity() {
     //     if (orderQuantity === 1) {
@@ -149,9 +158,15 @@ export default function ProductDetails() {
 
                             <div className='flex gap-3 my-6 items-center '>
 
+
                                 {/* <CounterBtn decrease={handleDecreaseQuantity} increase={handleIncreaseQuantity} quantiny={orderQuantity} /> */}
 
-                                <Button isLoading={status === 'pending'} onclick={() => addProduct(_id)} textContent={'Add To Cart'} styles={'w-full text-white bg-[#f68b1e]'} />
+
+                                {isInCart ? <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already In your Cart (Remove)"} styles={'w-full bg-title text-white  '} /> :
+
+                                    <Button isLoading={(addStatus === 'pending')} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full bg-primary text-white '} />
+                                }
+
 
 
                                 <div className='border shadow-sm p-2 rounded-lg '>

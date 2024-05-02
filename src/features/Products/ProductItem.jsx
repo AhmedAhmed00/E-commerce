@@ -9,18 +9,29 @@ import Button from '../../Components/Button';
 import useAddToWhislist from '../wishlist/useAddToWhislist';
 import useDeleteWishlist from '../wishlist/useDeleteWishlist';
 import Favourite from '../../Components/Favourite';
+import useCart from '../cart/useCart';
+import useDeleteItems from '../cart/useDeleteCart';
 
 export default function ProductItem({ product, className = '', wishlistItems }) {
 
 
 
   const { title, price, imageCover, ratingsAverage, _id } = product
+  const { deleteItem, status: delStauts } = useDeleteItems()
+
 
   const { addProduct, status } = useAddProduct()
+
   const { mutate: addToWishList, status: addToWishListStatus } = useAddToWhislist()
   const { mutate: deleteFromWishlist, status: deleteFromWishlistStatus } = useDeleteWishlist()
   const isLoading = status === "pending"
   const isFav = wishlistItems?.some(item => item._id === _id)
+
+
+  const { cart } = useCart()
+
+  const isInCart = cart?.data.products.some(item => item.product._id === _id)
+  console.log(isInCart);
 
 
 
@@ -32,6 +43,7 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
   function handleDeleteFromWishlist(id) {
     deleteFromWishlist(id)
   }
+
 
 
 
@@ -57,8 +69,10 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
           <p className='text-sm'>{formatPrice(price)}</p>
           <Rating rating={ratingsAverage} />
         </div>
+        {isInCart ? <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already Added (Remove)"} styles={'w-full bg-title text-white  '} /> :
 
-        <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full bg-primary text-white '} />
+          <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full bg-primary text-white '} />
+        }
       </div>
 
 
