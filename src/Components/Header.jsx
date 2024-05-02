@@ -8,7 +8,7 @@ export default function Header({ categories, brands }) {
 
     return (
 
-        <header className='container py-6' >
+        <header className='container py-6 ' >
             <div className="flex flex-nowrap justify-between gap-6 ">
                 <CategoriesHeader categories={categories} />
                 <HeaderImages />

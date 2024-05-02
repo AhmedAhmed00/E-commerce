@@ -13,21 +13,17 @@ export default function useAddToWhislist() {
 
     const { mutate, isError, status } = useMutation({
         mutationFn: (body) => addToWishList(body, accessToken),
-        onMutate: () => {
-            toast.loading("Loading")
-        },
+
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['wishlist']
             })
-            toast.dismiss()
             toast.success("Added Successfully to wishlist")
         },
         onError: (err) => {
 
             if (!accessToken) {
                 navigate('/login')
-                toast.dismiss()
                 toast("You must be logged in first")
             }
             else {

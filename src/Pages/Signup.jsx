@@ -4,9 +4,9 @@ import Button from '../Components/Button'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import axios from 'axios';
 import Input from '../Components/Input';
 import { emailValid, nameValid, passValid, phoneValid } from '../utilities/inputsValidation';
+import { useAuth } from '../Context/AuthContext';
 
 
 
@@ -19,25 +19,64 @@ export default function Signup() {
 
 
 
-
+  const { signUp } = useAuth()
 
 
   async function onSubmit(data) {
+    const body = await data
+    setIsLoading(true)
     try {
-      setIsLoading(true)
-      const resData = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", data)
-      if (resData.data.message === "success") {
+      const res = await signUp(body)
+      if (res.data.message === "success") {
         toast.success("Successfully Created")
-        navigate("/login")
+        navigate("/home")
+        setIsLoading(false)
       }
+
     }
     catch (err) {
-      toast.error("There is an error")
+      if (err.response.status === 409) {
+        toast.error("This Account is already exist")
+        setIsLoading(false)
+      }
+      else {
+        toast.error("Error while fetching data")
+        setIsLoading(false)
+      }
+
 
     }
     finally {
       setIsLoading(false)
+
     }
+
+
+
+
+
+
+
+
+
+    // try {
+    //   setIsLoading(true)
+    //   const resData = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", data)
+    //   if (resData.data.message === "success") {
+    //     toast.success("Successfully Created")
+    //     navigate("/login")
+    //   }
+    // }
+    // catch (err) {
+    //   if (err.response.status === 409) toast.error("This Account is already exist")
+    //   else {
+    //     toast.error("Error while fetching data")
+    //   }
+
+    // }
+    // finally {
+    //   setIsLoading(false)
+    // }
   }
 
   return (

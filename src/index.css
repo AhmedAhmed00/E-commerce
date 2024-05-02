@@ -9,7 +9,7 @@
     font-family: "Andika", sans-serif;
   }
   .layout {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 138px);
   }
   body {
     background-color: #ffff;
@@ -57,7 +57,7 @@
     @apply text-3xl text-primary font-bold;
   }
   .nav-item {
-    @apply px-2 py-0.5 hover:text-sky transition-all duration-150;
+    @apply px-1 py-0.5  hover:text-sky transition-all duration-150 xs:text-xl md:text-base;
   }
 }
 

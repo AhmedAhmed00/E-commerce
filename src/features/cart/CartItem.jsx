@@ -45,20 +45,20 @@ export default function CartItem({ product }) {
         <>
             {confirmShow && <ConfirmDelettion handleDeletion={() => handleDeletion(id)} setConfirmShow={setConfirmShow} />}
 
-            <tr className='border border-b relative '>
+            <tr className='border border-b relative   '>
 
-                <td className='flex ps-4 py-3 items-center '>
+                <td className='flex xs:ps-1.5 md:ps-3 py-3  items-center '>
                     <img src={imageCover} alt="" className='w-24 h-24 rounded-2xl shadow-sm object-cover' />
-                    <div className='px-6'>
-                        <p className='text-red-700'>{trimTitle(title)}</p>
-                        <p className='text-sm'> {categoryName}</p>
-                        <p className='text-sm'>{brandName}</p>
+                    <div className='xs:px-2 md:px-3'>
+                        <p className='text-red-700 '>{trimTitle(title)}</p>
+                        <p className='text-sm text-slate-600'> {categoryName}</p>
+                        <p className='text-sm text-slate-600'>{brandName}</p>
 
                     </div>
                 </td>
                 <td className='text-center w-2/12  xs:hidden md:table-cell  font-bold  '>{formatPrice(price)}</td>
                 <td className='text-center w-1/12'>{<CounterBtn quantiny={count} status={status} increase={handleIncrease} decrease={handleDecrease} />}</td>
-                <td className='text-center w-2/12 font-bold px-3  '>{formatPrice(price * count)}</td>
+                <td className='text-center w-2/12 font-bold ps-4 pe-2  '>{formatPrice(price * count)}</td>
                 <td className='w-0'>
                     <button onClick={() => setConfirmShow(show => !show)} className='absolute right-3 top-3   text-red-600'><i><TiDeleteOutline /></i></button>
                 </td>

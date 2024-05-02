@@ -10,18 +10,15 @@ export default function useDeleteWishlist() {
 
     const { mutate, isError, status } = useMutation({
         mutationFn: (id) => removeFromWishlist(id, accessToken),
-        onMutate: () => {
-            toast.loading("Deleting")
-        },
+
+
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['wishlist']
             })
-            toast.dismiss()
             toast.success("Removed Successfully From wishlist")
         },
         onError: () => {
-            toast.dismiss()
             toast.error("cannot Delete this product")
         }
     })

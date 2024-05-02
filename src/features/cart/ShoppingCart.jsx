@@ -51,12 +51,12 @@ export default function Cart() {
 
 
                             <div className='xs:w-full lg:w-9/12 border  shadow-md bg-white rounded-lg'>
-                                <table >
+                                <table className=' w-full'>
 
                                     <thead className='border-b'>
                                         <tr>
-                                            <th className='p-4  '>Product</th>
-                                            <th className=' xs:hidden md:table-cell ' >Price</th>
+                                            <th className='py-4  '>Product</th>
+                                            <th className=' xs:hidden md:table-cell' >Price</th>
                                             <th >Quantity</th>
                                             <th>Total Price</th>
                                         </tr>

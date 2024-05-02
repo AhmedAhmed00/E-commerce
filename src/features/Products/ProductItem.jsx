@@ -17,8 +17,8 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
   const { title, price, imageCover, ratingsAverage, _id } = product
 
   const { addProduct, status } = useAddProduct()
-  const { mutate: addToWishList } = useAddToWhislist()
-  const { mutate: deleteFromWishlist } = useDeleteWishlist()
+  const { mutate: addToWishList, status: addToWishListStatus } = useAddToWhislist()
+  const { mutate: deleteFromWishlist, status: deleteFromWishlistStatus } = useDeleteWishlist()
   const isLoading = status === "pending"
   const isFav = wishlistItems?.some(item => item._id === _id)
 
@@ -48,7 +48,7 @@ export default function ProductItem({ product, className = '', wishlistItems }) 
         </div>
       </Link>
 
-      <Favourite _id={_id} handleAddToWishList={handleAddToWishList} handleDeleteFromWishlist={handleDeleteFromWishlist} isFav={isFav} />
+      <Favourite addToWishListStatus={addToWishListStatus} deleteFromWishlistStatus={deleteFromWishlistStatus} _id={_id} handleAddToWishList={handleAddToWishList} handleDeleteFromWishlist={handleDeleteFromWishlist} isFav={isFav} />
 
 
       <div className='pt-3 px-2 pb-3 bg-primary-2 rounded-lg '>

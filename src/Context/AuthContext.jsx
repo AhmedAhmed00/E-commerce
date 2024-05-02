@@ -14,6 +14,7 @@ export function AuthProvider({ children }) {
     const [isLoading, setIsLoading] = useState(false)
 
 
+
     async function login(data) {
         try {
             setIsLoading(true)
@@ -21,11 +22,28 @@ export function AuthProvider({ children }) {
             localStorage.setItem('accessToken', resData.data.token)
         }
         catch (err) {
-            toast.error("There is an error")
+            if (err.response.status === 401)
+                toast.error("Please insert correct email and password")
+            else {
+                toast.error("Error while fetching data")
+            }
         }
         finally {
             setIsLoading(false)
         }
+    }
+
+
+    async function signUp(data) {
+
+        const resData = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", data)
+        return resData
+
+
+
+
+
+
     }
 
     function logout() {
@@ -43,7 +61,7 @@ export function AuthProvider({ children }) {
 
 
 
-    return <AuthContext.Provider value={{ accessToken, setAccessToken, logout, login, isLoading }} >
+    return <AuthContext.Provider value={{ accessToken, setAccessToken, logout, login, isLoading, signUp }} >
         {children}
     </AuthContext.Provider>
 }

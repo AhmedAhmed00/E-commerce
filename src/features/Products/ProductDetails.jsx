@@ -5,7 +5,7 @@ import { getProducts } from "../../Services/ProductsApi"
 import LoaderSpinner from './../../Components/LoaderSpinner';
 import Rating from './../../Components/Rating';
 import ColorInput from './../../Components/ColorInput';
-import { MdFavoriteBorder } from "react-icons/md"
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md"
 import { GrDeliver } from "react-icons/gr"
 import { TbRestore } from "react-icons/tb"
 import { formatPrice } from "../../utilities/helpres"
@@ -13,6 +13,10 @@ import useProduct from "./useProduct"
 import Button from "../../Components/Button"
 import useAddProduct from "../cart/useAddProduct"
 import ProductsRow from "./ProductsRow";
+import useWishlist from "../wishlist/useWishlist";
+import useAddToWhislist from './../wishlist/useAddToWhislist';
+import useDeleteWishlist from './../wishlist/useDeleteWishlist';
+import { Oval } from "react-loader-spinner";
 
 
 
@@ -27,10 +31,16 @@ export default function ProductDetails() {
     const mainImage = useRef()
 
     const { addProduct, status } = useAddProduct()
-
-
-
+    const { wishlist } = useWishlist()
+    const { mutate: addTowhishlist, status: AddToWhislistStatus } = useAddToWhislist()
+    const { mutate: removeFromWhishlist, status: removeFromWhislistStatus } = useDeleteWishlist()
     const { productId } = useParams()
+
+    const isInWishlist = wishlist?.data.find(item => item._id === productId)
+
+
+
+
 
     const [isOpenImage, setIsOpenImage] = useState("")
 
@@ -144,7 +154,18 @@ export default function ProductDetails() {
                                 <Button isLoading={status === 'pending'} onclick={() => addProduct(_id)} textContent={'Add To Cart'} styles={'w-full text-white bg-[#f68b1e]'} />
 
 
-                                <i className='border shadow-sm p-2 rounded-lg '><MdFavoriteBorder /></i>
+                                <div className='border shadow-sm p-2 rounded-lg '>
+                                    {AddToWhislistStatus === 'pending' || removeFromWhislistStatus === 'pending' ?
+                                        <Oval color="red" width={20} height={20} /> :
+
+                                        isInWishlist ?
+                                            <MdFavorite cursor={'pointer'} onClick={() => removeFromWhishlist(productId)} color="red" fontSize={20} /> :
+                                            <MdFavoriteBorder cursor={'pointer'} onClick={() => addTowhishlist({ productId: productId })} color="red" fontSize={20} className="text-red" />
+                                    }
+
+
+
+                                </div>
 
                             </div>
 
