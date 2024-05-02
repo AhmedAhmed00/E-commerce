@@ -29,7 +29,7 @@ export default function Signup() {
       const res = await signUp(body)
       if (res.data.message === "success") {
         toast.success("Successfully Created")
-        navigate("/home")
+        navigate("/login")
         setIsLoading(false)
       }
 
