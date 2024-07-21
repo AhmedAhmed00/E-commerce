@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { getProducts } from "../../Services/ProductsApi"
 import { useSearchParams } from "react-router-dom"
 
@@ -16,6 +16,7 @@ function useProducts(limit) {
         "page": Number(searchParams.get("page")) || 1,
         "sort": searchParams.get("sort") || '',
     }
+    console.log(params);
 
     const { data, isLoading, status, isError, refetch, isFetching } = useQuery(
         {
