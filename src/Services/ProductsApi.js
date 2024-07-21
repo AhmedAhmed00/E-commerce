@@ -14,10 +14,6 @@ export async function getProducts(params) {
 
     const url = `${BASE_URL}/products?${queryParams}`
 
-
-
-
-
     const res = await fetch(url)
 
     if (!res.ok) {

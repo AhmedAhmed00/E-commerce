@@ -11,20 +11,12 @@ export default function Searchbar() {
 
     const [searchQuery, setSearchQuery] = useState("")
 
-    const { data: { data } = {} } = useProducts()
+    // const { data: { data } = {} } = useProducts()
 
-    let arrOfResaults = []
+    // let arrOfResaults = []
 
-    if (searchQuery.length > 0) {
-        arrOfResaults = data?.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
-    }
-
-
-
-
-
-
-
+    // if (searchQuery.length > 0) {
+    // }
 
 
     return (
@@ -33,8 +25,15 @@ export default function Searchbar() {
                 <input defaultValue={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className='bg-inherit me-6 focus:border-none w-full focus:outline-none text-sm pe-3 hidden md:block' placeholder='What are you looking for' id='search' type="text" />
                 <i className='text-xl  bg-primary text-white rounded-e-lg     absolute right-0 top-0 bottom-0 flex items-center px-2 '> <CiSearch />
                 </i>
-                {arrOfResaults.length ? <SearchProducts setSearchQuery={setSearchQuery} arrOfResaults={arrOfResaults} />
-                    : ''}
+
+
+                {searchQuery.length > 0 && <SearchProducts searchQuery={searchQuery} />}
+
+                {/* {arrOfResaults.length ? <SearchProducts setSearchQuery={setSearchQuery} arrOfResaults={arrOfResaults} />
+                    : ''} */}
+
+
+
             </div>
 
         </>
