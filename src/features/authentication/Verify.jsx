@@ -29,13 +29,13 @@ export default function Verify() {
     return (
 
 
-        <section className='bg-gray-100 '>
+        <section className=' dark:bg-primary-3 '>
 
 
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex container layout flex-col items-center justify-center '>
 
-                <div className='xs:full md:w-1/2  py-3  border rounded-lg bg-white shadow-md '>
+                <div className='xs:full md:w-1/2  py-3  border rounded-lg bg-white dark:bg-primary-2 shadow-md '>
                     <h3 className=' relative 
                     py-2 px-3 
                     after:absolute after:h-[1px] after:w-full
@@ -50,8 +50,8 @@ export default function Verify() {
                     <div className='flex xs:flex-col gap-3 md:flex-row px-3 mb-2 items-center  '>
                         <input name='resetCode' {...register("resetCode", {
                             maxLength: 6
-                        })} className='border outline-none px-2 py-0.5 rounded-md w-full' type="text" placeholder='Enter code' />
-                        <p className='text-sm text-gray-500'>We sent your code to your email</p>
+                        })} className='border outline-none px-2 py-0.5 rounded-md w-full dark:text-black' type="text" placeholder='Enter code' />
+                        <p className='text-sm text-gray-500 '>We sent your code to your email</p>
                     </div>
 
 

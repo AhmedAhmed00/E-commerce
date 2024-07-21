@@ -19,10 +19,10 @@ export default function ForgotPass() {
 
 
     return (
-        <section className='bg-gray-100 '>
+        <section className='bg-gray-100 dark:bg-primary-3 '>
             <form className=' flex container    flex-col layout  ' onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="xs:full  container md:w-1/2 m-auto py-5  border rounded-lg bg-white shadow-md">
+                <div className="xs:full  container md:w-1/2 m-auto py-5  border rounded-lg bg-white dark:bg-primary-2 shadow-md">
 
                     <div className='flex flex-col items-center'>
                         <FaUserLock className='text-6xl bg-primary rounded-lg m-2 p-2 text-white' />

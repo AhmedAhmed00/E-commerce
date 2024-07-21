@@ -33,12 +33,12 @@ export default function NewPassword() {
 
 
     return (
-        <section className='bg-gray-100 '>
+        <section className='bg-gray-100 dark:bg-primary-3 '>
 
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex container layout flex-col items-center justify-center '>
 
-                <div className=' xs:w-full md:w-1/2   py-3  border rounded-lg bg-white shadow-md '>
+                <div className=' xs:w-full md:w-1/2   py-3  border rounded-lg dark:bg-primary-2 bg-white shadow-md '>
 
 
                     <h3 className='relative 
