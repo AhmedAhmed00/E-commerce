@@ -21,7 +21,7 @@ export default function CategoriesHeader({ categories }) {
             {categories?.map(categoryItem =>
                 <li key={categoryItem._id}
                     className='list text-base underline hover:text-sky 
-                    text-white hover:transition  duration-150 '>
+                    dark:text-white text-primary hover:transition  duration-150 '>
                     <Link to={`/shop?category[in]=${categoryItem._id}`}>{categoryItem.name}</Link>
                 </li>)}
         </div>
