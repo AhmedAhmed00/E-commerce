@@ -29,6 +29,7 @@ export default function Orders() {
 
                             <div className='xs:w-full  md:w-5/12  lg:w-4/12 xl:w-3/12 self-start max-h-screen sticky top-20   overflow-y-scroll   rounded-lg border shadow-sm'>
                                 <h3 className='text-head px-3 py-3 border border-b'>Order history</h3>
+
                                 {orders.length ? orders.map(order => <OrderItem order={order}
                                     key={order.id} handleShowDetails={handleShowDetails} selectedItemId={selectedItemId} setSelectedItemId={setSelectedItemId} />)
                                     :

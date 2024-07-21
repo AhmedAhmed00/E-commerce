@@ -17,6 +17,7 @@ export default function Layout() {
     const { setAccessToken } = useAuth()
     const tkn = localStorage.getItem("accessToken")
 
+
     useEffect(() => {
         setAccessToken(tkn)
     }, [setAccessToken, tkn])
@@ -26,9 +27,9 @@ export default function Layout() {
         <>
 
 
-
             <Topheader />
             <Navbar />
+
             <main className="layout">
                 <Outlet />
             </main>

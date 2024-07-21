@@ -1,5 +1,8 @@
+
 import { CgClose } from 'react-icons/cg';
+
 import { NavLink } from 'react-router-dom';
+
 
 
 const xsStylse = `xs:flex-col xs:h-screen 
@@ -26,7 +29,7 @@ const mdStyles = `
      `
 
 
-export function NavLinks({ accessToken, login, logout, numOfCartItems, isError, isLoading, showNav, setShowNav }) {
+export function NavLinks({ accessToken, login, numOfCartItems, isError, isLoading, showNav, setShowNav }) {
 
 
 
@@ -43,21 +46,39 @@ export function NavLinks({ accessToken, login, logout, numOfCartItems, isError, 
             <CgClose onClick={() => { setShowNav(show => !show) }} color='white' cursor={'pointer'} fontSize={40} className='  md:hidden ' />
 
             {accessToken ? <>
+
                 <NavLink className='nav-item' to={'/home'}>Home</NavLink>
                 <NavLink className='nav-item' to={'/allorders'}>Orders</NavLink>
-                <NavLink className='nav-item' to={'/profile'}>Profile</NavLink>
-                <NavLink className='nav-item' to={'/whishlist'}>Wishlist</NavLink>
+
                 <NavLink className='nav-item' to={'/order/payment'}>Payment</NavLink>
                 <NavLink className='nav-item' to={'/shop'}>Shop</NavLink>
-                <NavLink className='nav-item' to='' onClick={() => { logout(); }}>Logout</NavLink>
+
+
                 <NavLink to={'/cart'} className='nav-item relative '>
                     Cart
-                    <span className=" bg-green-800
+
+                    <span className="
+                     bg-green-800
               rounded-lg
-              absolute -top-[10px]  text-xs font-medium
-              px-1.5 py-0.5  text-white  border
+              absolute -top-[8px] -right-[4px]  text-xs font-medium
+              px-1   text-white  border
+
+
+
      ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
+
+
+
+
                 </NavLink>
+
+
+                <NavLink className='nav-item' to={'/whishlist'}>
+                    Wishlist
+                </NavLink>
+
+
+
 
             </> :
                 <>

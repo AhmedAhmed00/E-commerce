@@ -18,7 +18,8 @@ export default function ProductsRow({ items, role = "row", resbonsiveStyles }) {
 
         <>
             {role === "row" && <div className={`gap-5  ` + resbonsiveStyles}>
-                {items?.map((product) => <ProductItem cart={cart} wishlistItems={wishlistItems} product={product} key={product._id} />)}
+                {items?.map((product) => <ProductItem cart={cart}
+                    wishlistItems={wishlistItems} product={product} key={product._id} />)}
 
 
             </div>}

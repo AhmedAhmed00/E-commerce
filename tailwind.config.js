@@ -4,8 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
 
+  darkMode: 'class',
+
+
+  theme: {
 
 
     fontFamily: {
@@ -37,15 +40,21 @@ export default {
       "2xl": "1320px"
     },
 
+
     extend: {
+      // 
       colors: {
-        "primary": "#002d58",
-        "primary-2": "#e6f1fc",
-        "primary-3": "#f6f3f0",
-        "vanilla": "#fbece3",
-        "sky": "#0071dc",
-        "teal": "085f63",
-        "title": "#aa813f"
+        "bg-color": "var(--bg-color)",
+        "bg-nav": "var(--bg-nav)",
+        "brown-color": "var(--brown-color)",
+        "primary": "var(--primary)",
+        "primary-2": "var(--primary-2)",
+        "primary-3": "var(--primary-3)",
+        "vanilla": "var(--vanilla)",
+        "sky": "var(--sky)",
+        "teal": "var(--teal)",
+        "title": "var(--title)",
+
 
 
       },

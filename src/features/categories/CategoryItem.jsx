@@ -11,7 +11,7 @@ export default function CategoryItem({ item }) {
        group
        overflow-hidden
                      rounded-lg transition-transform
-                         border border-black
+                         border  border-primary
                         shadow-md
                         relative
                           duration-300 hover:transform hover:-translate-y-3'>

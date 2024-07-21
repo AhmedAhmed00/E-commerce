@@ -91,7 +91,8 @@ export default function ProductItem({ product, className = '', wishlistItems, ca
         </div>
         {isInCart ?
           <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already Added (Remove)"} styles={'w-full bg-title text-white  '} /> :
-          <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"} styles={'w-full bg-primary text-white '} />
+          <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"}
+            styles={'w-full bg-primary dark:bg-primary-3 text-white '} />
         }
       </div>
 

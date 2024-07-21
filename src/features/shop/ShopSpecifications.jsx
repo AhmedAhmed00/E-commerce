@@ -15,10 +15,11 @@ export function ShopSpecifications({ handleShowSpecList, showSpecifcaitonsList, 
     return (
 
         <form className={`
+        
         py-6 min-w-56 min-h-screen
          xs:fixed
         top-28
-      xs:bg-white xs:z-30
+           bg-white dark:bg-primary-2 xs:z-30
         bottom-0
          z-50
         md:sticky

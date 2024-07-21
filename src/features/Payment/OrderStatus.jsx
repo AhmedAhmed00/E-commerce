@@ -43,18 +43,18 @@ export default function OrderStatus() {
 
 
 
-        <div className='p-6 rounded-lg bg-gray-100'>
-            <h3 className='text-head'>Order Details {id ? `#${id}` : ''} <span className='font-oswald  bg-primary text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
+        <div className='p-6 rounded-lg bg-gray-100 dark:bg-primary-2' >
+            <h3 className='text-head'>Order Details {id ? `#${id}` : ''} <span className='font-oswald  bg-primary dark:bg-sky text-white ms-4 text-base px-3 py-0.5  rounded-lg'>{isConfrimed ? "Shipping" : "notConfrimed"}</span></h3>
             <p className='font-oswald mt-2'>{date && formatDate(date)}</p>
 
             <div className={` 
             mt-6 relative  flex justify-between
             before:-z-10 before:absolute before:start-0 before:end-0 before:w-full before:h-[2px] z-10 before:bg-gray-300 before:top-[50%] before:-translate-y-[50%] `
                 +
-                (isConfrimed && ` after:-z-10 after:absolute after:start-0 after:end-0 after:w-1/2 after:h-[2px] after:bg-primary after:top-[50%] after:-translate-y-[50%]`)
+                (isConfrimed && ` after:-z-10 after:absolute after:start-0 after:end-0 after:w-1/2 after:h-[2px] after:bg-primary after:dark:bg-sky after:top-[50%] after:-translate-y-[50%]`)
             }>
-                <span className={`w-8 h-8 p-5 flex items-center justify-center  text-center rounded-full text-white bg-gray-300 ` + (isConfrimed && ` bg-primary text-white`)}>&#10004;</span>
-                <span className={`w-8 h-8  p-5  flex items-center justify-center  bg-gray-300  text-center rounded-full text-white ` + (isConfrimed && ` bg-primary text-white`)}>2</span>
+                <span className={`w-8 h-8 p-5 flex items-center justify-center  text-center rounded-full text-white bg-gray-300 ` + (isConfrimed && ` bg-primary dark:bg-sky text-white`)}>&#10004;</span>
+                <span className={`w-8 h-8  p-5  flex items-center justify-center  bg-gray-300  text-center rounded-full text-white ` + (isConfrimed && ` bg-primary dark:bg-sky text-white`)}>2</span>
                 <span className='w-8 h-8  p-5   flex items-center justify-center bg-gray-300 text-center rounded-full text-black'>3</span>
             </div>
 
@@ -79,16 +79,16 @@ export default function OrderStatus() {
 
                     <div className='xs:w-full md:w-1/2 '>
                         <label className='block' htmlFor="">Orderd For</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={decodedToken.name} />
+                        <input className='w-full dark:bg-primary-3 capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={decodedToken.name} />
                     </div>
 
                     <div className='xs:w-full md:w-1/2'>
                         <label className='block' htmlFor="">Payment Method</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={"Cash"} />
+                        <input className='w-full dark:bg-primary-3 capitalize px-3 py-1.5 border my-2 rounded-md' type="text" readOnly value={"Cash"} />
                     </div>
                     <div className='xs:w-full md:w-1/2'>
                         <label className='block' htmlFor="">Total Order Price</label>
-                        <input className='w-full capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" readOnly value={formatPrice(totalOrderPrice)} />
+                        <input className='w-full dark:bg-primary-3 capitalize px-3 py-1.5 border my-2 rounded-md ' type="text" readOnly value={formatPrice(totalOrderPrice)} />
                     </div>
                 </div>
                     <h2 className='text-center my-5 text-green-500 text-2xl'>Your order is created Successfully, Thank you ya <span className='capitalize'>{decodedToken?.name?.split(" ").slice(0, 1)}</span>  </h2>

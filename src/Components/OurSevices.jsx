@@ -10,7 +10,7 @@ export default function OurSevices() {
 
             <div className='grid bg-van pb-10 round  xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container'>
                 <div className='flex border p-5 bg-vanilla border-gray-400    items-center   '>
-                    <i className=''><IoRocket className='w-14 h-14 mb-2 me-4 bg-primary text-white p-2 rounded-full' />
+                    <i className=''><IoRocket className='w-14 h-14 mb-2 me-4 bg-primary dark:bg-indigo-500 text-white p-2 rounded-full' />
                     </i>
                     <div>
                         <h3>
@@ -22,7 +22,7 @@ export default function OurSevices() {
 
                 </div>
                 <div className='flex border p-5 bg-vanilla border-gray-400    items-center'>
-                    <i className=' '><FaShuttleVan className='w-14 h-14 mb-2 me-4 bg-primary text-white p-2 rounded-full' />
+                    <i className=' '><FaShuttleVan className='w-14 h-14 mb-2 me-4 bg-primary dark:bg-indigo-500  text-white p-2 rounded-full' />
                     </i>
                     <div>
                         <h3>      Card Payments
@@ -33,7 +33,7 @@ export default function OurSevices() {
 
                 </div>
                 <div className='flex  border p-5 bg-vanilla border-gray-400   items-center    '>
-                    <i className=''><GiBoxUnpacking className='w-14 h-14 mb-2 me-4 bg-primary text-white p-2 rounded-full' />
+                    <i className=''><GiBoxUnpacking className='w-14 h-14 mb-2 me-4 bg-primary dark:bg-indigo-500 text-white p-2 rounded-full' />
                     </i>
                     <div>
                         <h3>
@@ -43,7 +43,7 @@ export default function OurSevices() {
 
                 </div>
                 <div className='flex border p-5 bg-vanilla border-gray-400   items-center   '>
-                    <i className=''><FaMapMarkedAlt className='w-14 h-14 mb-2 me-4 bg-primary text-white p-2 rounded-full' />
+                    <i className=''><FaMapMarkedAlt className='w-14 h-14 mb-2 me-4 bg-primary dark:bg-indigo-500 text-white p-2 rounded-full' />
                     </i>
                     <div>
                         <h3>

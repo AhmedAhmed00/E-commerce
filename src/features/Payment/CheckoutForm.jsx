@@ -67,7 +67,7 @@ export default function CheckoutForm({ addCashOrder, addOnlineOrder }) {
 
         <>
 
-            <div className='xs:w-full lg:w-9/12 shadow-lg  border border-black p-4 rounded-xl gap' >
+            <div className='xs:w-full lg:w-9/12 shadow-lg dark:bg-primary-2  border border-black dark:border-white p-4 rounded-xl gap' >
                 <h3 className='col-start-1 col-end-3 text-2xl mb-3 tex-4xl text-primary'>Checkout</h3>
                 <form id='checkoutForm' className='' onSubmit={handleSubmit(onSubmit)}>
 

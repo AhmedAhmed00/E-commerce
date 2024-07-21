@@ -18,11 +18,11 @@ export default function ShopItems({ isFetching, isLoading, products, handlePrev,
                     <div className='flex  w-fit gap-3 container mt-2  '>
                         <Button onclick={handlePrev}
                             disabled={currentPage === 1}
-                            textContent={'Prev'} styles={`text-white px-4 py-1 ${currentPage === 1 ? 'bg-gray-400' : "bg-primary"} `} />
+                            textContent={'Prev'} styles={`text-white px-4 py-1 ${currentPage === 1 ? 'bg-gray-400' : "bg-primary  dark:bg-sky "} `} />
                         <Button disabled={currentPage === numberOfPages} onclick={handleNext}
                             textContent={'Next'}
                             styles={`text-white  px-4 py-1
-                            ${currentPage === numberOfPages ? 'bg-gray-400' : "bg-primary"}  `} />
+                            ${currentPage === numberOfPages ? 'bg-gray-400 ' : "bg-primary dark:bg-sky "}  `} />
                     </div>
 
                 </div>

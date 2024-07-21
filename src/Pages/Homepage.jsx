@@ -45,7 +45,7 @@ export default function Homepage() {
 
                             <ProductsRow items={products} resbonsiveStyles={responsiveStyles} />
                             <div className='grid place-items-center mt-2'>
-                                <Button onclick={() => navigate("/shop")} textContent={"Show More"} styles={'px-3 bg-primary m-auto   text-white py-1 text-xl'} />
+                                <Button onclick={() => navigate("/shop")} textContent={"Show More"} styles={'px-3 bg-primary  dark:bg-primary-3 dark:border m   dark:bg-indigo-500m-auto text-white py-1 text-xl'} />
                             </div>
 
 
@@ -56,7 +56,7 @@ export default function Homepage() {
                         <Section >
                             <Categories categories={categories} />
                             <div className='grid place-items-center mt-2'>
-                                <Button onclick={() => navigate("/shop")} textContent={"Show More"} styles={'px-3 bg-primary m-auto   text-white py-1 text-xl'} />
+                                <Button onclick={() => navigate("/shop")} textContent={"Show More"} styles={'px-3 bg-primary dark:bg-primary-3 dark:border m-auto  text-white py-1 text-xl'} />
                             </div>
                         </Section>
 

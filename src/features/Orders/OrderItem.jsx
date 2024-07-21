@@ -27,7 +27,7 @@ export default function Order({ order, selectedItemId, setSelectedItemId, handle
 
             to={`${id}`} className={`flex px-2 gap-3 justify-between py-2
                           items-center font-oswald
-                          text-sm text-primary border-b
+                          text-sm text-primary dark:text-white border-b
                            ` + (selectedItemId === id ? 'bg-primary-2 ' : "")}     >
             <div className='w-3/12' >
                 <p>#{id}</p>

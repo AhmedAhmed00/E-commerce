@@ -12,7 +12,9 @@ export default function PayDetails({ children, handlePay }) {
 
 
     return (
-        <div className='bg-[#ffd28d] xs:w-full lg:w-3/12 px-4 py-5 sticky top-20 rounded-xl border-black border flex flex-col gap-3'>
+        <div className='bg-[#ffd28d] dark:text-black dark:border-white
+           xs:w-full lg:w-3/12 px-4 py-5 sticky top-20 rounded-xl
+            border-black border flex flex-col gap-3'>
             <p className='mb-3 text-xl '>Cart Details</p>
             <div className='flex justify-between'>
                 <p>Items</p>

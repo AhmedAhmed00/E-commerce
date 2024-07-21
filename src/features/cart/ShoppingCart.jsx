@@ -50,7 +50,7 @@ export default function Cart() {
                         <div className='flex  xs:flex-col lg:flex-row justify-between items-start gap-6' >
 
 
-                            <div className='xs:w-full lg:w-9/12 border  shadow-md bg-white rounded-lg'>
+                            <div className='xs:w-full lg:w-9/12 border  shadow-md dark:bg-primary-2 rounded-lg'>
                                 <table className=' w-full'>
 
                                     <thead className='border-b'>

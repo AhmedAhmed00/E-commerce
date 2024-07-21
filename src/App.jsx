@@ -17,6 +17,7 @@ import NewPassword from './features/authentication/NewPassword';
 import OrderStatus from './features/Payment/OrderStatus';
 import FullPageSpinner from './Components/FullPageSpinner';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import DarkModeProvikder from './Context/ModeContext';
 
 
 
@@ -56,59 +57,64 @@ function App() {
     <>
       <QueryClientProvider client={queryClient} >
         <ReactQueryDevtools />
-        <AuthProvider>
-          <CreatedOrderProvider>
-            <BrowserRouter>
-              <Suspense fallback={<FullPageSpinner />}>
-                <ScrollToTop />
-                <Routes>
-                  <Route element=<Layout />  >
-                    <Route path='home' element={<Homepage />} />
-                    <Route path='signup' element={<Signup />} />
-                    <Route path='shop' element={<Shop />} />
-                    <Route index element={<Navigate to={'home'} />} />
-                    <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
+        <DarkModeProvikder >
+
+
+          <AuthProvider>
+            <CreatedOrderProvider>
+
+              <BrowserRouter>
+                <Suspense fallback={<FullPageSpinner />}>
+                  <ScrollToTop />
+                  <Routes>
+                    <Route element=<Layout />  >
+                      <Route path='home' element={<Homepage />} />
+                      <Route path='signup' element={<Signup />} />
+                      <Route path='shop' element={<Shop />} />
+                      <Route index element={<Navigate to={'home'} />} />
+                      <Route path='cart' element=<ProtectedRoute><ShoppingCart /></ProtectedRoute> />
 
 
 
-                    <Route path='login' element={<Login />} />
+                      <Route path='login' element={<Login />} />
 
-                    <Route path='forgotpassword' element={<ForgotPass />} />
+                      <Route path='forgotpassword' element={<ForgotPass />} />
 
-                    <Route path='forgotpassword/verify' element={<Verify />} />
+                      <Route path='forgotpassword/verify' element={<Verify />} />
 
-                    <Route path='forgotpassword/verify/newpassword' element={<NewPassword />} />
-
-
+                      <Route path='forgotpassword/verify/newpassword' element={<NewPassword />} />
 
 
 
-                    <Route path='whishlist' element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
-                    <Route path='profile' element={<ProtectedRoute><Profile /> </ProtectedRoute>} >
-                      <Route index element={<Navigate to={'personalinformation'} />} />
-                      <Route path='personalinformation' element={<ProtectedRoute><PersonalInformation /></ProtectedRoute>} />
-                      <Route path='updatepassword' element={<ProtectedRoute> <UpdatePassword /> </ProtectedRoute>} />
+
+
+                      <Route path='whishlist' element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+                      <Route path='profile' element={<ProtectedRoute><Profile /> </ProtectedRoute>} >
+                        <Route index element={<Navigate to={'personalinformation'} />} />
+                        <Route path='personalinformation' element={<ProtectedRoute><PersonalInformation /></ProtectedRoute>} />
+                        <Route path='updatepassword' element={<ProtectedRoute> <UpdatePassword /> </ProtectedRoute>} />
+                      </Route>
+
+                      <Route path='allorders' element={<ProtectedRoute> <Orders /> </ProtectedRoute>} >
+                        <Route index element={<NotSelectedOrder />} />
+                        <Route path=':orderId' element={<SelectedOrder />} />
+                      </Route>
+
+                      <Route path='order' element={<ProtectedRoute><Order /> </ProtectedRoute>} >
+                        <Route path='payment' element={<Payment />} />
+                        <Route path='payment/createdOrder/:orderId' element={<OrderStatus />} />
+                      </Route>
+
+                      <Route path='products/productInfo/:productId' element={<ProductDetails />} />
                     </Route>
-
-                    <Route path='allorders' element={<ProtectedRoute> <Orders /> </ProtectedRoute>} >
-                      <Route index element={<NotSelectedOrder />} />
-                      <Route path=':orderId' element={<SelectedOrder />} />
-                    </Route>
-
-                    <Route path='order' element={<ProtectedRoute><Order /> </ProtectedRoute>} >
-                      <Route path='payment' element={<Payment />} />
-                      <Route path='payment/createdOrder/:orderId' element={<OrderStatus />} />
-                    </Route>
-
-                    <Route path='products/productInfo/:productId' element={<ProductDetails />} />
-                  </Route>
-                  <Route />
-                </Routes>
-                <Toaster position='bottom-right' />
-              </Suspense>
-            </BrowserRouter>
-          </CreatedOrderProvider>
-        </AuthProvider>
+                    <Route />
+                  </Routes>
+                  <Toaster position='bottom-right' />
+                </Suspense>
+              </BrowserRouter>
+            </CreatedOrderProvider>
+          </AuthProvider>
+        </DarkModeProvikder>
       </QueryClientProvider >
 
     </>

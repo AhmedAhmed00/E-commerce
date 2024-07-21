@@ -5,14 +5,38 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --sky: #0071dc;
+    --teal: #262626;
+    --title: #aa813f;
+    --brown-color: #ae9b84;
+  }
   html {
     font-family: "Andika", sans-serif;
   }
   .layout {
     min-height: calc(100vh - 138px);
   }
+
   body {
-    background-color: #ffff;
+    background-color: var(--bg-color);
+  }
+  .light {
+    --bg-color: #ffff;
+    --bg-nav: #2e2e48;
+    --primary: #002d58;
+    --primary-2: #e6f1fc;
+    --primary-3: #f6f3f0;
+    --vanilla: #fbece3;
+  }
+  .dark {
+    color: #e3e7fc;
+    --bg-color: #0f0f0f;
+    --bg-nav: #262626;
+    --primary: #0071dc;
+    --primary-2: #1a1a1a;
+    --primary-3: #262626;
+    --vanilla: #262626;
   }
   li {
     @apply py-1 text-sm text-gray-300;
@@ -57,7 +81,7 @@
     @apply text-3xl text-primary font-bold;
   }
   .nav-item {
-    @apply px-1 py-0.5  hover:text-sky transition-all duration-150 xs:text-xl md:text-base;
+    @apply px-1 py-0.5 dark:text-white hover:text-sky transition-all duration-150 xs:text-xl md:text-base;
   }
 }
 
