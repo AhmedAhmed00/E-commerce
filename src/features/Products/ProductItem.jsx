@@ -83,7 +83,7 @@ export default function ProductItem({ product, className = '', wishlistItems, ca
       <Favourite addToWishListStatus={addToWishListStatus} deleteFromWishlistStatus={deleteFromWishlistStatus} _id={_id} handleAddToWishList={handleAddToWishList} handleDeleteFromWishlist={handleDeleteFromWishlist} isFav={isFav} />
 
 
-      <div className='pt-3 px-2 pb-3 bg-primary-2 rounded-lg '>
+      <div className='pt-3 px-2 pb-3 bg-primary-2 rounded-lg  '>
         <h3 className='text-pimary text-title'>{trimTitle(title)}</h3>
         <div className='flex justify-between items-center  '>
           <p className='text-sm'>{formatPrice(price)}</p>
@@ -92,7 +92,7 @@ export default function ProductItem({ product, className = '', wishlistItems, ca
         {isInCart ?
           <Button isLoading={(delStauts === 'pending')} onclick={() => { deleteItem(_id) }} textContent={"Already Added (Remove)"} styles={'w-full bg-title text-white  '} /> :
           <Button isLoading={isLoading} onclick={() => { addProduct(_id) }} textContent={"Add To Cart"}
-            styles={'w-full bg-primary dark:bg-primary-3 text-white '} />
+            styles={'w-full bg-primary dark:bg-primary-3 dark:border dark:border-white text-white '} />
         }
       </div>
 

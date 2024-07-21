@@ -7,21 +7,12 @@ export default function CategoryItem({ item }) {
     return (
 
 
-        <div className='
-       group
-       overflow-hidden
-                     rounded-lg transition-transform
-                         border  border-primary
-                        shadow-md
-                        relative
-                          duration-300 hover:transform hover:-translate-y-3'>
+        <div className=' category-item group'>
             <Link to={`/shop?category[in]=${item._id}`} >
                 <img className='w-full h-full  object-cover rounded-lg' src={image} alt="" />
                 <p className='
-  
                 absolute
                  top-[50%]
-                
                  w-full
             
                  text-white translate-x-[620px] 
