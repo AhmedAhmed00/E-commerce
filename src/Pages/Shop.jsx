@@ -4,6 +4,7 @@ import useProducts from "./../features/Products/useProducts";
 import ShopHaeder from "../features/shop/ShopHaeder";
 import ShopItems from "./ShopItems";
 import { useState } from "react";
+import Searchbar from "./../Components/Searchbar";
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,11 +59,12 @@ export default function Shop() {
             handleSpecificationsChange={handleSpecificationsChange}
           />
 
-          <div className="flex-1 bg-red">
+          <div className="flex-1 ">
             <ShopHaeder
               handleShowSpecList={handleShowSpecList}
               handleSpecificationsChange={handleSpecificationsChange}
             />
+
             <ShopItems
               currentPage={currentPage}
               handlePrev={handlePrev}

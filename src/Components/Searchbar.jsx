@@ -16,17 +16,19 @@ export default function Searchbar() {
     <>
       <div
         className="flex items-center rounded-lg 
+        xs:hidden lg:block
              px-4 py-1.5 text-sm bg-vanilla
               light:text-[#191f40] 
               border
               dark:border-brown-color
+              h-full
                border-black  relative"
       >
         <input
           defaultValue={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="bg-inherit me-6 focus:border-none 
-                     w-full focus:outline-none text-sm pe-3 hidden md:block"
+                     w-full focus:outline-none text-sm pe-3  md:block"
           placeholder="What are you looking for"
           id="search"
           type="text"

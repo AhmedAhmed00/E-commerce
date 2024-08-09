@@ -1,11 +1,12 @@
 import { CgClose } from "react-icons/cg";
 
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../Context/AuthContext";
 
 const xsStylse = `xs:flex-col xs:h-screen 
      xs:p-10
      xs:gap-5
-     md:sticky md:p-0 md:gap-1
+     lg:sticky lg:p-0 lg:gap-1
      xs:fixed
      xs:flex
      z-10
@@ -15,13 +16,13 @@ const xsStylse = `xs:flex-col xs:h-screen
      xs:left-0 `;
 
 const mdStyles = `
-      md:flex
-     md:opacity-100
-     md:font-extrabold
+     lg:flex
+     lg:opacity-100
+     lg:font-extrabold
      xs:bg-primary xs:text-white gap-1 items-center
-     md:flex-row md:h-auto md:bg-transparent
-     md:text-black
-     md:translate-x-0
+     lg:flex-row lg:h-auto lg:bg-transparent
+     lg:text-black
+     lg:translate-x-0
 
      `;
 
@@ -34,6 +35,7 @@ export function NavLinks({
   showNav,
   setShowNav,
 }) {
+  const { logout } = useAuth();
   return (
     <ul
       className={
@@ -56,7 +58,7 @@ export function NavLinks({
         color="white"
         cursor={"pointer"}
         fontSize={40}
-        className="  md:hidden "
+        className="  lg:hidden "
       />
 
       {accessToken ? (
@@ -83,9 +85,6 @@ export function NavLinks({
               rounded-lg
               absolute -top-[8px] -right-[4px]  text-xs font-medium
               px-1   text-white  border
-
-
-
      "
             >
               {isLoading ? "..." : isError ? 0 : numOfCartItems}{" "}
@@ -94,6 +93,16 @@ export function NavLinks({
 
           <NavLink className="nav-item" to={"/whishlist"}>
             Wishlist
+          </NavLink>
+          <NavLink className="nav-item xs:block lg:hidden" to={"/profile"}>
+            Profile
+          </NavLink>
+          <NavLink
+            onClick={logout}
+            className="nav-item xs:block lg:hidden"
+            to={"/whishlist"}
+          >
+            Logout
           </NavLink>
         </>
       ) : (
