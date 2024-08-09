@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function ErrorInputmsg({ msg }) {
-    return (
-        <small className='error-input dark:text-black' >
-            {msg}
-        </small>
-    )
+  return <small className="error-input dark:text-black">{msg}</small>;
 }

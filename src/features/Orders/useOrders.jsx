@@ -1,22 +1,23 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from "@tanstack/react-query";
 
-import { jwtDecode } from 'jwt-decode'
-import { getAllOrders } from '../../Services/OrdersApi'
-
+import { jwtDecode } from "jwt-decode";
+import { getAllOrders } from "../../Services/OrdersApi";
 
 export default function useOrders() {
+  const accessToken = localStorage.getItem("accessToken");
+  const { id } = jwtDecode(accessToken);
 
+  const {
+    data: orders,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ["orders"],
 
-    const accessToken = localStorage.getItem("accessToken")
+    cacheTime: 1000,
 
-    const { id } = jwtDecode(accessToken)
+    queryFn: () => getAllOrders(id),
+  });
 
-    const { data: orders, isError, isLoading } = useQuery({
-        queryKey: ['orders', id],
-        queryFn: () => getAllOrders(id)
-    })
-
-
-    return { orders, isError, isLoading }
-
+  return { orders, isError, isLoading };
 }

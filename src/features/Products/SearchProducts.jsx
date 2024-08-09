@@ -17,7 +17,7 @@ export default function SearchProducts({ searchQuery, setSearchQuery }) {
 
 
     return (
-        <div className=' absolute top-[100%] left-0 right-0 h-[300px] overflow-y-scroll bg-primary  text-white flex flex-col  '>
+        <div className=' absolute top-[100%] left-0 right-0 h-[300px] overflow-y-scroll bg-primary dark:bg-primary-3  text-white flex flex-col  '>
 
             {isLoading ? <div className='flex items-center h-full justify-center'>
                 <RevolvingDot

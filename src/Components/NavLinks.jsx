@@ -1,9 +1,6 @@
+import { CgClose } from "react-icons/cg";
 
-import { CgClose } from 'react-icons/cg';
-
-import { NavLink } from 'react-router-dom';
-
-
+import { NavLink } from "react-router-dom";
 
 const xsStylse = `xs:flex-col xs:h-screen 
      xs:p-10
@@ -15,7 +12,7 @@ const xsStylse = `xs:flex-col xs:h-screen
      xs:top-0
      xs:bottom-0
      xs: right-0
-     xs:left-0 `
+     xs:left-0 `;
 
 const mdStyles = `
       md:flex
@@ -26,38 +23,62 @@ const mdStyles = `
      md:text-black
      md:translate-x-0
 
-     `
+     `;
 
-
-export function NavLinks({ accessToken, login, numOfCartItems, isError, isLoading, showNav, setShowNav }) {
-
-
-
-
-
-    return (
-        <ul className={`
+export function NavLinks({
+  accessToken,
+  login,
+  numOfCartItems,
+  isError,
+  isLoading,
+  showNav,
+  setShowNav,
+}) {
+  return (
+    <ul
+      className={
+        `
         ${xsStylse} + ${mdStyles}
    
     transition-all
     duration-300
     
-    ` + (showNav ? ' xs:translate-x-0 xs:opacity-100 ' : ' xs:translate-x-[100%] xs:opacity-0  ')}>
-            <CgClose onClick={() => { setShowNav(show => !show) }} color='white' cursor={'pointer'} fontSize={40} className='  md:hidden ' />
+    ` +
+        (showNav
+          ? " xs:translate-x-0 xs:opacity-100 "
+          : " xs:translate-x-[100%] xs:opacity-0  ")
+      }
+    >
+      <CgClose
+        onClick={() => {
+          setShowNav((show) => !show);
+        }}
+        color="white"
+        cursor={"pointer"}
+        fontSize={40}
+        className="  md:hidden "
+      />
 
-            {accessToken ? <>
+      {accessToken ? (
+        <>
+          <NavLink className="nav-item" to={"/home"}>
+            Home
+          </NavLink>
+          <NavLink className="nav-item" to={"/allorders"}>
+            Orders
+          </NavLink>
 
-                <NavLink className='nav-item' to={'/home'}>Home</NavLink>
-                <NavLink className='nav-item' to={'/allorders'}>Orders</NavLink>
+          <NavLink className="nav-item" to={"/order/payment"}>
+            Payment
+          </NavLink>
+          <NavLink className="nav-item" to={"/shop"}>
+            Shop
+          </NavLink>
 
-                <NavLink className='nav-item' to={'/order/payment'}>Payment</NavLink>
-                <NavLink className='nav-item' to={'/shop'}>Shop</NavLink>
-
-
-                <NavLink to={'/cart'} className='nav-item relative '>
-                    Cart
-
-                    <span className="
+          <NavLink to={"/cart"} className="nav-item relative ">
+            Cart
+            <span
+              className="
                      bg-green-800
               rounded-lg
               absolute -top-[8px] -right-[4px]  text-xs font-medium
@@ -65,27 +86,29 @@ export function NavLinks({ accessToken, login, numOfCartItems, isError, isLoadin
 
 
 
-     ">{isLoading ? "..." : isError ? 0 : numOfCartItems} </span>
+     "
+            >
+              {isLoading ? "..." : isError ? 0 : numOfCartItems}{" "}
+            </span>
+          </NavLink>
 
-
-
-
-                </NavLink>
-
-
-                <NavLink className='nav-item' to={'/whishlist'}>
-                    Wishlist
-                </NavLink>
-
-
-
-
-            </> :
-                <>
-                    <NavLink className='nav-item' to={'/home'}>Home</NavLink>
-                    <NavLink className='nav-item' to={'/login'}>Login</NavLink>
-                    <NavLink className='nav-item' to={'/signup'}>Sign Up</NavLink>
-                </>}
-        </ul>
-    );
+          <NavLink className="nav-item" to={"/whishlist"}>
+            Wishlist
+          </NavLink>
+        </>
+      ) : (
+        <>
+          <NavLink className="nav-item" to={"/home"}>
+            Home
+          </NavLink>
+          <NavLink className="nav-item" to={"/login"}>
+            Login
+          </NavLink>
+          <NavLink className="nav-item" to={"/signup"}>
+            Sign Up
+          </NavLink>
+        </>
+      )}
+    </ul>
+  );
 }

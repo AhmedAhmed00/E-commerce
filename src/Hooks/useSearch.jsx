@@ -3,7 +3,6 @@
 
 // export default function useSearch() {
 
-
 //     const [searchQuery, setSearchQuery] = useState("")
 
 //     const { data: { data } = {} } = useProducts()
@@ -13,7 +12,6 @@
 //     if (searchQuery.length > 0) {
 //         arrOfResaults = data?.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
 //     }
-
 
 //     return
 // }
