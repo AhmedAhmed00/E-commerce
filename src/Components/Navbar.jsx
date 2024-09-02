@@ -49,7 +49,7 @@ function Navbar() {
           />
         </div>
         <div className="xs:hidden lg:block">
-          <NavIcons logout={logout} />
+          <NavIcons accessToken={accessToken} logout={logout} />
         </div>
       </div>
     </nav>

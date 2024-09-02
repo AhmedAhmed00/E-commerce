@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 import { useDarkMode } from "../Context/ModeContext";
 
-export default function NavIcons({ logout }) {
+export default function NavIcons({ logout, accessToken }) {
   const { isDark, toggleDarkMode } = useDarkMode();
   return (
     <div className="lg:flex gap-4 items-center ">
@@ -28,18 +28,21 @@ export default function NavIcons({ logout }) {
           />
         )}
       </button>
-      <Link to={"/profile"}>
-        <CgProfile fontSize={"24px"} />
-      </Link>
-
-      <button
-        to=""
-        onClick={() => {
-          logout();
-        }}
-      >
-        <RiLogoutBoxLine className="text-red-500" fontSize={"24px"} />
-      </button>
+      {accessToken && (
+        <>
+          <Link to={"/profile"}>
+            <CgProfile fontSize={"24px"} />
+          </Link>
+          <button
+            to=""
+            onClick={() => {
+              logout();
+            }}
+          >
+            <RiLogoutBoxLine className="text-red-500" fontSize={"24px"} />
+          </button>
+        </>
+      )}
     </div>
   );
 }
